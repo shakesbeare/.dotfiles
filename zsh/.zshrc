@@ -2,6 +2,19 @@ source ~/.zsh-plugins/zsh-snap/znap.zsh
 # The following lines were added by compinstall
 
 fpath+=$HOME/.zsh/pure
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+
+
+alias goto="tmux attach -t"
+alias tlist="tmux list-sessions"
+alias vimrc="cd ~/.config/nvim && nvim . && cd -"
+alias vim="nvim"
+alias py="python3.11"
+alias pip="python3.11 -m pip"
+alias ll="ls"
+alias la="ls -la"
+
+ZSH_THEME="gruvbox"
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :prompt:pure:user color green
