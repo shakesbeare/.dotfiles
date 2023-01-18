@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ln -s ./zsh/.zshrc ~/.zshrc
+ln -s ./nvim ~/.config/nvim
+
+
