@@ -1,0 +1,3 @@
+#!/bin/bash
+xkbswitch -s 4
+

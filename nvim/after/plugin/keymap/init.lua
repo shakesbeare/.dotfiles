@@ -12,17 +12,18 @@ local silent = { silent = true }
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
+-- unbind annoying stuff
+nnoremap("q", "<nop>")
+nnoremap("Q", "<nop>")
+
+-- move selection up and down
+vnoremap("J", ":m '>+1<CR>gv=gv", silent)
+vnoremap("K", ":m '<-2<CR>gv=gv", silent)
+
 -- File navigation
 nnoremap('<leader>pv', '<cmd>Ex<CR>')
-nnoremap('<C-p>', '<cmd>Telescope find_files<CR>')
-
-
--- Comment toggle
-nnoremap('<C-_>', '<cmd>CommentToggle<CR>')
-vnoremap('<C-_>', '<cmd>CommentToggle<CR>')
-
-nnoremap('<C-/>', '<cmd>CommentToggle<CR>')
-vnoremap('<C-/>', '<cmd>CommentToggle<CR>')
+nnoremap('<leader>pf', '<cmd>Telescope find_files<CR>')
+nnoremap('<C-p>', '<cmd>Telescope git_files<CR>')
 
 -- Undo tree
 nnoremap('<leader>u', '<cmd>UndotreeToggle<CR>')
@@ -46,7 +47,8 @@ nnoremap('<leader>gf', '<cmd>lua vim.lsp.buf.format()<CR>')
 -- Hover action
 nnoremap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
-inoremap('<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+nnoremap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+inoremap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 -- Tab completion
 vim.cmd([[
 imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
@@ -57,7 +59,7 @@ smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
 ]])
 
 exprnmap(
-    'gf', 
+    'gf',
     function()
         if require('obsidian').util.cursor_on_markdown_link() then
             return "<cmd>ObsidianFollowLink<CR>"
