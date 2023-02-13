@@ -27,7 +27,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.undodir"
 vim.opt.undofile = true
 
 vim.opt.colorcolumn = "80"
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 vim.opt.wrap = false
 

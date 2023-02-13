@@ -39,16 +39,14 @@ nnoremap('<leader>d', '"_d')
 vnoremap('<leader>d', '"_d')
 
 -- Expand lsp message
-nnoremap('gi', '<cmd>lua vim.diagnostic.open_float()<CR>')
+nnoremap('gd', function() vim.lsp.buf.definition() end)
+nnoremap('<leader>vd', function() vim.diagnostic.open_float() end)
+nnoremap('K', function() vim.lsp.buf.hover() end)
+nnoremap('<leader>gf', function() vim.lsp.buf.format() end)
+nnoremap('<leader>vrn', function() vim.lsp.buf.rename() end)
+inoremap('<C-k>', function() vim.lsp.buf.signature_help() end)
 
--- Format document
-nnoremap('<leader>gf', '<cmd>lua vim.lsp.buf.format()<CR>')
 
--- Hover action
-nnoremap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-
-nnoremap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-inoremap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 -- Tab completion
 vim.cmd([[
 imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
