@@ -2,7 +2,7 @@ source ~/.zsh-plugins/zsh-snap/znap.zsh
 export ZSH=$HOME/.oh-my-zsh
 
 fpath+=$HOME/.zsh/pure
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+#fpath+=("$(brew --prefix)/share/zsh/site-functions")
 path+=($HOME/.scripts)
 
 
@@ -15,8 +15,6 @@ alias pip="python3.11 -m pip"
 alias ll="ls"
 alias la="ls -la"
 alias obsidian="cd ~/Dropbox/Documents/0-obsidian-notes/ && nvim . && cd -"
-
-ZSH_THEME="gruvbox"
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :prompt:pure:user color green

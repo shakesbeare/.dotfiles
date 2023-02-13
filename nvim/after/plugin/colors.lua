@@ -35,6 +35,6 @@ require("tokyonight").setup({
 })
 
 vim.cmd(
-    'colorscheme darkplus'
+    'colorscheme tokyonight'
 )
 
