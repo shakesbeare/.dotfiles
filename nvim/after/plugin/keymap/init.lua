@@ -16,6 +16,13 @@ vim.g.maplocalleader = ','
 nnoremap("q", "<nop>")
 nnoremap("Q", "<nop>")
 
+-- buffer management
+nnoremap('<leader>x', ':bd<CR>')
+
+-- comment toggle
+nnoremap("<leader>c", ":CommentToggle<CR>", silent)
+vnoremap("<leader>c", ":CommentToggle<CR>", silent)
+
 -- move selection up and down
 vnoremap("J", ":m '>+1<CR>gv=gv", silent)
 vnoremap("K", ":m '<-2<CR>gv=gv", silent)
@@ -29,7 +36,7 @@ nnoremap('<C-p>', '<cmd>Telescope git_files<CR>')
 nnoremap('<leader>u', '<cmd>UndotreeToggle<CR>')
 
 -- Improved yank/delete/paste controls
-xnoremap('<leader>p', '"_dP')  -- paste over selection without ruining register
+xnoremap('<leader>p', '"_dP') -- paste over selection without ruining register
 
 nnoremap('<leader>y', '"+y') -- yank to clipboard
 vnoremap('<leader>y', '"+y') -- ... in visual mode
@@ -40,9 +47,11 @@ vnoremap('<leader>d', '"_d')
 
 -- Expand lsp message
 nnoremap('gd', function() vim.lsp.buf.definition() end)
+nnoremap('gi', function() vim.lsp.buf.implementation() end)
 nnoremap('<leader>vd', function() vim.diagnostic.open_float() end)
 nnoremap('K', function() vim.lsp.buf.hover() end)
-nnoremap('<leader>gf', function() vim.lsp.buf.format() end)
+nnoremap('<leader>f', function() vim.lsp.buf.format() end)
+nnoremap('<leader>vca', function() vim.lsp.buf.code_action() end)
 nnoremap('<leader>vrn', function() vim.lsp.buf.rename() end)
 inoremap('<C-k>', function() vim.lsp.buf.signature_help() end)
 

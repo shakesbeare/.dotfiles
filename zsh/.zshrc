@@ -2,7 +2,7 @@ source ~/.zsh-plugins/zsh-snap/znap.zsh
 export ZSH=$HOME/.oh-my-zsh
 
 fpath+=$HOME/.zsh/pure
-#fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
 path+=($HOME/.scripts)
 
 

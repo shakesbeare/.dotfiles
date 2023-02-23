@@ -12,7 +12,7 @@ Plug('simrat39/rust-tools.nvim')
 Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim')
 
--- Editing Ergonomics
+-- -- Editing Ergonomics
 Plug('hrsh7th/cmp-buffer')
 Plug('hrsh7th/cmp-nvim-lsp')
 Plug('hrsh7th/cmp-path')
@@ -20,11 +20,13 @@ Plug('hrsh7th/cmp-cmdline')
 Plug('hrsh7th/nvim-cmp')
 Plug('hrsh7th/cmp-vsnip')
 Plug('hrsh7th/vim-vsnip')
-Plug('preservim/nerdcommenter')
 Plug('godlygeek/tabular')
 Plug('mbbill/undotree')
 Plug('hrsh7th/cmp-nvim-lsp-signature-help')
-
+Plug('windwp/nvim-autopairs')
+Plug('abecodes/tabout.nvim')
+Plug('terrortylor/nvim-comment')
+Plug('kylechui/nvim-surround')
 
 -- Controls and Navigation
 Plug('nvim-lua/plenary.nvim')
@@ -35,20 +37,13 @@ Plug('ThePrimeagen/harpoon')
 Plug('nvim-lualine/lualine.nvim')
 Plug('kyazdani42/nvim-web-devicons')
 Plug('xiyaowong/nvim-transparent')
-Plug('p00f/nvim-ts-rainbow')
 Plug('ellisonleao/gruvbox.nvim')
 Plug('folke/tokyonight.nvim', { branch = 'main' })
-Plug('RRethy/nvim-base16')
-Plug('martinsione/darkplus.nvim')
+Plug('rose-pine/neovim')
 
 -- Parsers and stuff
-Plug('pest-parser/pest.vim')
-Plug('lervag/vimtex')
-Plug('gisraptor/vim-lilypond-integrator')
 Plug('epwalsh/obsidian.nvim')
 Plug('davidgranstrom/scnvim')
-Plug('Hoffs/omnisharp-extended-lsp.nvim')
-
 
 vim.call('plug#end')
 
