@@ -1,3 +1,5 @@
+vim.g.mapleader = ' '
+
 vim.opt.guicursor = ""
 vim.opt.showmatch = true
 vim.opt.wildmenu = true
@@ -30,4 +32,4 @@ vim.opt.colorcolumn = "88"
 vim.opt.cursorline = false
 
 vim.opt.wrap = false
-
+vim.opt.foldcolumn = "9"

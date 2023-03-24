@@ -4,6 +4,7 @@ export ZSH=$HOME/.oh-my-zsh
 fpath+=$HOME/.zsh/pure
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 path+=($HOME/.scripts)
+path+=($HOME/.local/share/bob/nvim-bin)
 
 
 alias goto="tmux attach -t"

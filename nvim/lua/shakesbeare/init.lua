@@ -1,2 +1,2 @@
 require('shakesbeare.set')
-require('shakesbeare.plugins')
+require('shakesbeare.netrw')
