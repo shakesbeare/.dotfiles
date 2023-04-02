@@ -25,10 +25,7 @@ source zsh-snap/install.zsh
 
 
 # create links to .dotfiles
-ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/nvim ~/.config/nvim
-ln -s ~/.dotfiles/scripts ~/.scripts
-ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+./create_links
 
 # change login shell
 chsh -s $(which zsh) bmoffett
