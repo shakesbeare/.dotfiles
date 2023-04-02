@@ -1,6 +1,41 @@
 #!/bin/bash
+#
+# This script will setup my environment and install all necessary prerequisites
 
+# install apt prepequisites
+sudo apt install gcc
+sudo apt install clang
+sudo apt install npm
+sudo apt install zsh
+sudo apt install curl
+
+# install separate stuff
+# rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# pure prompt
+npm install --global pure-prompt
+# oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+rm ~/.zshrc # remove default oh-my-zsh config
+
+# znap
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
+source zsh-snap/install.zsh
+
+
+# create links to .dotfiles
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/nvim ~/.config/nvim
 ln -s ~/.dotfiles/scripts ~/.scripts
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+
+# change login shell
+chsh -s $(which zsh) bmoffett
+
+# keyboard
+git clone git@github.com:ThePrimeagen/keyboards.git
+cp keyboards/ubuntu/real-prog-dvorak /usr/share/X11/xkb/symbols/real-prog-dvorak
+rm -rf keyboards
+
+
