@@ -1,3 +1,11 @@
 #!/bin/bash
-xkbswitch -s 4
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    setxkbmap -v real-prog-dvorak -option ctrl:nocaps
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    xkbswitch -s 4
+else
+    echo "Unhandlde operating system $OSTYPE"
+fi
+
 

@@ -4,12 +4,18 @@
 echo "Note: This script is *not* hands off and will occasionally require user input"
 
 # install apt prepequisites
-sudo apt install gcc
-sudo apt install clang
-sudo apt install npm
-sudo apt install zsh
-sudo apt install curl
-sudo apt install tmux
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    sudo apt install gcc
+    sudo apt install clang
+    sudo apt install npm
+    sudo apt install zsh
+    sudo apt install curl
+    sudo apt install tmux
+    sudo apt install fzf
+    sudo apt install ripgrep
+else
+    echo "Unhandled operating system $OSTYPE"
+    exit 1
 
 # install separate stuff
 # rust
@@ -25,7 +31,7 @@ rm ~/.zshrc # remove default oh-my-zsh config
 echo "--------> Note: Use path ~/.zsh-plugins/ for znap"
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
 source zsh-snap/install.zsh
-
+rm -rf ~/.zsh-snap
 
 # create links to .dotfiles
 ./create_links

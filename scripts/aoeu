@@ -1,3 +1,10 @@
 #!/bin/bash
-xkbswitch -s 0
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    setxkbmap -v us -option
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    xkbswitch -s 0
+else
+    echo "Unhandled operating system $OSTYPE"
+fi
+ 

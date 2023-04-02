@@ -1,12 +1,13 @@
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
-source ~/zsh-snap/znap.zsh
+source ~/.zsh-plugins/zsh-snap/znap.zsh
 export ZSH=$HOME/.oh-my-zsh
 
 fpath+=$HOME/.zsh/pure
-#fpath+=("$(brew --prefix)/share/zsh/site-functions")
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fi
 path+=($HOME/.scripts)
 path+=($HOME/.local/share/bob/nvim-bin)
-
 
 alias goto="tmux attach -t"
 alias tlist="tmux list-sessions"
@@ -65,3 +66,7 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export path
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    setxkbmap -v real-prog-dvorak -option ctrl:nocaps > /dev/null
+fi
