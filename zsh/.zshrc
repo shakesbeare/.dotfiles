@@ -1,8 +1,9 @@
-source ~/.zsh-plugins/zsh-snap/znap.zsh
+zstyle ':znap:*' repos-dir ~/.zsh-plugins
+source ~/zsh-snap/znap.zsh
 export ZSH=$HOME/.oh-my-zsh
 
 fpath+=$HOME/.zsh/pure
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+#fpath+=("$(brew --prefix)/share/zsh/site-functions")
 path+=($HOME/.scripts)
 path+=($HOME/.local/share/bob/nvim-bin)
 
@@ -49,11 +50,9 @@ bindkey -e
 
 znap source marlonrichert/zsh-autocomplete
 znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance,prompt_info_functions}
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-syntax-highlighting
 
-plugins=(
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    )
 autoload -U promptinit; promptinit
 prompt pure
 

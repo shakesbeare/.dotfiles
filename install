@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ln -s ./zsh/.zshrc ~/.zshrc
-ln -s ./nvim ~/.config/nvim
-ln -s ./scripts ~/.scripts
-ln -s ./tmux/.tmux.conf ~/.tmux.conf
+ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/nvim ~/.config/nvim
+ln -s ~/.dotfiles/scripts ~/.scripts
+ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
