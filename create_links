@@ -6,8 +6,12 @@ ln -s ~/.dotfiles/zsh/.zprofile ~/.zprofile
 ln -s ~/.dotfiles/nvim ~/.config/nvim
 ln -s ~/.dotfiles/scripts ~/.scripts
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+ln -s ~/.dotfiles/xrandr/.xinirc ~/.xinitrc
+ln -s ~/.dotfiles/xrandr/.Xresources ~/.Xresources
 
-mkdir ~/.config/i3
-mkdir ~/.config/i3status
-ln -s ~/.dotfiles/i3/i3/config ~/.config/i3/config
-ln -s ~/.dotfiles/i3/i3status/config ~/.config/i3status/config
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    mkdir ~/.config/i3
+    mkdir ~/.config/i3status
+    ln -s ~/.dotfiles/i3/i3/config ~/.config/i3/config
+    ln -s ~/.dotfiles/i3/i3status/config ~/.config/i3status/config
+fi
