@@ -3,16 +3,11 @@
 # This script will setup my environment and install all necessary prerequisites
 echo "Note: This script is *not* hands off and will occasionally require user input"
 
-# install apt prepequisites
+# install prepequisites
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    sudo apt install gcc
-    sudo apt install clang
-    sudo apt install npm
-    sudo apt install zsh
-    sudo apt install curl
-    sudo apt install tmux
-    sudo apt install fzf
-    sudo apt install ripgrep
+    sudo apt upgrade
+    sudo apt update
+    sudo apt install gcc g++ clang npm zsh curl tmux fzf ripgrep
 else
     echo "Unhandled operating system $OSTYPE"
     exit 1
@@ -23,6 +18,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # pure prompt
 npm install --global pure-prompt
+
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm ~/.zshrc # remove default oh-my-zsh config
@@ -31,6 +27,9 @@ rm ~/.zshrc # remove default oh-my-zsh config
 echo "--------> Note: Use path ~/.zsh-plugins/ for znap"
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
 source zsh-snap/install.zsh
+/.zsh-plugins
+y
+y
 rm -rf ~/.zsh-snap
 
 # create links to .dotfiles
@@ -38,10 +37,3 @@ rm -rf ~/.zsh-snap
 
 # change login shell
 chsh -s $(which zsh) bmoffett
-
-# keyboard
-git clone git@github.com:ThePrimeagen/keyboards.git
-cp keyboards/ubuntu/real-prog-dvorak /usr/share/X11/xkb/symbols/real-prog-dvorak
-rm -rf keyboards
-
-

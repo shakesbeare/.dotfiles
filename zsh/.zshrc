@@ -23,22 +23,10 @@ zstyle ':completion:*' completer _expand _complete _ignored _correct _approximat
 zstyle :prompt:pure:user color green
 zstyle :prompt:pure:host color green
 zstyle :prompt:pure:path color green
-# zstyle ':completion:*' format '"Completing %d"'
 zstyle ':completion:*' list-colors '=*=94'
-#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-#zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
-#zstyle ':completion:*' max-errors 2
-#zstyle ':completion:*' menu select=1
-#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-#zstyle ':completion:*' original false
-#zstyle :compinstall filename '/home/yes/.zshrc'
-
-#zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-#zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**'
-#zstyle :compinstall filename '/home/dwr/.zshrc'
-
 autoload -Uz compinit
 compinit
+
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -46,18 +34,16 @@ HISTSIZE=25000
 SAVEHIST=25000
 setopt autocd extendedglob
 unsetopt beep
+
+# key bindings
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-znap source marlonrichert/zsh-autocomplete
 znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance,prompt_info_functions}
+
+znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
-
-autoload -U promptinit; promptinit
-prompt pure
-
-source $ZSH/oh-my-zsh.sh
 
 zstyle ':completion:*' list-colors '=*=94'
 
@@ -67,6 +53,5 @@ export NVM_DIR="$HOME/.config/nvm"
 
 export path
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    setxkbmap -v real-prog-dvorak -option ctrl:nocaps > /dev/null
-fi
+autoload -U promptinit; promptinit
+prompt pure
