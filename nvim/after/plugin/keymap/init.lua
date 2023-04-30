@@ -16,9 +16,6 @@ vim.g.maplocalleader = ','
 nnoremap("q", "<nop>")
 nnoremap("Q", "<nop>")
 
--- buffer management
-nnoremap('<leader>x', ':bd<CR>')
-
 -- comment toggle
 nnoremap("<leader>c", ":CommentToggle<CR>", silent)
 vnoremap("<leader>c", ":CommentToggle<CR>", silent)
@@ -76,3 +73,4 @@ exprnmap(
     end,
     silent
 )
+

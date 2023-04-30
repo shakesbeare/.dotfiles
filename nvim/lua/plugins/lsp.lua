@@ -1,23 +1,36 @@
 return {
     'VonHeikemen/lsp-zero.nvim',
+    event = "VeryLazy",
     dependencies = {
         -- LSP Support
         { 'neovim/nvim-lspconfig' }, -- Required
         { 'williamboman/mason.nvim' }, -- Optional
         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-        { 'simrat39/rust-tools.nvim', ft = "rs" },
+        { 'simrat39/rust-tools.nvim'},
 
         -- Autocompletion
-        { 'hrsh7th/nvim-cmp', event = "InsertEnter" }, -- Required
-        { 'hrsh7th/cmp-nvim-lsp', event = "InsertEnter" }, -- Required
-        { 'hrsh7th/cmp-buffer', event = "InsertEnter"  }, -- Optional
-        { 'hrsh7th/cmp-path', event = "InsertEnter"  }, -- Optional
-        { 'hrsh7th/cmp-nvim-lua', event = "InsertEnter"  }, -- Optional
-        { 'hrsh7th/cmp-cmdline', event = "CmdLineEnter" },
-        { 'hrsh7th/cmp-vsnip', event = "InsertEnter" },
-        { 'hrsh7th/cmp-nvim-lsp-signature-help'},
-        { 'hrsh7th/vim-vsnip', event = "InsertEnter" }, -- Required
-        { 'jose-elias-alvarez/null-ls.nvim', event = "BufReadPre" }
+        { 'hrsh7th/nvim-cmp' }, -- Required
+        { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+        { 'hrsh7th/cmp-buffer' }, -- Optional
+        { 'hrsh7th/cmp-path' }, -- Optional
+        { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+        { 'hrsh7th/cmp-cmdline' },
+        { 'hrsh7th/cmp-vsnip' },
+        { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+        { 'hrsh7th/vim-vsnip' }, -- Required
+        { 'jose-elias-alvarez/null-ls.nvim' },
+        { 
+            'ErichDonGubler/lsp_lines.nvim',
+            config = function(_, opts)
+                require("lsp_lines").setup()
+
+                vim.diagnostic.config({
+                    virtual_text = false,
+                    virtual_lines = true,
+                })
+            end,
+
+        },
     },
     config = function(_, opts)
 
@@ -52,6 +65,13 @@ return {
                         capabilities = capabilities,
                         settings = {
                             ['rust-analyzer'] = {
+                                checkOnSave = {
+                                    allFeatures = true,
+                                    overrideCommand = {
+                                        'cargo', 'clippy', '--workspace', '--message-format=json',
+                                        '--all-targets', '--all-features', '--', '-A', 'clippy::needless_return',
+                                    }
+                                },
                                 completion = {
                                     postfix = {
                                         enable = false,
@@ -63,12 +83,6 @@ return {
                 }
             end,
 
-            ["omnisharp"] = function()
-                require('omnisharp').setup {
-                    cmd = { "mono", "/Users/bmoffett/.omnisharp/Omnisharp.exe" },
-                    capabilities = capabilities,
-                }
-            end,
         }
 
         local nvim_lsp = require('lspconfig')

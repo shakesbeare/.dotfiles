@@ -11,5 +11,6 @@ return {
                 nvim_cmp = true,
             }
         }
-    end
+    end,
+    event = "VeryLazy"
 }

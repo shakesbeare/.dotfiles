@@ -1,4 +1,3 @@
-zstyle ':znap:*' repos-dir ~/.zsh-plugins
 source ~/.zsh-plugins/zsh-snap/znap.zsh
 export ZSH=$HOME/.oh-my-zsh
 
@@ -40,7 +39,6 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 
 znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance,prompt_info_functions}
-
 znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
