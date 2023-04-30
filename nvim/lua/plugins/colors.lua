@@ -1,3 +1,4 @@
+
 --- From tokyonight --  Author: Folke -- Thanks Folke!
 local function hexToRgb(c)
     c = string.lower(c)
@@ -22,6 +23,15 @@ local function darken(hex, amount, bg)
 end
 
 --- End
+
+-- *******************************************
+-- Customize highlight groups
+vim.cmd[[
+    highlight @lsp.typemod.variable.mutable.rust gui=underline
+    highlight @lsp.typemod.selfKeyword.mutable.rust gui=underline
+]]
+
+-- *******************************************
 
 return {
     {
@@ -80,3 +90,4 @@ return {
         end
     }
 }
+

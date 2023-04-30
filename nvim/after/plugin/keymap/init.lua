@@ -39,27 +39,39 @@ nnoremap('<leader>y', '"+y') -- yank to clipboard
 vnoremap('<leader>y', '"+y') -- ... in visual mode
 nmap('<leader>y', '"+y')
 
-nnoremap('<leader>d', '"_d')
+nnoremap('<leader>d', '"_d') -- delete without ruining register
 vnoremap('<leader>d', '"_d')
 
--- Expand lsp message
-nnoremap('gd', function() vim.lsp.buf.definition() end)
-nnoremap('gi', function() vim.lsp.buf.implementation() end)
-nnoremap('<leader>vd', function() vim.diagnostic.open_float() end)
-nnoremap('K', function() vim.lsp.buf.hover() end)
-nnoremap('<leader>f', function() vim.lsp.buf.format() end)
-nnoremap('<leader>vca', function() vim.lsp.buf.code_action() end)
-nnoremap('<leader>vrn', function() vim.lsp.buf.rename() end)
-inoremap('<C-k>', function() vim.lsp.buf.signature_help() end)
+-- **********************************************************************
+-- LSP Controls
+nnoremap('gd', function() vim.lsp.buf.definition() end, silent)
+nnoremap('gi', function() vim.lsp.buf.implementation() end, silent)
+nnoremap('<leader>vd', function() vim.diagnostic.open_float() end, silent)
+nnoremap('K', function() vim.lsp.buf.hover() end, silent)
+nnoremap('<leader>f', function() vim.lsp.buf.format() end, silent)
+nnoremap('<leader>ca', function() vim.lsp.buf.code_action() end, silent)
+nnoremap('<leader>r', function() vim.lsp.buf.rename() end, silent)
+inoremap('<C-k>', function() vim.lsp.buf.signature_help() end, silent)
 
+-- Debugger controls
+dap = require('dap')
+nnoremap('<F5>', function() dap.continue() end, silent)
+nnoremap('<F1>', function() dap.step_over() end, silent)
+nnoremap('<F2>', function() dap.step_into() end, silent)
+nnoremap('<F3>', function() dap.step_out() end, silent)
+nnoremap('<leader>b', function() dap.toggle_breakpoint() end, silent)
+nnoremap('<leader>B', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, silent)
+nnoremap('<leader>dr', function() dap.repl.open() end, silent)
+
+-- **********************************************************************
 
 -- Tab completion
 vim.cmd([[
-imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+    imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
 ]])
 
 vim.cmd([[
-smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+    smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
 ]])
 
 exprnmap(

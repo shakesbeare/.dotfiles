@@ -33,6 +33,8 @@ return {
         },
     },
     config = function(_, opts)
+        
+        vim.diagnostic.config({update_in_insert=true})
 
         require("mason").setup({
             ui = {
@@ -80,6 +82,13 @@ return {
                             }
                         }
                     },
+                    dap = {
+                        adapter = {
+                            type = "executable",
+                            command = "lldb-vscode-14",
+                            name = "rt_lldb"
+                        }
+                    }
                 }
             end,
 
