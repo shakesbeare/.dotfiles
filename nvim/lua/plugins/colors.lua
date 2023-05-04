@@ -29,6 +29,11 @@ end
 vim.cmd[[
     highlight @lsp.typemod.variable.mutable.rust gui=underline
     highlight @lsp.typemod.selfKeyword.mutable.rust gui=underline
+    highlight DiagnosticUnderlineError gui=undercurl
+    highlight DiagnosticUnderlineWarn gui=undercurl
+    highlight DiagnosticUnderlineInfo gui=undercurl
+    highlight DiagnosticUnderlineHint gui=undercurl
+    highlight link @lsp.typemod.comment.documentation.rust @parameter
 ]]
 
 -- *******************************************
@@ -88,6 +93,21 @@ return {
                 },
             })
         end
+    },
+    {
+        'Mofiqul/vscode.nvim',
+        config = function(_, _)
+            local c = require('vscode.colors').get_colors()
+            require('vscode').setup({
+                group_overrides = {
+                    -- Error and warning backgrounds
+                    DiagnosticVirtualTextError = { bg = darken(c.vscRed, 0.1), fg = c.vscRed},
+                    DiagnosticVirtualTextWarn = { bg = darken(c.vscYellowOrange, 0.1), fg = c.vscYellowOrange },
+                    DiagnosticVirtualTextInfo = { bg = darken(c.vscPink, 0.1), fg = c.vscPink },
+                    DiagnosticVirtualTextHint = { bg = darken(c.vscLightBlue, 0.1), fg = c.vscLightBlue },
+                }
+            })
+        end,
     }
 }
 
