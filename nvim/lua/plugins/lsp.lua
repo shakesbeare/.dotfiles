@@ -3,38 +3,25 @@ return {
     event = "VeryLazy",
     dependencies = {
         -- LSP Support
-        { 'neovim/nvim-lspconfig' }, -- Required
-        { 'williamboman/mason.nvim' }, -- Optional
+        { 'neovim/nvim-lspconfig' },             -- Required
+        { 'williamboman/mason.nvim' },           -- Optional
         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-        { 'simrat39/rust-tools.nvim'},
+        { 'simrat39/rust-tools.nvim' },
 
         -- Autocompletion
-        { 'hrsh7th/nvim-cmp' }, -- Required
+        { 'hrsh7th/nvim-cmp' },     -- Required
         { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-        { 'hrsh7th/cmp-buffer' }, -- Optional
-        { 'hrsh7th/cmp-path' }, -- Optional
+        { 'hrsh7th/cmp-buffer' },   -- Optional
+        { 'hrsh7th/cmp-path' },     -- Optional
         { 'hrsh7th/cmp-nvim-lua' }, -- Optional
         { 'hrsh7th/cmp-cmdline' },
         { 'hrsh7th/cmp-vsnip' },
         { 'hrsh7th/cmp-nvim-lsp-signature-help' },
         { 'hrsh7th/vim-vsnip' }, -- Required
         { 'jose-elias-alvarez/null-ls.nvim' },
-        { 
-            'ErichDonGubler/lsp_lines.nvim',
-            config = function(_, opts)
-                require("lsp_lines").setup()
-
-                vim.diagnostic.config({
-                    virtual_text = false,
-                    virtual_lines = true,
-                })
-            end,
-
-        },
     },
     config = function(_, opts)
-        
-        vim.diagnostic.config({update_in_insert=true})
+        vim.diagnostic.config({ update_in_insert = true })
 
         require("mason").setup({
             ui = {
@@ -60,6 +47,17 @@ return {
             end,
             -- Next, you can provide a dedicated handler for specific servers.
             -- For example, a handler override for the `rust_analyzer`:
+            ["lua_ls"] = function()
+                require('lspconfig').lua_ls.setup {
+                    settings = {
+                        Lua = {
+                            diagnostics = {
+                                globals = { 'vim' }
+                            }
+                        }
+                    }
+                }
+            end,
 
             ["rust_analyzer"] = function()
                 require('rust-tools').setup {
@@ -94,7 +92,6 @@ return {
 
         }
 
-        local nvim_lsp = require('lspconfig')
 
         -- Set up nvim-cmp.
 

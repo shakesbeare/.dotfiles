@@ -1,4 +1,4 @@
 return {
-    "doronbehar/nvim-fugitive",
+    "tpope/vim-fugitive",
     event = "VeryLazy"
 }

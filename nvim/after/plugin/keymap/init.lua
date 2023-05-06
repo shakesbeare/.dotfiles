@@ -53,17 +53,9 @@ nnoremap('<leader>ca', function() vim.lsp.buf.code_action() end, silent)
 nnoremap('<leader>r', function() vim.lsp.buf.rename() end, silent)
 inoremap('<C-k>', function() vim.lsp.buf.signature_help() end, silent)
 
--- Debugger controls
-dap = require('dap')
-nnoremap('<F5>', function() dap.continue() end, silent)
-nnoremap('<F1>', function() dap.step_over() end, silent)
-nnoremap('<F2>', function() dap.step_into() end, silent)
-nnoremap('<F3>', function() dap.step_out() end, silent)
-nnoremap('<leader>b', function() dap.toggle_breakpoint() end, silent)
-nnoremap('<leader>B', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, silent)
-nnoremap('<leader>dr', function() dap.repl.open() end, silent)
-
 -- **********************************************************************
+
+nnoremap('<leader>t', "<CMD>TroubleToggle workspace_diagnostics<CR>", silent)
 
 -- Tab completion
 vim.cmd([[
