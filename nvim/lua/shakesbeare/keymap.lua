@@ -12,6 +12,8 @@ end
 
 M.nmap = bind('n', {noremap = false})
 M.exprnmap = bind('n', {noremap = false, expr = true})
+M.exprimap = bind('i', {noremap = false, expr = true})
+M.exprsmap = bind('s', {noremap = false, expr = true})
 M.nnoremap = bind('n')
 M.vnoremap = bind('v')
 M.xnoremap = bind('x')

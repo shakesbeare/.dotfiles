@@ -44,6 +44,7 @@
         "/home/bmoffett/.local/share/nvim/lazy/lualine.nvim/lua",
         "/home/bmoffett/.local/share/nvim/lazy/nvim-autopairs/lua",
         "/home/bmoffett/.dotfiles/nvim/lua",
-        "${3rd}/luv/library"
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
     ]
 }
