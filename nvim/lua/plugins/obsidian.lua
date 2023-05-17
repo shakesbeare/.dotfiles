@@ -9,9 +9,6 @@ return {
             notes_subdir = "Notes",
             completion = {
                 nvim_cmp = true,
-            },
-            templates = {
-                subdir = "0-templates"
             }
         }
     end,

@@ -14,8 +14,8 @@ alias vimrc="cd ~/.config/nvim && nvim . && cd -"
 alias vim="nvim"
 alias py="python3.11"
 alias pip="python3.11 -m pip"
-alias ll="ls -lhF"
-alias la="ls -lahF"
+alias ll="ls"
+alias la="ls -la"
 alias obsidian="cd ~/Dropbox/Documents/0-obsidian-notes/ && nvim . && cd -"
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -29,8 +29,8 @@ compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=25000
+SAVEHIST=25000
 setopt autocd extendedglob
 unsetopt beep
 
@@ -53,5 +53,3 @@ export path
 
 autoload -U promptinit; promptinit
 prompt pure
-
-[ -f "/Users/bmoffett/.ghcup/env" ] && source "/Users/bmoffett/.ghcup/env" # ghcup-env
