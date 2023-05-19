@@ -14,8 +14,8 @@ alias vimrc="cd ~/.config/nvim && nvim . && cd -"
 alias vim="nvim"
 alias py="python3.11"
 alias pip="python3.11 -m pip"
-alias ll="ls"
-alias la="ls -la"
+alias ll="ls -lhF"
+alias la="ls -lAhF"
 alias obsidian="cd ~/Dropbox/Documents/0-obsidian-notes/ && nvim . && cd -"
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate

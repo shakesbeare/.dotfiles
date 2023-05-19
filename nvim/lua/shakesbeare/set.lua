@@ -9,7 +9,6 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.timeoutlen = 250
 vim.opt.hidden = true
 vim.opt.linebreak = true
 vim.opt.conceallevel = 2
