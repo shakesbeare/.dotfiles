@@ -7,6 +7,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 path+=($HOME/.scripts)
 path+=($HOME/.local/share/bob/nvim-bin)
+path+=(/usr/local/go/bin)
 
 alias goto="tmux attach -t"
 alias tlist="tmux list-sessions"
