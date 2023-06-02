@@ -24,8 +24,8 @@ nnoremap("q", "<nop>")
 nnoremap("Q", "<nop>")
 
 -- comment toggle
-nnoremap("<leader>c", ":CommentToggle<CR>", silent)
-vnoremap("<leader>c", ":CommentToggle<CR>", silent)
+nnoremap("<leader>/", ":CommentToggle<CR>", silent)
+vnoremap("<leader>/", ":CommentToggle<CR>", silent)
 
 -- move selection up and down
 vnoremap("J", ":m '>+1<CR>gv=gv", silent)
