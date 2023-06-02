@@ -547,3 +547,4 @@ alias ll = ls -l
 alias vim = nvim
 alias cat = bat
 
+let-env PATH = "/bin/:/usr/bin/:/usr/sbin/:/usr/local/bin/:~/.scripts:~/.local/share/bob/nvim-bin:/usr/local/go/bin:/opt/homebrew/bin:/opt/homebrew/sbin:~/.cargo/bin"

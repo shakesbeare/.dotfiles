@@ -8,6 +8,7 @@ ln -s ~/.dotfiles/scripts ~/.scripts
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/xrandr/.xinirc ~/.xinitrc
 ln -s ~/.dotfiles/xrandr/.Xresources ~/.Xresources
+ln -s ~/.dotfiles/alacritty ~/.config/alacritty
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     mkdir ~/.config/i3
