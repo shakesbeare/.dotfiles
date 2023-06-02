@@ -542,26 +542,10 @@ let-env config = {
 }
 
 source ~/.cache/starship/init.nu
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 let-env STARSHIP_CONFIG = "~/.config/starship.toml"
 
 alias ls = exa
->>>>>>> Stashed changes
-=======
-let-env STARSHIP_CONFIG = "~/.config/starship.toml"
-
->>>>>>> 6a4efa7 (windows modifications initial commit)
-=======
-let-env STARSHIP_CONFIG = "~/.config/starship.toml"
-
->>>>>>> 6a4efa72a7ce6ae90faf6af1c9bce039626cb2c3
 alias la = ls -la
 alias ll = ls -l
 alias vim = nvim
 alias cat = bat
-
-
-
