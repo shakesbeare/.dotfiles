@@ -43,5 +43,5 @@ colors:
     white: '#F2F2F2'
 
 font:
-  family: 'Consolas Nerd Font'
-  size: 14
+  normal:
+    family: Consolas Nerd Font
