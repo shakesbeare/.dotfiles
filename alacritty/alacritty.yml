@@ -1,5 +1,5 @@
-# shell:
-  # program: C:/Users/berin/.cargo/bin/nu.exe
+shell:
+  program: C:/Users/berin/.cargo/bin/nu.exe
  
 cursor:
   style:
@@ -8,8 +8,8 @@ cursor:
   blink_timeout: 0
 
 window:
-  startup_mode: SimpleFullscreen
-  decorations: none
+  # startup_mode: SimpleFullscreen
+  # decorations: none
   dynamic_title: true
   padding:
     x: 5
@@ -45,3 +45,4 @@ colors:
 font:
   normal:
     family: Consolas Nerd Font
+  # size: 14
