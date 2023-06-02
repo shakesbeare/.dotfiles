@@ -550,6 +550,3 @@ alias ll = ls -l
 alias lr = ls -R --gitignore
 alias vim = nvim
 alias cat = bat
-
-
-
