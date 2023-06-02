@@ -1,0 +1,41 @@
+shell:
+  program: C:/Users/berin/.cargo/bin/nu.exe
+
+cursor:
+  style:
+    blinking: Always
+  blinking_interval: 500
+  blink_timeout: 0
+
+window:
+  decorations: full
+  dynamic_title: true
+  padding:
+    x: 5
+    y: 5
+
+live_config_reload: true
+working_directory: C:/Users/berin/
+
+draw_bold_text_with_bright_colors: true
+colors:
+  primary:
+    background: '#0C0C0C'
+  normal:
+    black: '#0C0C0C'
+    red: '#C50F1F'
+    green: '#13A10E'
+    yellow: '#C19C00'
+    blue: '#0037DA'
+    magenta: '#881798'
+    cyan: '#3A96DD'
+    white: '#CCCCCC'
+  bright:
+    black: '#767676'
+    red: '#E74856'
+    green: '#16C60C'
+    yellow: '#F9F1A5'
+    blue: '#3B78FF'
+    magenta: '#B4009E'
+    cyan: '#61D6D6'
+    white: '#F2F2F2'
