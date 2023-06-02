@@ -20,7 +20,7 @@ local has_words_before = function()
 end
 
 -- unbind annoying stuff
-nnoremap("q", "<nop>")
+-- nnoremap("q", "<nop>")
 nnoremap("Q", "<nop>")
 
 -- comment toggle

@@ -13,7 +13,12 @@
   "indent-blankline.nvim": { "branch": "master", "commit": "018bd04d80c9a73d399c1061fa0c3b14a7614399" },
   "lazy.nvim": { "branch": "main", "commit": "ebdd0499551765e6a7aba220cc8ae4e0cdb6be69" },
   "leap.nvim": { "branch": "main", "commit": "d42ef507479b529284f403daa6048f668bcb8491" },
+<<<<<<< HEAD
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "6a6be78ffc1bd87cc20b4d4487f5de42ab9660c2" },
+=======
+  "lsp-inlayhints.nvim": { "branch": "anticonceal", "commit": "81c264a4f3fd84b0ed858f48713f309693086acd" },
+  "lsp-zero.nvim": { "branch": "main", "commit": "6a6be78ffc1bd87cc20b4d4487f5de42ab9660c2" },
+>>>>>>> 64149b8 (6-2-23)
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "90a8bbf106b85b76951a34c542058ffa807de2b1" },
   "mason.nvim": { "branch": "main", "commit": "08b2fd308e0107eab9f0b59d570b69089fd0b522" },

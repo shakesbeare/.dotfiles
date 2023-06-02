@@ -6,7 +6,19 @@ return {
         { 'neovim/nvim-lspconfig' },             -- Required
         { 'williamboman/mason.nvim' },           -- Optional
         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-        { 'simrat39/rust-tools.nvim' },
+        {
+            'simrat39/rust-tools.nvim',
+            dependencies = {
+                {
+                    'lvimuser/lsp-inlayhints.nvim',
+                    branch = "anticonceal",
+                    config = function(_, opts)
+                        require('lsp-inlayhints').setup {}
+                    end
+                }
+            }
+
+        },
 
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },     -- Required
@@ -15,7 +27,7 @@ return {
         { 'hrsh7th/cmp-path' },     -- Optional
         { 'hrsh7th/cmp-nvim-lua' }, -- Optional
         { 'hrsh7th/cmp-cmdline' },
-        { 
+        {
             'L3MON4D3/LuaSnip',
             dependencies = {
                 { 'rafamadriz/friendly-snippets' },
@@ -44,7 +56,7 @@ return {
         })
 
         require("mason-lspconfig").setup {
-            ensure_installed = { "rust_analyzer@nightly"}
+            ensure_installed = { "rust_analyzer@nightly" }
         }
 
         -- Set up lspconfig.
@@ -75,6 +87,9 @@ return {
 
             ["rust_analyzer"] = function()
                 require('rust-tools').setup {
+                    inlay_hints = {
+                        auto = false
+                    },
                     server = {
                         capabilities = capabilities,
                         settings = {
