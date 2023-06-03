@@ -547,6 +547,6 @@ let-env STARSHIP_CONFIG = "~/.config/starship.toml"
 alias ls = exa
 alias la = ls -la
 alias ll = ls -l
-alias lr = ls -R --gitignore
+alias lr = ls -R --git-ignore
 alias vim = nvim
 alias cat = bat
