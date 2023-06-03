@@ -550,7 +550,7 @@ alias ls = exa
 >>>>>>> Stashed changes
 alias la = ls -la
 alias ll = ls -l
-alias lr = ls -R --gitignore
+alias lr = ls -R --git-ignore
 alias vim = nvim
 alias cat = bat
 
