@@ -45,3 +45,4 @@ colors:
 font:
   normal:
     family: Consolas Nerd Font
+  size: 14

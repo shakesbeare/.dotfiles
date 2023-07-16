@@ -542,12 +542,9 @@ let-env config = {
 }
 
 source ~/.cache/starship/init.nu
-<<<<<<< Updated upstream
-=======
 let-env STARSHIP_CONFIG = "~/.config/starship.toml"
 
 alias ls = exa
->>>>>>> Stashed changes
 alias la = ls -la
 alias ll = ls -l
 alias lr = ls -R --git-ignore
