@@ -21,7 +21,20 @@ return {
         },
 
         -- Autocompletion
-        { 'hrsh7th/nvim-cmp' },     -- Required
+        { 
+            'hrsh7th/nvim-cmp',
+            config = function()
+                local cmp = require('cmp')
+
+                cmp.setup {
+                    mapping = cmp.mapping.preset.insert({
+                        ['<C-n>'] = cmp.mapping.select_next_item(),
+                        ['<C-p>'] = cmp.mapping.select_prev_item(),
+                        ['<CR>'] = cmp.mapping.confirm(),
+                    })
+                }
+            end,
+        },     -- Required
         { 'hrsh7th/cmp-nvim-lsp' }, -- Required
         { 'hrsh7th/cmp-buffer' },   -- Optional
         { 'hrsh7th/cmp-path' },     -- Optional
@@ -38,9 +51,39 @@ return {
             end
         },
         { 'hrsh7th/cmp-nvim-lsp-signature-help' },
-        -- { 'hrsh7th/cmp-vsnip' },
-        -- { 'hrsh7th/vim-vsnip' }, -- Required
-        { 'jose-elias-alvarez/null-ls.nvim' },
+        {
+            'jose-elias-alvarez/null-ls.nvim',
+            config = function(_, opts)
+                local null_ls = require('null-ls')
+                local h = require('null-ls.helpers')
+
+                local leptos_fmt = {
+                    name = "leptosfmt",
+                    meta = {
+                        'https://github.com/bram209/leptosfmt',
+                        'A formatter for the leptos view! macro'
+                    },
+                    method = null_ls.methods.FORMATTING,
+                    filetypes = { 'rust' },
+                    generator = h.formatter_factory({
+                        command = 'leptosfmt',
+                        args = {
+                            '--quiet',
+                            '--stdin',
+                        },
+                        to_stdin = true,
+                    }),
+                }
+
+                null_ls.setup {
+                    -- debug = true,
+                    sources = {
+                        null_ls.builtins.formatting.black,
+                        leptos_fmt
+                    }
+                }
+            end
+        },
     },
     config = function(_, opts)
         vim.diagnostic.config({ update_in_insert = true })
@@ -61,6 +104,11 @@ return {
 
         -- Set up lspconfig.
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+        require('lspconfig').gdscript.setup {
+            capabilities = capabilities,
+            cmd = { "nc", "localhost", "6005"},
+        }
 
         require("mason-lspconfig").setup_handlers {
             -- The first entry (without a key) will be the default handler
@@ -88,7 +136,7 @@ return {
             ["rust_analyzer"] = function()
                 require('rust-tools').setup {
                     inlay_hints = {
-                        auto = false
+                        auto = true,
                     },
                     server = {
                         capabilities = capabilities,
@@ -109,27 +157,12 @@ return {
                             }
                         }
                     },
-                    dap = {
-                        adapter = {
-                            type = "executable",
-                            command = "lldb-vscode-14",
-                            name = "rt_lldb"
-                        }
-                    }
                 }
             end,
 
         }
-
-
-        -- Set up nvim-cmp.
-
-
-        local feedkey = function(key, mode)
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-        end
-
         local cmp = require('cmp')
+
         cmp.setup({
             snippet = {
                 -- REQUIRED - you must specify a snippet engine

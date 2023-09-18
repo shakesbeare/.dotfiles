@@ -1,0 +1,12 @@
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--     pattern = "*.rs",
+--     callback = function()
+--         vim.lsp.start({
+--             name = "leptos-lsp",
+--             cmd = { "leptos-language-server", "--stdin=true", "--quiet=true" },
+--             filetypes = { "rust" },
+--             root_dir = vim.fs.dirname(vim.fs.find({ 'Cargo.toml' }, { upward = true })[1])
+--         })
+--         vim.lsp.buf_attach_client(0, 1)
+--     end
+-- })

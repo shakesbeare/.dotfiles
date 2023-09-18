@@ -20,7 +20,6 @@ local has_words_before = function()
 end
 
 -- unbind annoying stuff
--- nnoremap("q", "<nop>")
 nnoremap("Q", "<nop>")
 
 -- comment toggle
@@ -62,24 +61,19 @@ inoremap('<C-k>', function() vim.lsp.buf.signature_help() end, silent)
 
 -- **********************************************************************
 
-nnoremap('<leader>t', "<CMD>TroubleToggle workspace_diagnostics<CR>", silent)
-
--- Tab completion
--- vim.cmd([[
---     imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
--- ]])
---
--- vim.cmd([[
---     smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
--- ]])
+nnoremap('<leader>t',function() require("trouble").toggle("workspace_diagnostics") end, silent)
+nnoremap('<leader>lr', function() require("trouble").toggle("lsp_references") end, silent)
+nnoremap('<leader>ld', function() require("trouble").toggle("lsp_definitions") end, silent)
 
 exprimap(
     '<Tab>',
     function()
         if require('luasnip').expand_or_jumpable() then
-            return "<Plug>luasnip-expand-or-jump"
+            require('luasnip').expand_or_jump()
+            print("expanded or jumped")
         elseif has_words_before() then
             require('cmp').confirm({ select = true })
+            print("confirmed")
         else
             return "<Tab>"
         end
@@ -91,23 +85,13 @@ exprsmap(
     '<Tab>',
     function()
         if require('luasnip').expand_or_jumpable() then
-            return "<Plug>luasnip-expand-or-jump"
+            require('luasnip').expand_or_jump()
+            print("expanded or jumped")
         elseif has_words_before() then
             require('cmp').confirm({ select = true })
+            print("confirmed")
         else
             return "<Tab>"
-        end
-    end,
-    silent
-)
-
-exprnmap(
-    'gf',
-    function()
-        if require('obsidian').util.cursor_on_markdown_link() then
-            return "<cmd>ObsidianFollowLink<CR>"
-        else
-            return "gf"
         end
     end,
     silent

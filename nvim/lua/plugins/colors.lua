@@ -26,21 +26,26 @@ end
 
 -- *******************************************
 -- Customize highlight groups
-vim.cmd[[
-    highlight @lsp.typemod.variable.mutable.rust gui=underline
-    highlight @lsp.typemod.selfKeyword.mutable.rust gui=underline
-    highlight DiagnosticUnderlineError gui=undercurl
-    highlight DiagnosticUnderlineWarn gui=undercurl
-    highlight DiagnosticUnderlineInfo gui=undercurl
-    highlight DiagnosticUnderlineHint gui=undercurl
-    highlight link @lsp.typemod.comment.documentation.rust @parameter
-]]
+local do_colors = function()
+    vim.cmd[[
+        colorscheme tokyonight
+
+        highlight @lsp.typemod.variable.mutable.rust gui=underline
+        highlight @lsp.typemod.selfKeyword.mutable.rust gui=underline
+        highlight DiagnosticUnderlineError gui=undercurl
+        highlight DiagnosticUnderlineWarn gui=undercurl
+        highlight DiagnosticUnderlineInfo gui=undercurl
+        highlight DiagnosticUnderlineHint gui=undercurl
+        highlight link @lsp.typemod.comment.documentation.rust @parameter
+    ]]
+end
 
 -- *******************************************
 
 return {
     {
         'rose-pine/neovim',
+        lazy = true,
         config = function(_, opts)
             local p = require('rose-pine.palette')
             require("rose-pine").setup {
@@ -55,10 +60,6 @@ return {
                     DiagnosticVirtualTextHint = { bg = darken(p.iris, 0.1), fg = p.iris },
                 }
             }
-
-            vim.cmd(
-                'colorscheme rose-pine'
-            )
         end
     },
     {
@@ -78,7 +79,6 @@ return {
     },
     {
         'folke/tokyonight.nvim',
-        lazy = true,
         config = function(_, opts)
             require("tokyonight").setup({
                 style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
@@ -92,10 +92,12 @@ return {
                     floats = "light", -- style for floating windows
                 },
             })
+            do_colors()
         end
     },
     {
         'Mofiqul/vscode.nvim',
+        lazy = true,
         config = function(_, _)
             local c = require('vscode.colors').get_colors()
             require('vscode').setup({

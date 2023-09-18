@@ -181,7 +181,7 @@ let light_theme = {
 
 
 # The default config record. This is where much of your global configuration is setup.
-let-env config = {
+$env.config = {
   # true or false to enable or disable the welcome banner at startup
   show_banner: false
   ls: {
@@ -266,7 +266,6 @@ let-env config = {
     max_size: 10000 # Session has to be reloaded for this to take effect
     sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
     file_format: "plaintext" # "sqlite" or "plaintext"
-    history_isolation: true # true enables history isolation, false disables it. true will allow the history to be isolated to the current session. false will allow the history to be shared across all sessions.
   }
   completions: {
     case_sensitive: false # set to true to enable case-sensitive completions
@@ -542,7 +541,7 @@ let-env config = {
 }
 
 source ~/.cache/starship/init.nu
-let-env STARSHIP_CONFIG = "~/.config/starship.toml"
+$env.STARSHIP_CONFIG = "~/.config/starship.toml"
 
 alias ls = exa
 alias la = ls -la
@@ -550,5 +549,8 @@ alias ll = ls -l
 alias lr = ls -R --git-ignore
 alias vim = nvim
 alias cat = bat
+alias python3 = python3.11
+alias python = python3
+alias pip = python3 -m pip
 
-let-env PATH = "/bin/:/usr/bin/:/usr/sbin/:/usr/local/bin/:~/.scripts:~/.local/share/bob/nvim-bin:/usr/local/go/bin:/opt/homebrew/bin:/opt/homebrew/sbin:~/.cargo/bin"
+$env.PATH = ($env.PATH | append "~/.scripts:~/.local/share/bob/nvim-bin:/usr/local/go/bin:/opt/homebrew/bin:/opt/homebrew/sbin:~/.cargo/bin:/Library/TeX/texbin:~/Applications/redis/bin:/Library/Frameworks/Python.framework/Versions/Current/bin")
