@@ -20,9 +20,9 @@ alias la="ls -lAhF"
 alias obsidian="cd ~/Dropbox/Documents/0-obsidian-notes/ && nvim . && cd -"
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle :prompt:pure:user color green
-zstyle :prompt:pure:host color green
-zstyle :prompt:pure:path color green
+# zstyle :prompt:pure:user color green
+# zstyle :prompt:pure:host color green
+# zstyle :prompt:pure:path color green
 zstyle ':completion:*' list-colors '=*=94'
 autoload -Uz compinit
 compinit
@@ -53,4 +53,5 @@ export NVM_DIR="$HOME/.config/nvm"
 export path
 
 autoload -U promptinit; promptinit
-prompt pure
+
+eval "$(starship init zsh)"
