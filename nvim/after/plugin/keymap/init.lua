@@ -31,7 +31,7 @@ vnoremap("J", ":m '>+1<CR>gv=gv", silent)
 vnoremap("K", ":m '<-2<CR>gv=gv", silent)
 
 -- File navigation
-nnoremap('<leader>pv', '<cmd>Ex<CR>')
+nnoremap('<leader>pv', '<cmd>NvimTreeToggle<CR>')
 nnoremap('<leader>pf', '<cmd>Telescope find_files<CR>')
 nnoremap('<C-p>', '<cmd>Telescope git_files<CR>')
 

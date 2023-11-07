@@ -86,7 +86,7 @@ return {
         },
     },
     config = function(_, opts)
-        vim.diagnostic.config({ update_in_insert = true })
+        vim.diagnostic.config({ update_in_insert = false })
 
         require("mason").setup({
             ui = {

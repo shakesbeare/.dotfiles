@@ -37,6 +37,8 @@ local do_colors = function()
         highlight DiagnosticUnderlineInfo gui=undercurl
         highlight DiagnosticUnderlineHint gui=undercurl
         highlight link @lsp.typemod.comment.documentation.rust @parameter
+
+        highlight NvimTreeNormal guibg=NONE ctermbg=NONE
     ]]
 end
 

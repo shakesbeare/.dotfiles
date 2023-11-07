@@ -1,13 +1,17 @@
 source ~/.zsh-plugins/zsh-snap/znap.zsh
 export ZSH=$HOME/.oh-my-zsh
 
+path+=(/usr/local/bin)
+path+=($HOME/.scripts)
+path+=($HOME/.local/share/bob/nvim-bin)
+path+=(/usr/local/go/bin)
+path+=(/opt/homebrew/bin)
+path+=($HOME/.cargo/bin)
+
 fpath+=$HOME/.zsh/pure
 if [[ "$OSTYPE" == "darwin"* ]]; then
     fpath+=("$(brew --prefix)/share/zsh/site-functions")
 fi
-path+=($HOME/.scripts)
-path+=($HOME/.local/share/bob/nvim-bin)
-path+=(/usr/local/go/bin)
 
 alias goto="tmux attach -t"
 alias tlist="tmux list-sessions"
@@ -55,3 +59,6 @@ export path
 autoload -U promptinit; promptinit
 
 eval "$(starship init zsh)"
+
+# opam configuration
+[[ ! -r /Users/bmoffett/.opam/opam-init/init.zsh ]] || source /Users/bmoffett/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
