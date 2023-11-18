@@ -1,6 +1,6 @@
 return {
     'VonHeikemen/lsp-zero.nvim',
-    event = "VeryLazy",
+    event = "BufReadPre",
     dependencies = {
         -- LSP Support
         { 'neovim/nvim-lspconfig' },             -- Required
@@ -30,7 +30,7 @@ return {
                     mapping = cmp.mapping.preset.insert({
                         ['<C-n>'] = cmp.mapping.select_next_item(),
                         ['<C-p>'] = cmp.mapping.select_prev_item(),
-                        ['<CR>'] = cmp.mapping.confirm(),
+                        ['<C-y>'] = cmp.mapping.confirm(),
                     })
                 }
             end,

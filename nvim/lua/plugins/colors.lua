@@ -27,7 +27,10 @@ end
 -- *******************************************
 -- Customize highlight groups
 local do_colors = function()
+    -- NvimTreeNormal twice so that it doesn't flash on startup
     vim.cmd[[
+        highlight NvimTreeNormal guibg=NONE ctermbg=NONE
+
         colorscheme tokyonight
 
         highlight @lsp.typemod.variable.mutable.rust gui=underline

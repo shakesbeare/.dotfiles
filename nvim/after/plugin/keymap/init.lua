@@ -22,6 +22,12 @@ end
 -- unbind annoying stuff
 nnoremap("Q", "<nop>")
 
+-- makes v-block mode a bit better
+nnoremap("<C-c>", "<Esc>")
+vnoremap("<C-c>", "<Esc>")
+xnoremap("<C-c>", "<Esc>")
+inoremap("<C-c>", "<Esc>")
+
 -- comment toggle
 nnoremap("<leader>/", ":CommentToggle<CR>", silent)
 vnoremap("<leader>/", ":CommentToggle<CR>", silent)
@@ -31,7 +37,15 @@ vnoremap("J", ":m '>+1<CR>gv=gv", silent)
 vnoremap("K", ":m '<-2<CR>gv=gv", silent)
 
 -- File navigation
-nnoremap('<leader>pv', '<cmd>NvimTreeToggle<CR>')
+nnoremap('<leader>pv', 
+    function() 
+        if vim.bo.filetype == 'oil' then
+            require('oil').close()
+        else
+            require('oil').open()
+        end
+    end
+)
 nnoremap('<leader>pf', '<cmd>Telescope find_files<CR>')
 nnoremap('<C-p>', '<cmd>Telescope git_files<CR>')
 

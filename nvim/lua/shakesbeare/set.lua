@@ -22,6 +22,7 @@ vim.opt.foldenable = false
 vim.opt.syntax = "on"
 vim.opt.smartindent = true
 vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 80
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
