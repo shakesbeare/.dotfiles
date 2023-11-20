@@ -17,7 +17,6 @@ return {
                 sort = {
                     { "type", "asc" },
                     { "name", "asc" },
-                    { "filetype", "asc" },
                 },
                 preview = {
                     max_width = 0.4,
