@@ -51,7 +51,7 @@ return {
     {
         'rose-pine/neovim',
         lazy = true,
-        config = function(_, opts)
+        config = function(_, _)
             local p = require('rose-pine.palette')
             require("rose-pine").setup {
                 disable_italics = true,
@@ -70,7 +70,7 @@ return {
     {
         'ellisonleao/gruvbox.nvim',
         lazy = true,
-        config = function(_, opts)
+        config = function(_, _)
             require("gruvbox").setup({
                 underline = true,
                 italic = false,
@@ -84,7 +84,7 @@ return {
     },
     {
         'folke/tokyonight.nvim',
-        config = function(_, opts)
+        config = function(_, _)
             require("tokyonight").setup({
                 style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
                 light_style = "day", -- The theme is used when the background is set to light

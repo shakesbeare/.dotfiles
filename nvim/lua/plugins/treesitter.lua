@@ -3,9 +3,10 @@ return {
     event = "BufRead",
     dependencies = {
         { 'nvim-treesitter/nvim-treesitter-context' },
-        { 'nvim-treesitter/playground' }
+        { 'nvim-treesitter/playground' },
+        { 'nvim-treesitter/nvim-treesitter-textobjects' },
     },
-    config = function(_, opts)
+    config = function(_, _)
         require('nvim-treesitter.configs').setup {
             ignore_install = { "phpdoc" },
             highlight = {

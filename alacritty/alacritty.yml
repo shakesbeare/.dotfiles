@@ -44,5 +44,11 @@ colors:
 
 font:
   normal:
-    family: Consolas Nerd Font
-  size: 14
+    family: UbuntuMono Nerd Font
+    # family: Consolas Nerd Font
+  size: 16
+  offset: 
+    x: 0
+    y: 2
+  AppleFontSmoothing: true
+

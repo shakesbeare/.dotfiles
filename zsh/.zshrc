@@ -13,16 +13,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fpath+=("$(brew --prefix)/share/zsh/site-functions")
 fi
 
-alias goto="tmux attach -t"
-alias tlist="tmux list-sessions"
-alias vimrc="cd ~/.config/nvim && nvim . && cd -"
-alias vim="nvim"
-alias py="python3.11"
-alias pip="python3.11 -m pip"
-alias ll="ls -lhF"
-alias la="ls -lAhF"
-alias obsidian="cd ~/Dropbox/Documents/0-obsidian-notes/ && nvim . && cd -"
-
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 # zstyle :prompt:pure:user color green
 # zstyle :prompt:pure:host color green
@@ -62,3 +52,13 @@ eval "$(starship init zsh)"
 
 # opam configuration
 [[ ! -r /Users/bmoffett/.opam/opam-init/init.zsh ]] || source /Users/bmoffett/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+alias vim="nvim"
+alias py="python3.11"
+alias pip="python3.11 -m pip"
+alias ls="exa"
+alias la="ls -la"
+alias ll="ls -l"
+alias lr="ls -R --git-ignore"
+alias cat="bat"
+

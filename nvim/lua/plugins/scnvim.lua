@@ -1,10 +1,9 @@
 return {
     'davidgranstrom/scnvim',
     ft = "scd, sc",
-    config = function(_, opts)
+    config = function(_, _)
         local scnvim = require('scnvim')
         local map = scnvim.map
-        local map_expr = scnvim.map_expr
 
         scnvim.setup {
             keymaps = {

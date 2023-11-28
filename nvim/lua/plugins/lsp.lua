@@ -1,40 +1,23 @@
 return {
-    'VonHeikemen/lsp-zero.nvim',
+    'neovim/nvim-lspconfig',
     event = "BufReadPre",
     dependencies = {
         -- LSP Support
-        { 'neovim/nvim-lspconfig' },             -- Required
         { 'williamboman/mason.nvim' },           -- Optional
         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-        {
-            'simrat39/rust-tools.nvim',
-            dependencies = {
-                {
-                    'lvimuser/lsp-inlayhints.nvim',
-                    branch = "anticonceal",
-                    config = function(_, opts)
-                        require('lsp-inlayhints').setup {}
-                    end
-                }
-            }
-
-        },
-
         -- Autocompletion
-        { 
+        {
             'hrsh7th/nvim-cmp',
-            config = function()
-                local cmp = require('cmp')
-
-                cmp.setup {
-                    mapping = cmp.mapping.preset.insert({
-                        ['<C-n>'] = cmp.mapping.select_next_item(),
-                        ['<C-p>'] = cmp.mapping.select_prev_item(),
-                        ['<C-y>'] = cmp.mapping.confirm(),
-                    })
+            config = function(_, _)
+                require('cmp').setup {
+                    mapping = require('cmp').mapping.preset.insert({
+                        ['<C-n>'] = require('cmp').mapping.select_next_item(),
+                        ['<C-p>'] = require('cmp').mapping.select_prev_item(),
+                        ['<C-y>'] = require('cmp').mapping.confirm(),
+                    }),
                 }
             end,
-        },     -- Required
+        },                          -- Required
         { 'hrsh7th/cmp-nvim-lsp' }, -- Required
         { 'hrsh7th/cmp-buffer' },   -- Optional
         { 'hrsh7th/cmp-path' },     -- Optional
@@ -46,48 +29,42 @@ return {
                 { 'rafamadriz/friendly-snippets' },
                 { 'saadparwaiz1/cmp_luasnip' },
             },
-            config = function(_, opts)
+            config = function(_, _)
                 require('luasnip.loaders.from_vscode').lazy_load()
             end
         },
-        { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+        -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },
         {
-            'jose-elias-alvarez/null-ls.nvim',
-            config = function(_, opts)
-                local null_ls = require('null-ls')
-                local h = require('null-ls.helpers')
-
-                local leptos_fmt = {
-                    name = "leptosfmt",
-                    meta = {
-                        'https://github.com/bram209/leptosfmt',
-                        'A formatter for the leptos view! macro'
-                    },
-                    method = null_ls.methods.FORMATTING,
-                    filetypes = { 'rust' },
-                    generator = h.formatter_factory({
+            'stevearc/conform.nvim',
+            opts = {
+                formatters_by_ft = {
+                    rust = { 'leptosfmt' },
+                    gdscript = { 'gdformat' },
+                    gd = { 'gdformat' }
+                },
+                -- format_on_save = {}
+                formatters = {
+                    leptosfmt = {
                         command = 'leptosfmt',
                         args = {
                             '--quiet',
                             '--stdin',
                         },
-                        to_stdin = true,
-                    }),
+                        stdin = true
+                    },
+                    gdformat = {
+                        command = 'gdformat',
+                        args = {
+                            '--line-length', '80',
+                            '-'
+                        }
+                    },
+                    stdin = true,
                 }
-
-                null_ls.setup {
-                    -- debug = true,
-                    sources = {
-                        null_ls.builtins.formatting.black,
-                        leptos_fmt
-                    }
-                }
-            end
+            },
         },
     },
-    config = function(_, opts)
-        vim.diagnostic.config({ update_in_insert = false })
-
+    config = function(_, _)
         require("mason").setup({
             ui = {
                 icons = {
@@ -98,16 +75,52 @@ return {
             }
         })
 
-        require("mason-lspconfig").setup {
-            ensure_installed = { "rust_analyzer@nightly" }
-        }
+        require("mason-lspconfig").setup {}
 
         -- Set up lspconfig.
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("user_defined_lsp", {}),
+            callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint.enable(args.buf, true)
+                end
+            end,
+        })
 
         require('lspconfig').gdscript.setup {
             capabilities = capabilities,
-            cmd = { "nc", "localhost", "6005"},
+            cmd = { "nc", "localhost", "6005" },
+        }
+
+        require('lspconfig').rust_analyzer.setup {
+            capabilities = capabilities,
+            settings = {
+                ['rust-analyzer'] = {
+                    checkOnSave = {
+                        allFeatures = true,
+                        overrideCommand = {
+                            'cargo', 'clippy', '--workspace', '--message-format=json',
+                            '--all-targets', '--all-features', '--', '-A', 'clippy::needless_return',
+                        }
+                    },
+                    completion = {
+                        postfix = {
+                            enable = false,
+                        }
+                    },
+                    inlay_hints = {
+                        closingBraceHints = {
+                            enable = true,
+                            minLines = 25,         -- doesn't seem to work when changed, 25 is the default
+                        },
+                        typeHints = {
+                            enable = true,
+                        },
+                    },
+                }
+            }
         }
 
         require("mason-lspconfig").setup_handlers {
@@ -116,54 +129,55 @@ return {
             -- a dedicated handler.
             function(server_name) -- default handler (optional)
                 require("lspconfig")[server_name].setup {
-                    capabilities = capabilities
+                    capabilities = capabilities,
                 }
             end,
             -- Next, you can provide a dedicated handler for specific servers.
             -- For example, a handler override for the `rust_analyzer`:
             ["lua_ls"] = function()
                 require('lspconfig').lua_ls.setup {
+                    capabilities = capabilities,
                     settings = {
                         Lua = {
                             diagnostics = {
                                 globals = { 'vim' }
+                            },
+                            hint = {
+                                enable = true,
                             }
                         }
                     }
                 }
             end,
 
-            ["rust_analyzer"] = function()
-                require('rust-tools').setup {
-                    inlay_hints = {
-                        auto = true,
-                    },
-                    server = {
-                        capabilities = capabilities,
-                        settings = {
-                            ['rust-analyzer'] = {
-                                checkOnSave = {
-                                    allFeatures = true,
-                                    overrideCommand = {
-                                        'cargo', 'clippy', '--workspace', '--message-format=json',
-                                        '--all-targets', '--all-features', '--', '-A', 'clippy::needless_return',
-                                    }
-                                },
-                                completion = {
-                                    postfix = {
-                                        enable = false,
-                                    }
-                                },
-                            }
-                        }
-                    },
+            ["ruff_lsp"] = function()
+                require('lspconfig').ruff_lsp.setup {
+                    capabilities = capabilities,
+                    on_attach = function(client, _)
+                        client.server_capabilities.hoverProvider = false
+                    end,
                 }
             end,
 
-        }
-        local cmp = require('cmp')
+            ["pylsp"] = function()
+                require('lspconfig').pylsp.setup {
+                    capabilities = capabilities,
+                    settings = {
+                        pylsp = {
+                            plugins = {
+                                pylsp_mypy = { enabled = true },
+                                pyflakes = { enabled = false },
+                                pycodestyle = { enabled = false },
+                                mccabe = { enabled = false },
+                            }
+                        }
+                    }
+                }
+            end
 
-        cmp.setup({
+        }
+
+        require('cmp').setup({
             snippet = {
                 -- REQUIRED - you must specify a snippet engine
                 expand = function(args)
@@ -174,10 +188,10 @@ return {
                 end,
             },
             window = {
-                -- completion = cmp.config.window.bordered(),
-                -- documentation = cmp.config.window.bordered(),
+                -- completion = require('cmp').config.window.bordered(),
+                -- documentation = require('cmp').config.window.bordered(),
             },
-            sources = cmp.config.sources({
+            sources = require('cmp').config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
                 { name = 'nvim_lsp_signature_help' }
@@ -187,8 +201,8 @@ return {
         })
 
         -- Set configuration for specific filetype.
-        cmp.setup.filetype('gitcommit', {
-            sources = cmp.config.sources({
+        require('cmp').setup.filetype('gitcommit', {
+            sources = require('cmp').config.sources({
                 { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
             }, {
                 { name = 'buffer' },
@@ -196,17 +210,17 @@ return {
         })
 
         -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-        cmp.setup.cmdline({ '/', '?' }, {
-            mapping = cmp.mapping.preset.cmdline(),
+        require('cmp').setup.cmdline({ '/', '?' }, {
+            mapping = require('cmp').mapping.preset.cmdline(),
             sources = {
                 { name = 'buffer' }
             }
         })
 
         -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-        cmp.setup.cmdline(':', {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({
+        require('cmp').setup.cmdline(':', {
+            mapping = require('cmp').mapping.preset.cmdline(),
+            sources = require('cmp').config.sources({
                 { name = 'path' }
             }, {
                 { name = 'cmdline' }
