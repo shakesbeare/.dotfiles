@@ -32,3 +32,10 @@ vim.api.nvim_create_autocmd("BufRead", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("Filetype", {
+	group = vim.api.nvim_create_augroup("gdcomment", {}),
+	pattern = "gdscript",
+	callback = function(ev)
+		vim.api.nvim_buf_set_option(ev.buf, "commentstring", "# %s")
+	end
+})

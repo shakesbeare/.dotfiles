@@ -83,6 +83,7 @@ return {
     -- },
     {
         'folke/tokyonight.nvim',
+        event = "BufReadPre",
         config = function(_, _)
             require("tokyonight").setup({
                 transparent = true,
