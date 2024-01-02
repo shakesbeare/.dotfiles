@@ -27,10 +27,9 @@ end
 -- Customize highlight groups
 local do_colors = function()
     -- NvimTreeNormal twice so that it doesn't flash on startup
+    local highlight_parens_cmd = string.format("highlight MatchParen guifg=NONE guibg=%s", darken("#FFFFFF", 0.5))
     vim.cmd [[
-        highlight NvimTreeNormal guibg=NONE ctermbg=NONE
-
-        colorscheme tokyonight
+        colorscheme rose-pine
 
         highlight @lsp.typemod.variable.mutable.rust gui=underline
         highlight @lsp.typemod.selfKeyword.mutable.rust gui=underline
@@ -39,33 +38,35 @@ local do_colors = function()
         highlight DiagnosticUnderlineInfo gui=undercurl
         highlight DiagnosticUnderlineHint gui=undercurl
         highlight link @lsp.typemod.comment.documentation.rust @parameter
-
-        highlight NvimTreeNormal guibg=NONE ctermbg=NONE
     ]]
+    vim.cmd(highlight_parens_cmd)
 end
 
 -- *******************************************
 
 return {
-    -- {
-    --     'rose-pine/neovim',
-    --     lazy = true,
-    --     config = function(_, _)
-    --         local p = require('rose-pine.palette')
-    --         require("rose-pine").setup {
-    --             disable_italics = true,
-    --             disable_float_background = false,
-    --
-    --             highlight_groups = {
-    --                 -- Error and warning backgrounds
-    --                 DiagnosticVirtualTextError = { bg = darken(p.love, 0.1), fg = p.love },
-    --                 DiagnosticVirtualTextWarn = { bg = darken(p.gold, 0.1), fg = p.gold },
-    --                 DiagnosticVirtualTextInfo = { bg = darken(p.foam, 0.1), fg = p.foam },
-    --                 DiagnosticVirtualTextHint = { bg = darken(p.iris, 0.1), fg = p.iris },
-    --             }
-    --         }
-    --     end
-    -- },
+    {
+        'xiyaowong/transparent.nvim',
+    },
+    {
+        'rose-pine/neovim',
+        config = function(_, _)
+            local p = require('rose-pine.palette')
+            require("rose-pine").setup {
+                disable_italics = true,
+                disable_float_background = false,
+
+                highlight_groups = {
+                    -- Error and warning backgrounds
+                    DiagnosticVirtualTextError = { bg = darken(p.love, 0.1), fg = p.love },
+                    DiagnosticVirtualTextWarn = { bg = darken(p.gold, 0.1), fg = p.gold },
+                    DiagnosticVirtualTextInfo = { bg = darken(p.foam, 0.1), fg = p.foam },
+                    DiagnosticVirtualTextHint = { bg = darken(p.iris, 0.1), fg = p.iris },
+                }
+            }
+            do_colors()
+        end
+    },
     -- {
     --     'ellisonleao/gruvbox.nvim',
     --     lazy = true,
@@ -81,24 +82,24 @@ return {
     --         })
     --     end,
     -- },
-    {
-        'folke/tokyonight.nvim',
-        event = "BufReadPre",
-        config = function(_, _)
-            require("tokyonight").setup({
-                transparent = true,
-                style = "night",     -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-                light_style = "day", -- The theme is used when the background is set to light
-                styles = {
-                    -- Style to be applied to different syntax groups
-                    -- Value is any valid attr-list value for `:help nvim_set_hl`
-                    comments = { italic = false, bg = 000000 },
-                    keywords = { italic = false },
-                    sidebars = "dark", -- style for sidebars, see below
-                    floats = "light",  -- style for floating windows
-                },
-            })
-            do_colors()
-        end
-    },
+    -- {
+    --     'folke/tokyonight.nvim',
+    --     event = "BufReadPre",
+    --     config = function(_, _)
+    --         require("tokyonight").setup({
+    --             transparent = true,
+    --             style = "night",     -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+    --             light_style = "day", -- The theme is used when the background is set to light
+    --             styles = {
+    --                 -- Style to be applied to different syntax groups
+    --                 -- Value is any valid attr-list value for `:help nvim_set_hl`
+    --                 comments = { italic = false, bg = 000000 },
+    --                 keywords = { italic = false },
+    --                 sidebars = "dark", -- style for sidebars, see below
+    --                 floats = "light",  -- style for floating windows
+    --             },
+    --         })
+    --         do_colors()
+    --     end
+    -- },
 }

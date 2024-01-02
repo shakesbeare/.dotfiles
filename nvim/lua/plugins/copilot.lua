@@ -8,7 +8,9 @@ return {
         },
         suggestion = {
             enabled = true,
-            auto_trigger = true,
+            keymap = {
+                next = "<C-e>"
+            }
         }
     }
 }

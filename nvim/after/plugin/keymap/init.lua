@@ -6,14 +6,13 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-
-
 -- unbind annoying stuff
 vim.keymap.set('n', "Q", "<nop>", { noremap = true })
 
 -- HARPOON
 vim.keymap.set('n', "<Space>a", function() require("harpoon.mark").add_file() end, { noremap = true, silent = true })
-vim.keymap.set('n', "<Space>e", function() require("harpoon.ui").toggle_quick_menu() end, { noremap = true, silent = true })
+vim.keymap.set('n', "<Space>e", function() require("harpoon.ui").toggle_quick_menu() end,
+    { noremap = true, silent = true })
 
 vim.keymap.set('n', "<C-h>", function() require("harpoon.ui").nav_file(1) end, { noremap = true, silent = true })
 vim.keymap.set('n', "<C-t>", function() require("harpoon.ui").nav_file(2) end, { noremap = true, silent = true })
@@ -51,8 +50,8 @@ vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<CR>', { noremap = true })
 -- Improved yank/delete/paste controls
 vim.keymap.set('x', '<leader>p', '"_dP', { noremap = true }) -- paste over selection without ruining register
 
-vim.keymap.set('n', '<leader>y', '"+y', { noremap = true }) -- yank to clipboard
-vim.keymap.set('v', '<leader>y', '"+y', { noremap = true }) -- ... in visual mode
+vim.keymap.set('n', '<leader>y', '"+y', { noremap = true })  -- yank to clipboard
+vim.keymap.set('v', '<leader>y', '"+y', { noremap = true })  -- ... in visual mode
 vim.keymap.set('n', '<leader>y', '"+y', { noremap = true })
 
 vim.keymap.set('n', '<leader>d', '"_d', { noremap = true }) -- delete without ruining register
@@ -68,16 +67,33 @@ vim.keymap.set('n', '<leader>f', function() require('conform').format({ lsp_fall
     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, { noremap = true, silent = true })
 --vim.keymap.set('n', '<leader>ca', function() require('actions-preview').code_actions() end,
-    --{ noremap = true, silent = true })
+--{ noremap = true, silent = true })
 vim.keymap.set('n', '<leader>r', function() vim.lsp.buf.rename() end, { noremap = true, silent = true })
 vim.keymap.set('i', '<C-k>', function() vim.lsp.buf.signature_help() end, { silent = true })
 
 -- **********************************************************************
+--
+-- **********************************************************************
+-- DAP Controls
+local dap = require('dap')
+local dapui = require('dapui')
+vim.keymap.set('n', '<F5>', function() dap.continue() end, { silent = true, noremap = true })
+vim.keymap.set('n', '<F1>', function() dap.step_over() end, { silent = true, noremap = true })
+vim.keymap.set('n', '<F2>', function() dap.step_into() end, { silent = true, noremap = true })
+vim.keymap.set('n', '<F3>', function() dap.step_out() end, { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>b', function() dap.toggle_breakpoint() end, { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>wf', function()
+    local element = vim.fn.input('Element name: ')
+    dapui.float_element(element, { enter = true, position = "center" })
+end, { silent = true, noremap = true })
+-- **********************************************************************
 
-vim.keymap.set('n', '<leader>t', function() require("trouble").toggle("workspace_diagnostics") end, silent,
-    { noremap = true })
-vim.keymap.set('n', '<leader>lr', function() require("trouble").toggle("lsp_references") end, silent, { noremap = true })
-vim.keymap.set('n', '<leader>ld', function() require("trouble").toggle("lsp_definitions") end, silent, { noremap = true })
+vim.keymap.set('n', '<leader>t', function() require("trouble").toggle("workspace_diagnostics") end,
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>lr', function() require("trouble").toggle("lsp_references") end,
+    { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ld', function() require("trouble").toggle("lsp_definitions") end,
+    { noremap = true, silent = true })
 
 
 -- accept copilot suggestion, if available

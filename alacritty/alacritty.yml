@@ -1,5 +1,8 @@
 shell:
   program: /bin/zsh
+
+env:
+    TERM: alacritty
  
 cursor:
   style:
@@ -21,6 +24,10 @@ live_config_reload: true
 
 draw_bold_text_with_bright_colors: true
 colors:
+  cursor:
+    custom_colors: true
+    text: '0x000000'
+    cursor: '0xD3D3D3'
   primary:
     background: '#0C0C0C'
   normal:
@@ -44,11 +51,11 @@ colors:
 
 font:
   normal:
-    family: UbuntuMono Nerd Font
-    # family: Consolas Nerd Font
-  size: 16
+    # family: UbuntuMono Nerd Font
+    family: Consolas Nerd Font
+  size: 15
   offset: 
     x: 0
-    y: 2
+    y: 0
   AppleFontSmoothing: true
 

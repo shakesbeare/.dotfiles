@@ -5,6 +5,15 @@ return {
         -- LSP Support
         { 'williamboman/mason.nvim' },           -- Optional
         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+        -- DAP
+        { 'mfussenegger/nvim-dap' },
+        { 'jay-babu/mason-nvim-dap.nvim' },
+        {
+            'rcarriga/nvim-dap-ui',
+            dependencies = {
+                'mfussenegger/nvim-dap'
+            }
+        },
         -- Autocompletion
         {
             'hrsh7th/nvim-cmp',
@@ -23,6 +32,7 @@ return {
         { 'hrsh7th/cmp-path' },     -- Optional
         { 'hrsh7th/cmp-nvim-lua' }, -- Optional
         { 'hrsh7th/cmp-cmdline' },
+        { 'hrsh7th/cmp-nvim-lsp-signature-help' },
         {
             'L3MON4D3/LuaSnip',
             dependencies = {
@@ -73,8 +83,62 @@ return {
                 }
             }
         })
-
         require("mason-lspconfig").setup {}
+        require("mason-nvim-dap").setup {}
+
+        local dap = require('dap')
+        local dapui = require('dapui')
+
+        dapui.setup {
+            layouts = {
+                {
+                    elements = {
+                        { id = "console", size = 0.5 },
+                        { id = "scopes",  size = 0.5 },
+                    },
+                    position = "bottom",
+                    size = 10,
+                },
+            },
+            render = {
+                indent = 1,
+                max_value_lines = 200,
+            }
+        }
+
+        dap.adapters.codelldb = {
+            type = 'server',
+            port = '${port}',
+            executable = {
+                command = '/Users/bmoffett/.local/share/nvim/mason/bin/codelldb',
+                args = { '--port', '${port}' },
+            }
+        }
+
+        dap.configurations.rust = {
+            {
+                name = "Rust debug",
+                type = "codelldb",
+                request = "launch",
+                showDisassembly = "never",
+                stopOnEntry = false,
+                program = function()
+                    vim.fn.jobstart("cargo build");
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+                end,
+                cwd = '${workspaceFolder}',
+            },
+        }
+
+        dap.listeners.after.event_initialized["dapui_config"] = function()
+            dapui.open()
+        end
+        dap.listeners.before.event_terminated["dapui_config"] = function()
+            dapui.close()
+        end
+        dap.listeners.before.event_exited["dapui_config"] = function()
+            dapui.close()
+        end
 
         -- Set up lspconfig.
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -112,7 +176,7 @@ return {
                     inlay_hints = {
                         closingBraceHints = {
                             enable = true,
-                            minLines = 25,         -- doesn't seem to work when changed, 25 is the default
+                            minLines = 25, -- doesn't seem to work when changed, 25 is the default
                         },
                         typeHints = {
                             enable = true,

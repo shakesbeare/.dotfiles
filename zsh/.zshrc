@@ -62,3 +62,4 @@ alias ll="ls -l"
 alias lr="ls -R --git-ignore"
 alias cat="bat"
 
+export TERM=alacritty

@@ -4,7 +4,6 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = ' '
 
-vim.opt.guicursor = ""
 vim.opt.showmatch = true
 vim.opt.wildmenu = true
 vim.opt.number = true
@@ -22,7 +21,7 @@ vim.opt.foldenable = false
 vim.opt.syntax = "on"
 vim.opt.smartindent = true
 vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 80
+vim.opt.sidescrolloff = 88
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -32,7 +31,6 @@ vim.opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME") .. "/.undodir"
 vim.opt.undofile = true
 
-vim.opt.colorcolumn = "80"
-vim.opt.cursorline = false
+vim.opt.colorcolumn = "88"
 
 vim.opt.wrap = false
