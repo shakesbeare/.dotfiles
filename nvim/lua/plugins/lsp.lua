@@ -42,7 +42,8 @@ return {
                 require('luasnip.loaders.from_vscode').lazy_load()
             end
         },
-        -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+        { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+        -- formatting without language servers
         {
             'stevearc/conform.nvim',
             opts = {
@@ -64,7 +65,7 @@ return {
                     gdformat = {
                         command = 'gdformat',
                         args = {
-                            '--line-length', '80',
+                            '--line-length', '88',
                             '-'
                         }
                     },

@@ -1,6 +1,7 @@
 return {
     'nvim-treesitter/nvim-treesitter',
     event = "BufReadPre",
+    build = ":TSUpdate",
     dependencies = {
         { 'nvim-treesitter/nvim-treesitter-context' },
         { 'nvim-treesitter/nvim-treesitter-textobjects' },
@@ -93,16 +94,6 @@ return {
             zindex = 20,
             mode = 'cursor',
             separator = nil
-        }
-
-        local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-        parser_config.supercollider = {
-            install_info = {
-                url = "https://github.com/madskjeldegaard/tree-sitter-supercollider",
-                files = { "src/parser.c" },
-                maintainer = "@madskjeldegaard"
-            },
-            filetype = "supercollider",
         }
     end
 }
