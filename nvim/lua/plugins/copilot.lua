@@ -1,16 +1,14 @@
 return {
     'zbirenbaum/copilot.lua',
     cmd = "Copilot",
-    event = "BufReadPre",
+    event = "InsertEnter",
     opts = {
         panel = {
             enabled = true,
         },
         suggestion = {
             enabled = true,
-            keymap = {
-                next = "<C-e>"
-            }
+            auto_trigger = true,
         }
     }
 }

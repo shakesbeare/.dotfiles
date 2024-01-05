@@ -2,6 +2,18 @@ return {
     'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VimEnter",
+    keys = {
+        {
+            '<leader>pv',
+            function()
+                if vim.bo.filetype == 'oil' then
+                    require('oil').close()
+                else
+                    require('oil').open()
+                end
+            end, { silent = true, noremap = true }
+        },
+    },
     opts = {
         delete_to_trash = true,
         columns = {

@@ -1,4 +1,11 @@
 return {
     'mbbill/undotree',
-    event = "BufReadPre",
+    keys = {
+        {
+            '<leader>u',
+            function()
+                vim.cmd('UndotreeToggle')
+            end, { silent = true, noremap = true }
+        },
+    },
 }

@@ -40,14 +40,13 @@ local do_colors = function()
         highlight link @lsp.typemod.comment.documentation.rust @parameter
     ]]
     vim.cmd(highlight_parens_cmd)
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 -- *******************************************
 
 return {
-    {
-        'xiyaowong/transparent.nvim',
-    },
     {
         'rose-pine/neovim',
         config = function(_, _)
@@ -55,6 +54,7 @@ return {
             require("rose-pine").setup {
                 disable_italics = true,
                 disable_float_background = false,
+                disable_background = true,
 
                 highlight_groups = {
                     -- Error and warning backgrounds
@@ -67,39 +67,4 @@ return {
             do_colors()
         end
     },
-    -- {
-    --     'ellisonleao/gruvbox.nvim',
-    --     lazy = true,
-    --     config = function(_, _)
-    --         require("gruvbox").setup({
-    --             underline = true,
-    --             italic = {},
-    --             contrast = "hard",
-    --             invert_selection = false,
-    --             invert_signs = false,
-    --             invert_tabline = false,
-    --             invert_intend_guides = false,
-    --         })
-    --     end,
-    -- },
-    -- {
-    --     'folke/tokyonight.nvim',
-    --     event = "BufReadPre",
-    --     config = function(_, _)
-    --         require("tokyonight").setup({
-    --             transparent = true,
-    --             style = "night",     -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-    --             light_style = "day", -- The theme is used when the background is set to light
-    --             styles = {
-    --                 -- Style to be applied to different syntax groups
-    --                 -- Value is any valid attr-list value for `:help nvim_set_hl`
-    --                 comments = { italic = false, bg = 000000 },
-    --                 keywords = { italic = false },
-    --                 sidebars = "dark", -- style for sidebars, see below
-    --                 floats = "light",  -- style for floating windows
-    --             },
-    --         })
-    --         do_colors()
-    --     end
-    -- },
 }
