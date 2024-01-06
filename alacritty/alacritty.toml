@@ -1,0 +1,51 @@
+live_config_reload = true
+shell.program = "/bin/zsh"
+
+[env]
+TERM = "alacritty"
+
+[window]
+startup_mode = "SimpleFullscreen"
+decorations = "None"
+dynamic_title = true
+opacity = 0.9
+blur = true
+padding = { x = 5, y = 5 }
+
+
+[font]
+# normal = "UbuntuMono Nerd Font"
+normal = { family = "Consolas Nerd Font", style = "Regular" }
+size = 15
+offset = { x = 0, y = 0 }
+
+[cursor]
+style.blinking = "Always"
+blink_interval = 500
+blink_timeout = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+cursor = { text = "#D3D3D3", cursor = "#D3D3D3"}
+primary.background = "#0C0C0C"
+
+[colors.normal]
+black = '#0C0C0C'
+red = '#C50F1F'
+green = '#13A10E'
+yellow = '#C19C00'
+blue = '#0037DA'
+magenta = '#881798'
+cyan = '#3A96DD'
+white = '#CCCCCC'
+
+
+[colors.bright]
+black = '#767676'
+red = '#E74856'
+green = '#16C60C'
+yellow = '#F9F1A5'
+blue = '#3B78FF'
+magenta = '#B4009E'
+cyan = '#61D6D6'
+white = '#F2F2F2'

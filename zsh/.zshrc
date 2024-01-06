@@ -7,6 +7,7 @@ path+=($HOME/.local/share/bob/nvim-bin)
 path+=(/usr/local/go/bin)
 path+=(/opt/homebrew/bin)
 path+=($HOME/.cargo/bin)
+path+=($HOME/go/bin)
 
 fpath+=$HOME/.zsh/pure
 if [[ "$OSTYPE" == "darwin"* ]]; then
