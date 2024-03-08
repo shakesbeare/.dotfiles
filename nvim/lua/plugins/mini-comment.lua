@@ -1,5 +1,5 @@
 return {
-    'echasnovski/mini.comment',
-    event = "BufReadPre",
-    opts = {},
+	"echasnovski/mini.comment",
+	event = "BufReadPre",
+	opts = {},
 }

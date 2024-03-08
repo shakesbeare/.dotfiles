@@ -1,22 +1,28 @@
 local M = {}
 
 table.insert(M, {
-    {
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        event = "InsertEnter",
-    },
-    {
-        "j-hui/fidget.nvim",
-        lazy = true,
-        opts = {},
-    }
+	{
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		event = "InsertEnter",
+	},
+	{
+		"j-hui/fidget.nvim",
+		lazy = true,
+		opts = {
+			notification = {
+				window = {
+					winblend = 0,
+				},
+			},
+		},
+	},
 })
 
-local lspconfig = require('plugins.lsp.lspconfig')
-local mason = require('plugins.lsp.mason')
-local cmp = require('plugins.lsp.cmp')
-local format = require('plugins.lsp.format')
-local dap = require('plugins.lsp.dap')
+local lspconfig = require("plugins.lsp.lspconfig")
+local mason = require("plugins.lsp.mason")
+local cmp = require("plugins.lsp.cmp")
+local format = require("plugins.lsp.format")
+local dap = require("plugins.lsp.dap")
 
 table.insert(M, lspconfig)
 table.insert(M, mason)

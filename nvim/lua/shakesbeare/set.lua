@@ -1,12 +1,13 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ','
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
+vim.opt.formatoptions = "lqj"
 vim.opt.showmatch = true
 vim.opt.wildmenu = true
 vim.opt.number = true
@@ -34,6 +35,6 @@ vim.opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME") .. "/.undodir"
 vim.opt.undofile = true
 
-vim.opt.colorcolumn = "88"
+-- vim.opt.colorcolumn = "88"
 
 vim.opt.wrap = false

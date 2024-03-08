@@ -8,6 +8,10 @@ path+=(/usr/local/go/bin)
 path+=(/opt/homebrew/bin)
 path+=($HOME/.cargo/bin)
 path+=($HOME/go/bin)
+path+=($HOME/.local/bin)
+
+mkdir -p $HOME/.zfunc
+fpath+=$HOME/.zfunc
 
 fpath+=$HOME/.zsh/pure
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -54,11 +58,30 @@ eval "$(starship init zsh)"
 # opam configuration
 [[ ! -r /Users/bmoffett/.opam/opam-init/init.zsh ]] || source /Users/bmoffett/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
+alias l="exa --long --git --tree --level=1 --classify --all \
+  --group-directories-first --header --group"
+alias ll="exa --long --git --tree --level=2 --classify --all \
+  --group-directories-first --header --group \
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
+alias lll="exa --long --git --tree --level=3 --classify --all \
+  --group-directories-first --header --group \
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
+alias llll="exa --long --git --tree --level=4 --classify --all \
+  --group-directories-first --header --group \
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
+alias lllll="exa --long --git --tree --level=5 --classify --all \
+  --group-directories-first --header --group \
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
+alias la="l"
+
 alias vim="nvim"
-alias py="python3.11"
-alias pip="python3.11 -m pip"
-alias la="ls -la"
-alias ll="ls -l"
-alias lr="ls -R --git-ignore"
+alias vi="nvim"
+alias python="python3.12"
+alias py="python"
+alias pip="python -m pip"
+alias cat="bat"
+alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete;"
+alias cd="z" # zoxide
 
 export TERM=alacritty
+eval "$(zoxide init zsh)"

@@ -1,5 +1,5 @@
 -- set vim settings for within netrw
-vim.g.netrw_bufsettings = 'noma nomod nu relativenumber nowrap ro'
+vim.g.netrw_bufsettings = "noma nomod nu relativenumber nowrap ro"
 
 -- hide the banner
 vim.g.netrw_banner = 0

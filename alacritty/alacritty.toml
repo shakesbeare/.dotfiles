@@ -8,7 +8,7 @@ TERM = "alacritty"
 startup_mode = "SimpleFullscreen"
 decorations = "None"
 dynamic_title = true
-opacity = 0.85
+opacity = 0.80
 blur = true
 padding = { x = 5, y = 5 }
 

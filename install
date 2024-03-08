@@ -1,39 +1,31 @@
 #!/bin/bash
 #
 # This script will setup my environment and install all necessary prerequisites
-echo "Note: This script is *not* hands off and will occasionally require user input"
 
 # install prepequisites
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    sudo apt upgrade
-    sudo apt update
-    sudo apt install gcc g++ clang npm zsh curl tmux fzf ripgrep
+    sudo apt upgrade && sudo apt update -y 
+    sudo apt install gcc g++ clang npm zsh curl tmux fzf ripgrep sccache -y
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # homebrew
+    echo "Installing xcode command line tools, this may take a while"
+    xcode-select --install
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install gcc g++ clang npm zsh curl tmux fzf ripgrep sccache
 else
     echo "Unhandled operating system $OSTYPE"
     exit 1
+fi
 
 # install separate stuff
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# pure prompt
-npm install --global pure-prompt
-
-# oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-rm ~/.zshrc # remove default oh-my-zsh config
-
-# znap
-echo "--------> Note: Use path ~/.zsh-plugins/ for znap"
-git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
-source zsh-snap/install.zsh
-/.zsh-plugins
-y
-y
-rm -rf ~/.zsh-snap
 
 # create links to .dotfiles
 ./create_links
 
 # change login shell
 chsh -s $(which zsh) bmoffett
+
+echo "sccache was not installed automatically"
+echo "https://github.com/mozilla/sccache"

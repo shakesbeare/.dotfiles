@@ -1,14 +1,14 @@
-require('shakesbeare.set')
+require("shakesbeare.set")
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup("yank_highlight", {}),
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 40
-        })
-    end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("yank_highlight", {}),
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
 })
 
 -- plugins which require no setup go here
@@ -16,13 +16,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- after plugins are loaded
 
 local get_buf_as_str = function(bufnr)
-    local text = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-    return table.concat(text, "\n")
+	local text = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+	return table.concat(text, "\n")
 end
 
 local uses_tabs = function(bufnr)
 	local text = get_buf_as_str(bufnr)
-	local spaces_substring = string.rep(' ', vim.o.tabstop)
+	local spaces_substring = string.rep(" ", vim.o.tabstop)
 	local _, t_count = string.gsub(text, "\t", "")
 	local _, s_count = string.gsub(text, spaces_substring, "")
 
@@ -50,20 +50,20 @@ vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "gdscript",
 	callback = function(ev)
 		vim.api.nvim_buf_set_option(ev.buf, "commentstring", "# %s")
-	end
+	end,
 })
 -- plugins which require no setup go here
 -- or general setup which should take place
 -- after plugins are loaded
 
 local get_buf_as_str = function(bufnr)
-    local text = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-    return table.concat(text, "\n")
+	local text = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+	return table.concat(text, "\n")
 end
 
 local uses_tabs = function(bufnr)
 	local text = get_buf_as_str(bufnr)
-	local spaces_substring = string.rep(' ', vim.o.tabstop)
+	local spaces_substring = string.rep(" ", vim.o.tabstop)
 	local _, t_count = string.gsub(text, "\t", "")
 	local _, s_count = string.gsub(text, spaces_substring, "")
 
@@ -91,5 +91,13 @@ vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "gdscript",
 	callback = function(ev)
 		vim.api.nvim_buf_set_option(ev.buf, "commentstring", "# %s")
-	end
+	end,
 })
+
+vim.filetype.add {
+    pattern = {
+        ['.*%.ipynb.*'] = 'python',
+        -- uses lua pattern matching
+        -- rathen than naive matching
+    },
+}

@@ -1,3 +1,3 @@
-local lsp = require('plugins.lsp');
+local lsp = require("plugins.lsp")
 
 return lsp
