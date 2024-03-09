@@ -1,2 +1,6 @@
+[alias]
+nt = "nextest run"
+
 [build]
-rustc-wrapper = ""
+rustc-wrapper = "/opt/homebrew/bin/sccache"
+

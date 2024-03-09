@@ -13,28 +13,38 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { noremap = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
--- File navigation
-
--- Undo tree
-
 -- Improved yank/delete/paste controls
 vim.keymap.set("x", "<leader>p", '"_dP', { noremap = true }) -- paste over selection without ruining register
 vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })  -- yank to clipboard
 vim.keymap.set("v", "<leader>y", '"+y', { noremap = true })  -- ... in visual mode
-vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })
 vim.keymap.set("n", "<leader>d", '"_d', { noremap = true })  -- delete without ruining register
 vim.keymap.set("v", "<leader>d", '"_d', { noremap = true })
 
 -- Become a master of the universe
 vim.keymap.set("n", "<A-t>", function()
+	-- pcall to catch KeyboardInterrupt error
 	pcall(function()
-		local command = vim.fn.input("> ")
-		-- replace spaces with escaped spaces
-		command = command:gsub(" ", "\\ ")
+		local command = vim.fn.input("$❯ ")
+		-- escape every character from the input
+		command = command:gsub(".", function(c)
+			return "\\" .. c
+		end)
 		local full_command = ":15split +term\\ " .. command
 		vim.cmd(full_command)
+		-- go to the end of the output
+		local cmd = vim.api.nvim_replace_termcodes("G", true, true, true)
+		vim.api.nvim_feedkeys(cmd, "n", true)
 	end)
 end, { silent = true, noremap = true })
+
+vim.keymap.set("n", "<leader>ot", function()
+	vim.cmd(":15split +term")
+	local cmd = vim.api.nvim_replace_termcodes("i", true, true, true)
+	vim.api.nvim_feedkeys(cmd, "n", true)
+end, { noremap = true, silent = true })
+
+-- Exit terminal mode with <Esc> or <C-[>
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 
 -- **********************************************************************
 -- LSP Controls

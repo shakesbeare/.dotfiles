@@ -19,9 +19,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-# zstyle :prompt:pure:user color green
-# zstyle :prompt:pure:host color green
-# zstyle :prompt:pure:path color green
 zstyle ':completion:*' list-colors '=*=94'
 autoload -Uz compinit
 compinit

@@ -1,12 +1,12 @@
 require("shakesbeare.set")
 
-vim.api.nvim_create_autocmd("TermOpen", {
-	group = vim.api.nvim_create_augroup("term_insert_mode", {}),
-	pattern = "*",
-	callback = function()
-		vim.cmd("startinsert")
-	end,
-})
+-- vim.api.nvim_create_autocmd("TermOpen", {
+-- 	group = vim.api.nvim_create_augroup("term_insert_mode", {}),
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		vim.cmd("startinsert")
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("yank_highlight", {}),

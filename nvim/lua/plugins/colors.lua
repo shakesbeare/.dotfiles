@@ -42,6 +42,26 @@ local do_colors = function()
 	vim.cmd(highlight_parens_cmd)
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	vim.api.nvim_set_hl(0, "VertSplit", { bg = "grey" })
+
+	-- term colors
+	vim.g.terminal_color_0 = '#0C0C0C'
+	vim.g.terminal_color_1 = '#C50F1F'
+	vim.g.terminal_color_2 = '#13A10E'
+	vim.g.terminal_color_3 = '#C19C00'
+	vim.g.terminal_color_4 = '#0037DA'
+	vim.g.terminal_color_5 = '#881798'
+	vim.g.terminal_color_6 = '#3A96DD'
+	vim.g.terminal_color_7 = '#CCCCCC'
+	-- bright colors
+	vim.g.terminal_color_8 = '#767676'
+	vim.g.terminal_color_9 = '#E74856'
+	vim.g.terminal_color_10 = '#16C60C'
+	vim.g.terminal_color_11 = '#F9F1A5'
+	vim.g.terminal_color_12 = '#3B78FF'
+	vim.g.terminal_color_13 = '#B4009E'
+	vim.g.terminal_color_14 = '#61D6D6'
+	vim.g.terminal_color_15 = '#F2F2F2'
 end
 
 -- *******************************************
