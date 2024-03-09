@@ -25,6 +25,15 @@ vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })
 vim.keymap.set("n", "<leader>d", '"_d', { noremap = true }) -- delete without ruining register
 vim.keymap.set("v", "<leader>d", '"_d', { noremap = true })
 
+-- Become a master of the universe
+vim.keymap.set("n", "<C-t>", function() 
+	local command = vim.fn.input("> ")
+	-- replace spaces with escaped spaces
+	command = command:gsub(" ", "\\ ")
+	local full_command = ":15split +term\\ " .. command
+	vim.cmd(full_command)
+end, { silent = true, noremap = true })
+
 -- **********************************************************************
 -- LSP Controls
 vim.keymap.set("n", "gd", function()

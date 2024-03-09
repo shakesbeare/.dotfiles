@@ -26,15 +26,18 @@ vim.opt.syntax = "on"
 vim.opt.smartindent = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 88
-
+vim.opt.splitbelow = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-
 vim.opt.swapfile = false
 
 local homedir = os.getenv("HOME") or "C:/Users/berin"
 vim.opt.undodir = homedir .. "/.undodir"
 vim.opt.undofile = true
+
+if vim.fn.has("win32") == 1 then
+    vim.opt.shell = "powershell"
+end
 
 -- vim.opt.colorcolumn = "88"
 

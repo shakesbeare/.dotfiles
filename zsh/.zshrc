@@ -59,7 +59,8 @@ eval "$(starship init zsh)"
 [[ ! -r /Users/bmoffett/.opam/opam-init/init.zsh ]] || source /Users/bmoffett/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 alias l="exa --long --git --tree --level=1 --classify --all \
-  --group-directories-first --header --group"
+  --group-directories-first --header --group \
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
 alias ll="exa --long --git --tree --level=2 --classify --all \
   --group-directories-first --header --group \
   --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"

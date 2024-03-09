@@ -1,9 +1,6 @@
 live_config_reload = true
 shell.program = "C:\\Program Files\\Powershell\\7\\pwsh.exe"
 
-[env]
-TERM = "alacritty"
-
 [window]
 startup_mode = "Maximized"
 dynamic_title = true
