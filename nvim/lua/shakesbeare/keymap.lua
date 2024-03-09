@@ -19,19 +19,21 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 -- Improved yank/delete/paste controls
 vim.keymap.set("x", "<leader>p", '"_dP', { noremap = true }) -- paste over selection without ruining register
-vim.keymap.set("n", "<leader>y", '"+y', { noremap = true }) -- yank to clipboard
-vim.keymap.set("v", "<leader>y", '"+y', { noremap = true }) -- ... in visual mode
+vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })  -- yank to clipboard
+vim.keymap.set("v", "<leader>y", '"+y', { noremap = true })  -- ... in visual mode
 vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })
-vim.keymap.set("n", "<leader>d", '"_d', { noremap = true }) -- delete without ruining register
+vim.keymap.set("n", "<leader>d", '"_d', { noremap = true })  -- delete without ruining register
 vim.keymap.set("v", "<leader>d", '"_d', { noremap = true })
 
 -- Become a master of the universe
-vim.keymap.set("n", "<C-t>", function() 
-	local command = vim.fn.input("> ")
-	-- replace spaces with escaped spaces
-	command = command:gsub(" ", "\\ ")
-	local full_command = ":15split +term\\ " .. command
-	vim.cmd(full_command)
+vim.keymap.set("n", "<A-t>", function()
+	pcall(function()
+		local command = vim.fn.input("> ")
+		-- replace spaces with escaped spaces
+		command = command:gsub(" ", "\\ ")
+		local full_command = ":15split +term\\ " .. command
+		vim.cmd(full_command)
+	end)
 end, { silent = true, noremap = true })
 
 -- **********************************************************************
@@ -51,8 +53,11 @@ end, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>f", function()
 	require("conform").format({ lsp_fallback = "always" })
 end, { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>ca", function()
-	vim.lsp.buf.code_action()
+	pcall(function()
+		vim.lsp.buf.code_action()
+	end)
 end, { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>ca", function()
 	vim.lsp.buf.code_action()
