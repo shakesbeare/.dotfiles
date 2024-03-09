@@ -32,7 +32,8 @@ vim.opt.incsearch = true
 
 vim.opt.swapfile = false
 
-vim.opt.undodir = os.getenv("HOME") .. "/.undodir"
+local homedir = os.getenv("HOME") or "C:/Users/berin"
+vim.opt.undodir = homedir .. "/.undodir"
 vim.opt.undofile = true
 
 -- vim.opt.colorcolumn = "88"
