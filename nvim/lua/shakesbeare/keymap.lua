@@ -25,7 +25,6 @@ vim.keymap.set("n", "<A-t>", function()
 	-- pcall to catch KeyboardInterrupt error
 	pcall(function()
 		local command = vim.fn.input("$❯ ")
-		-- escape every character from the input
 		command = command:gsub(".", function(c)
 			return "\\" .. c
 		end)
