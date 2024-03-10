@@ -26,5 +26,7 @@ return {
 			{ noremap = true, silent = true },
 		},
 	},
-	opts = {},
+	opts = {
+		height = 15,
+	},
 }

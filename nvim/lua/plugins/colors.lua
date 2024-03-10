@@ -27,7 +27,7 @@ end
 -- Customize highlight groups
 local do_colors = function()
 	-- NvimTreeNormal twice so that it doesn't flash on startup
-	local highlight_parens_cmd = string.format("highlight MatchParen guifg=NONE guibg=%s", darken("#FFFFFF", 0.5))
+	local highlight_parens_cmd = string.format("highlight MatchParen guifg=NONE guibg=%s", darken("#FFFFFF", 0.4))
 	vim.cmd([[
         colorscheme rose-pine
 
@@ -40,9 +40,11 @@ local do_colors = function()
         highlight DiagnosticUnderlineHint gui=undercurl
     ]])
 	vim.cmd(highlight_parens_cmd)
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-	vim.api.nvim_set_hl(0, "VertSplit", { bg = "grey" })
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none"})
+	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none"})
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopeBackground", { bg = "none", ctermbg = "none" })
+	vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "none", ctermbg = "none" })
 
 	-- term colors
 	vim.g.terminal_color_0 = '#0C0C0C'
