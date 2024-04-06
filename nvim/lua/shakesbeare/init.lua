@@ -8,6 +8,22 @@ require("shakesbeare.set")
 -- 	end,
 -- })
 
+vim.api.nvim_create_autocmd("InsertEnter", {
+	group = vim.api.nvim_create_augroup("zellij-lock", {}),
+	pattern = "*",
+	callback = function()
+		vim.system({"zellij",  "action", "switch-mode", "locked"})
+	end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeavePre", {
+	group = vim.api.nvim_create_augroup("zellij-unlock", {}),
+	pattern = "*",
+	callback = function()
+		vim.system({"zellij",  "action", "switch-mode", "normal"})
+	end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("yank_highlight", {}),
 	pattern = "*",

@@ -9,6 +9,7 @@ path+=(/opt/homebrew/bin)
 path+=($HOME/.cargo/bin)
 path+=($HOME/go/bin)
 path+=($HOME/.local/bin)
+path+=(/usr/local/texlive/2023/bin/universal-darwin)
 
 mkdir -p $HOME/.zfunc
 fpath+=$HOME/.zfunc

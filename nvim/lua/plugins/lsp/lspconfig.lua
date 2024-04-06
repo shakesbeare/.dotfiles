@@ -11,15 +11,15 @@ return {
 		-- Set up lspconfig.
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("user_defined_lsp", {}),
-			callback = function(args)
-				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				if client.server_capabilities.inlayHintProvider then
-					vim.lsp.inlay_hint.enable(args.buf, true)
-				end
-			end,
-		})
+		-- vim.api.nvim_create_autocmd("LspAttach", {
+		-- 	group = vim.api.nvim_create_augroup("user_defined_lsp", {}),
+		-- 	callback = function(args)
+		-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		-- 		if client.server_capabilities.inlayHintProvider then
+		-- 			vim.lsp.inlay_hint.enable(args.buf, true)
+		-- 		end
+		-- 	end,
+		-- })
 
 		-- place servers here when they are not handled by Mason
 		require("lspconfig").gdscript.setup({

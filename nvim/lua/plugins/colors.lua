@@ -45,6 +45,7 @@ local do_colors = function()
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
 	vim.api.nvim_set_hl(0, "TelescopeBackground", { bg = "none", ctermbg = "none" })
 	vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "none", ctermbg = "none" })
+	vim.api.nvim_set_hl(0, "TreesitterContext", { bg = darken("#FFFFFF", 0.1) })
 
 	-- term colors
 	vim.g.terminal_color_0 = '#0C0C0C'
@@ -67,10 +68,12 @@ local do_colors = function()
 end
 
 -- *******************************************
+-- oh yea
 
 return {
 	{
 		"rose-pine/neovim",
+		name = "rose-pine",
 		config = function(_, _)
 			local p = require("rose-pine.palette")
 			require("rose-pine").setup({
@@ -84,6 +87,7 @@ return {
 					DiagnosticVirtualTextWarn = { bg = darken(p.gold, 0.1), fg = p.gold },
 					DiagnosticVirtualTextInfo = { bg = darken(p.foam, 0.1), fg = p.foam },
 					DiagnosticVirtualTextHint = { bg = darken(p.iris, 0.1), fg = p.iris },
+					Comment = { fg = darken(p.text, 0.8) },
 				},
 			})
 			do_colors()

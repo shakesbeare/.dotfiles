@@ -5,7 +5,7 @@ shell.program = "/bin/zsh"
 TERM = "alacritty"
 
 [window]
-startup_mode = "SimpleFullscreen"
+startup_mode = "Maximized"
 decorations = "None"
 dynamic_title = true
 opacity = 0.80
@@ -17,7 +17,7 @@ option_as_alt = 'OnlyLeft'
 [font]
 # normal = "UbuntuMono Nerd Font"
 normal = { family = "Consolas Nerd Font", style = "Regular" }
-size = 15
+size = 16
 offset = { x = 0, y = 0 }
 
 [cursor]

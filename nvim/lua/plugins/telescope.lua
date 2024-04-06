@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 	},
+	cmd = "Telescope",
 	keys = {
 		{
 			"<leader>pf",
@@ -11,7 +12,7 @@ return {
 			{ silent = true, noremap = true },
 		},
 		{
-			"<C-p>",
+			"<leader>f",
 			"<cmd>Telescope git_files<CR>",
 			desc = "Fuzzy find git files",
 			{ silent = true, noremap = true },

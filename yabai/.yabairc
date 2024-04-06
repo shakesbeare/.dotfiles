@@ -1,0 +1,18 @@
+# enable scripting addition
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# managed windows
+yabai -m config layout bsp 
+
+# new window spawns on the right if vsplit
+yabai -m window_placement first_child 
+
+# split ratios automatically adjusted when new window added
+yabai -m auto_balance on 
+
+# focus follows mouse
+yabai -m config focus_follows_mouse autoraise
+
+# mouse follows focus
+yabai -m config mouse_follows_focus on
