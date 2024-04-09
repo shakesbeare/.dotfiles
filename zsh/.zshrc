@@ -29,7 +29,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=25000
 SAVEHIST=25000
-setopt autocd extendedglob
+setopt autocd
 unsetopt beep
 
 # key bindings
