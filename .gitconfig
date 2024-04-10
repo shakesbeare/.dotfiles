@@ -1,0 +1,30 @@
+[init]
+	defaultBranch = main
+[user]
+	name = Berint Moffett
+	email = berint.moffett@gmail.com
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[alias]
+   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	hist = log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(red)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --graph --date=short
+   graph = "log --all --graph --decorate --pretty=format:'%C(#005f87)%h%Creset :%C(#d75f00)%d%Creset %C(#005f87)%an%Creset %C(#008700)%cd (%cr)%n%s%n' --date=short"
+[maintenance]
+	repo = /Users/bmoffett/.zsh-plugins/ohmyzsh
+	repo = /Users/bmoffett/.zsh-plugins/zsh-autocomplete
+	repo = /Users/bmoffett/.zsh-plugins/zsh-autosuggestions
+	repo = /Users/bmoffett/.zsh-plugins/zsh-snap
+	repo = /Users/bmoffett/.zsh-plugins/zsh-syntax-highlighting
+	repo = /Users/bmoffett/.zsh-plugins/marlonrichert/zsh-autocomplete
+	repo = /Users/bmoffett/.zsh-plugins/ohmyzsh/ohmyzsh
+	repo = /Users/bmoffett/.zsh-plugins/zsh-users/zsh-autosuggestions
+	repo = /Users/bmoffett/.zsh-plugins/zsh-users/zsh-syntax-highlighting
+[core]
+	editor = /Users/bmoffett/.local/share/bob/nvim-bin/nvim
+[mergetool "nvim"]
+	cmd = /Users/bmoffett/.local/share/bob/nvim-bin/nvim \"$MERGED\" -c ":Gvdiffsplit!"
+[merge]
+	tool = nvim
