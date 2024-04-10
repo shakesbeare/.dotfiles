@@ -58,19 +58,19 @@ eval "$(starship init zsh)"
 
 alias l="exa --long --git --tree --level=1 --classify --all \
   --group-directories-first --header --group \
-  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git|.bare'"
 alias ll="exa --long --git --tree --level=2 --classify --all \
   --group-directories-first --header --group \
-  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git|.bare'"
 alias lll="exa --long --git --tree --level=3 --classify --all \
   --group-directories-first --header --group \
-  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git|.bare'"
 alias llll="exa --long --git --tree --level=4 --classify --all \
   --group-directories-first --header --group \
-  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git|.bare'"
 alias lllll="exa --long --git --tree --level=5 --classify --all \
   --group-directories-first --header --group \
-  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git'"
+  --ignore-glob='node_modules*|dist*|.parcel-cache*|.git|.bare'"
 alias la="l"
 
 alias vim="nvim"
