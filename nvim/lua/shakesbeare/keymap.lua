@@ -89,9 +89,7 @@ end, { silent = true })
 -- otherwise, expand cmp suggestion, if available
 -- otherwise, insert tab/space
 vim.keymap.set("i", "<Tab>", function()
-	if require("copilot.suggestion").is_visible() then
-		require("copilot.suggestion").accept()
-	elseif require("luasnip").expand_or_jumpable() then
+	if require("luasnip").expand_or_jumpable() then
 		require("luasnip").expand_or_jump()
 	elseif has_words_before() then
 		require("cmp").confirm({ select = true })
