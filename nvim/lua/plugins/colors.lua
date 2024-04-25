@@ -27,25 +27,51 @@ end
 -- Customize highlight groups
 local do_colors = function()
 	-- NvimTreeNormal twice so that it doesn't flash on startup
-	local highlight_parens_cmd = string.format("highlight MatchParen guifg=NONE guibg=%s", darken("#FFFFFF", 0.4))
 	vim.cmd([[
         colorscheme rose-pine
-
-        highlight @lsp.typemod.variable.mutable.rust gui=underline
-        highlight @lsp.typemod.selfKeyword.mutable.rust gui=underline
-        highlight link @lsp.typemod.comment.documentation.rust @parameter
-        highlight DiagnosticUnderlineError gui=undercurl
-        highlight DiagnosticUnderlineWarn gui=undercurl
-        highlight DiagnosticUnderlineInfo gui=undercurl
-        highlight DiagnosticUnderlineHint gui=undercurl
     ]])
-	vim.cmd(highlight_parens_cmd)
+	-- vscode
+	-- local diag_error = "#F44747"
+	-- local diag_warn = "#D7BA7D"
+	-- local diag_info = "#18A2FE"
+	-- local diag_hint = "#C694E3"
+
+	-- rose-pine
+	local p = require('rose-pine.palette')
+	local diag_error = p.love
+	local diag_warn = p.gold
+	local diag_info = p.foam
+	local diag_hint = p.iris
+
+	vim.api.nvim_set_hl(0, "@lsp.typemod.variable.mutable.rust", { underline = true })
+	vim.api.nvim_set_hl(0, "@lsp.typemod.selfKeyword.mutable.rust", { underline = true })
+
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true })
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true })
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true })
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true })
+
+	vim.api.nvim_set_hl(0, "@lsp.typemod.comment.documentation.rust", { link = "@parameter" })
+
+	vim.api.nvim_set_hl(0, "MatchParen", { bg = darken("#FFFFFF", 0.4) })
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none"})
 	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none"})
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
 	vim.api.nvim_set_hl(0, "TelescopeBackground", { bg = "none", ctermbg = "none" })
 	vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "none", ctermbg = "none" })
 	vim.api.nvim_set_hl(0, "TreesitterContext", { bg = darken("#FFFFFF", 0.1) })
+	vim.api.nvim_set_hl(0, "Comment", { fg = darken("#FFFFFF", 0.65) })
+	vim.api.nvim_set_hl(0, "@comment", { fg = darken("#FFFFFF", 0.65) })
+
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError",{ bg = darken(diag_error, 0.1), fg = diag_error})
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn",{ bg = darken(diag_warn, 0.1), fg = diag_warn })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo",{ bg = darken(diag_info, 0.1), fg = diag_info })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint",{ bg = darken(diag_hint, 0.1), fg = diag_hint })
+
+	vim.api.nvim_set_hl(0, "DiagnosticError",{ bg = darken(diag_error, 0.1), fg = diag_error})
+	vim.api.nvim_set_hl(0, "DiagnosticWarn",{ bg = darken(diag_warn, 0.1), fg = diag_warn })
+	vim.api.nvim_set_hl(0, "DiagnosticInfo",{ bg = darken(diag_info, 0.1), fg = diag_info })
+	vim.api.nvim_set_hl(0, "DiagnosticHint",{ bg = darken(diag_hint, 0.1), fg = diag_hint })
 
 	-- term colors
 	vim.g.terminal_color_0 = '#0C0C0C'
@@ -67,30 +93,33 @@ local do_colors = function()
 	vim.g.terminal_color_15 = '#F2F2F2'
 end
 
--- *******************************************
--- oh yea
-
 return {
+	{
+		"Mofiqul/vscode.nvim",
+		name = "vscode",
+		lazy = true,
+		config = function(_, _)
+			require("vscode").setup({
+				italic_comments = false,
+				transparent = true,
+				group_overrides = {
+				}
+			})
+			do_colors()
+		end,
+	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
+		-- lazy = true,
 		config = function(_, _)
-			local p = require("rose-pine.palette")
 			require("rose-pine").setup({
 				disable_italics = true,
 				disable_float_background = true,
 				disable_background = true,
-
-				highlight_groups = {
-					-- Error and warning backgrounds
-					DiagnosticVirtualTextError = { bg = darken(p.love, 0.1), fg = p.love },
-					DiagnosticVirtualTextWarn = { bg = darken(p.gold, 0.1), fg = p.gold },
-					DiagnosticVirtualTextInfo = { bg = darken(p.foam, 0.1), fg = p.foam },
-					DiagnosticVirtualTextHint = { bg = darken(p.iris, 0.1), fg = p.iris },
-					Comment = { fg = darken(p.text, 0.8) },
-				},
 			})
 			do_colors()
 		end,
 	},
 }
+
