@@ -7,18 +7,18 @@ end
 vim.keymap.set("n", "Q", "<nop>", { noremap = true })
 
 -- makes v-block mode a bit better
-vim.keymap.set("i", "<C-c>", "<Esc>", { noremap = true })
+vim.keymap.set("i", "<C-c>", "<Esc>", { noremap = true, desc = "Allow <C-c> to act as <Esc> in visual mode" })
 
 -- move selection up and down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection up" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection down" })
 
 -- Improved yank/delete/paste controls
-vim.keymap.set("x", "<leader>p", '"_dP', { noremap = true }) -- paste over selection without ruining register
-vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })  -- yank to clipboard
-vim.keymap.set("v", "<leader>y", '"+y', { noremap = true })  -- ... in visual mode
-vim.keymap.set("n", "<leader>d", '"_d', { noremap = true })  -- delete without ruining register
-vim.keymap.set("v", "<leader>d", '"_d', { noremap = true })
+vim.keymap.set("x", "<leader>p", '"_dP', { noremap = true, desc = "Paste over selection without ruining register" })
+vim.keymap.set("n", "<leader>y", '"+y', { noremap = true, desc = "Yank to system clipboard" })
+vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, desc = "Yank to system clipboard" })
+vim.keymap.set("n", "<leader>d", '"_d', { noremap = true, desc = "Delete without ruining register" })
+vim.keymap.set("v", "<leader>d", '"_d', { noremap = true, desc = "Delete without ruining register" })
 
 -- Become a master of the universe
 vim.keymap.set("n", "<C-p>", function()
@@ -34,13 +34,13 @@ vim.keymap.set("n", "<C-p>", function()
 		local cmd = vim.api.nvim_replace_termcodes("G", true, true, true)
 		vim.api.nvim_feedkeys(cmd, "n", true)
 	end)
-end, { silent = true, noremap = true })
+end, { silent = true, noremap = true, desc = "Open split with terminal" })
 
 vim.keymap.set("n", "<A-t>", function()
 	vim.cmd(":15split +term")
 	local cmd = vim.api.nvim_replace_termcodes("i", true, true, true)
 	vim.api.nvim_feedkeys(cmd, "n", true)
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, "EZ execute term command" })
 
 -- Easier CONSTANT_CASE
 vim.keymap.set("i", "<C-u>", function()
@@ -56,33 +56,33 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 -- LSP Controls
 vim.keymap.set("n", "gd", function()
 	vim.lsp.buf.definition()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Goto definition" })
 vim.keymap.set("n", "gi", function()
 	vim.lsp.buf.implementation()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Open implementation list" })
 vim.keymap.set("n", "<leader>vd", function()
 	vim.diagnostic.open_float()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Expand diagnostics on current line" })
 vim.keymap.set("n", "K", function()
 	vim.lsp.buf.hover()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Show hover help" })
 vim.keymap.set("n", "<leader>qf", function()
 	require("conform").format({ lsp_fallback = "always" })
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Format the current buffer" })
 
 vim.keymap.set("n", "<leader>ca", function()
 	pcall(function()
 		vim.lsp.buf.code_action()
 	end)
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Show code actions" })
 vim.keymap.set("v", "<leader>ca", function()
 	vim.lsp.buf.code_action()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Show code actions" })
 --vim.keymap.set('n', '<leader>ca', function() require('actions-preview').code_actions() end,
 --{ noremap = true, silent = true })
 vim.keymap.set("n", "<leader>r", function()
 	vim.lsp.buf.rename()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Rename symbol" })
 vim.keymap.set("i", "<C-k>", function()
 	vim.lsp.buf.signature_help()
 end, { silent = true })
@@ -108,4 +108,4 @@ vim.keymap.set("i", "<Tab>", function()
 			vim.api.nvim_feedkeys(key, "i", true)
 		end
 	end
-end, { noremap = true, silent = true, desc = "Accept copilot OR expand snippet OR expand cmp OR insert tab/space" })
+end, { noremap = true, silent = true, desc = "Expand snippet OR expand cmp OR insert tab/space" })
