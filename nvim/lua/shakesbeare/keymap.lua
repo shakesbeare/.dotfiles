@@ -44,8 +44,9 @@ end, { noremap = true, silent = true })
 
 -- Easier CONSTANT_CASE
 vim.keymap.set("i", "<C-u>", function()
-	local cmd = vim.api.nvim_replace_termcodes("<C-c>viw~ea", true, true, true)
+	local cmd = vim.api.nvim_replace_termcodes("<C-c>mabviw~`aa", true, true, true)
 	vim.api.nvim_feedkeys(cmd, "n", true)
+	vim.cmd([[delmarks a]])
 end, { noremap = true, silent = true, desc = "Easier CONSTANT_CASE" })
 
 -- Exit terminal mode with <Esc> or <C-[>
