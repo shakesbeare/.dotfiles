@@ -27,6 +27,10 @@ return {
 			cmd = { "nc", "localhost", "6005" },
 		})
 
+		require('lspconfig')['hls'].setup {
+			filetypes = { 'haskell', 'lhaskell', 'cabal' },
+		}
+
 		require("lspconfig").rust_analyzer.setup({
 			capabilities = capabilities,
 			settings = {

@@ -16,28 +16,28 @@ return {
 			{ noremap = true, silent = true },
 		},
 		{
-			"<C-h>",
+			"<C-j>",
 			function()
 				require("harpoon.ui").nav_file(1)
 			end,
 			{ noremap = true, silent = true },
 		},
 		{
-			"<C-t>",
+			"<C-k>",
 			function()
 				require("harpoon.ui").nav_file(2)
 			end,
 			{ noremap = true, silent = true },
 		},
 		{
-			"<C-n>",
+			"<C-l>",
 			function()
 				require("harpoon.ui").nav_file(3)
 			end,
 			{ noremap = true, silent = true },
 		},
 		{
-			"<C-s>",
+			"<C-;>",
 			function()
 				require("harpoon.ui").nav_file(4)
 			end,

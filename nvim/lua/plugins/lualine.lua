@@ -1,6 +1,14 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	event = "BufReadPre",
+	dependencies = {
+		{
+			dir = "~/projects/cavernous.nvim/main"
+		},
+		{
+			'rktjmp/lush.nvim',
+		}
+	},
 	opts = {
 		options = {
 			icons_enabled = false,
@@ -42,9 +50,7 @@ return {
 		extensions = {},
 	},
 	config = function(_, opts)
-		local color_scheme = require("lualine.themes.rose-pine")
-		color_scheme.normal.c.bg = "None"
-		opts.options.theme = color_scheme
+
 		require("lualine").setup(opts)
 	end,
 }

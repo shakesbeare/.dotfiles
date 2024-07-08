@@ -40,7 +40,7 @@ vim.keymap.set("n", "<A-t>", function()
 	vim.cmd(":15split +term")
 	local cmd = vim.api.nvim_replace_termcodes("i", true, true, true)
 	vim.api.nvim_feedkeys(cmd, "n", true)
-end, { noremap = true, silent = true, "EZ execute term command" })
+end, { noremap = true, silent = true, desc = "EZ execute term command" })
 
 -- Easier CONSTANT_CASE
 vim.keymap.set("i", "<C-u>", function()

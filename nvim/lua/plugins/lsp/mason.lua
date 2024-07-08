@@ -54,31 +54,17 @@ return {
 						},
 					})
 				end,
-
-				["ruff_lsp"] = function()
-					require("lspconfig").ruff_lsp.setup({
-						capabilities = capabilities,
-						on_attach = function(client, _)
-							client.server_capabilities.hoverProvider = false
-						end,
+				['omnisharp'] = function()
+					require('lspconfig')['omnisharp'].setup({
+						capabilites = capabilites,
+						cmd = {
+							"omnisharp",
+							"--languageserver",
+							"--hostPID",
+							tostring(vim.fn.getpid())
+						}
 					})
-				end,
-
-				["pylsp"] = function()
-					require("lspconfig").pylsp.setup({
-						capabilities = capabilities,
-						settings = {
-							pylsp = {
-								plugins = {
-									pylsp_mypy = { enabled = true },
-									pyflakes = { enabled = false },
-									pycodestyle = { enabled = false },
-									mccabe = { enabled = false },
-								},
-							},
-						},
-					})
-				end,
+				end
 			})
 		end,
 	},

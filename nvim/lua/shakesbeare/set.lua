@@ -7,7 +7,7 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 
-vim.opt.formatoptions = "lqj"
+vim.opt.formatoptions:remove("o")
 vim.opt.showmatch = true
 vim.opt.wildmenu = true
 vim.opt.number = true

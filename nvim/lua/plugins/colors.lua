@@ -28,20 +28,21 @@ end
 local do_colors = function()
 	-- NvimTreeNormal twice so that it doesn't flash on startup
 	vim.cmd([[
-        colorscheme rose-pine
+        colorscheme cavernous
     ]])
-	-- vscode
-	-- local diag_error = "#F44747"
-	-- local diag_warn = "#D7BA7D"
-	-- local diag_info = "#18A2FE"
-	-- local diag_hint = "#C694E3"
 
-	-- rose-pine
+    -- rose-pine
 	local p = require('rose-pine.palette')
 	local diag_error = p.love
 	local diag_warn = p.gold
 	local diag_info = p.foam
 	local diag_hint = p.iris
+	-- monokai-pro
+	-- local p = require('monokai-pro.colorscheme.palette.classic')
+	-- local diag_error = p.accent1
+	-- local diag_warn = p.accent2
+	-- local diag_info = p.accent3
+	-- local diag_hint = p.accent4
 
 	vim.api.nvim_set_hl(0, "@lsp.typemod.variable.mutable.rust", { underline = true })
 	vim.api.nvim_set_hl(0, "@lsp.typemod.selfKeyword.mutable.rust", { underline = true })
@@ -54,8 +55,8 @@ local do_colors = function()
 	vim.api.nvim_set_hl(0, "@lsp.typemod.comment.documentation.rust", { link = "@parameter" })
 
 	vim.api.nvim_set_hl(0, "MatchParen", { bg = darken("#FFFFFF", 0.4) })
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none"})
-	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none"})
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
+	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
 	vim.api.nvim_set_hl(0, "TelescopeBackground", { bg = "none", ctermbg = "none" })
 	vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "none", ctermbg = "none" })
@@ -63,15 +64,18 @@ local do_colors = function()
 	vim.api.nvim_set_hl(0, "Comment", { fg = darken("#FFFFFF", 0.65) })
 	vim.api.nvim_set_hl(0, "@comment", { fg = darken("#FFFFFF", 0.65) })
 
-	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError",{ bg = darken(diag_error, 0.1), fg = diag_error})
-	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn",{ bg = darken(diag_warn, 0.1), fg = diag_warn })
-	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo",{ bg = darken(diag_info, 0.1), fg = diag_info })
-	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint",{ bg = darken(diag_hint, 0.1), fg = diag_hint })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { bg = darken(diag_error, 0.1), fg = diag_error })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { bg = darken(diag_warn, 0.1), fg = diag_warn })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { bg = darken(diag_info, 0.1), fg = diag_info })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { bg = darken(diag_hint, 0.1), fg = diag_hint })
 
-	vim.api.nvim_set_hl(0, "DiagnosticError",{ bg = darken(diag_error, 0.1), fg = diag_error})
-	vim.api.nvim_set_hl(0, "DiagnosticWarn",{ bg = darken(diag_warn, 0.1), fg = diag_warn })
-	vim.api.nvim_set_hl(0, "DiagnosticInfo",{ bg = darken(diag_info, 0.1), fg = diag_info })
-	vim.api.nvim_set_hl(0, "DiagnosticHint",{ bg = darken(diag_hint, 0.1), fg = diag_hint })
+	vim.api.nvim_set_hl(0, "DiagnosticError", { bg = darken(diag_error, 0.1), fg = diag_error })
+	vim.api.nvim_set_hl(0, "DiagnosticWarn", { bg = darken(diag_warn, 0.1), fg = diag_warn })
+	vim.api.nvim_set_hl(0, "DiagnosticInfo", { bg = darken(diag_info, 0.1), fg = diag_info })
+	vim.api.nvim_set_hl(0, "DiagnosticHint", { bg = darken(diag_hint, 0.1), fg = diag_hint })
+
+	vim.api.nvim_set_hl(0, "@lsp.type.namespace.rust", { fg = p.accent2 })
+	vim.api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary", { link = "Function" })
 
 	-- term colors
 	vim.g.terminal_color_0 = '#0C0C0C'
@@ -95,23 +99,19 @@ end
 
 return {
 	{
-		"Mofiqul/vscode.nvim",
-		name = "vscode",
+		'loctvl842/monokai-pro.nvim',
 		lazy = true,
-		config = function(_, _)
-			require("vscode").setup({
-				italic_comments = false,
-				transparent = true,
-				group_overrides = {
-				}
+		config = function()
+			require('monokai-pro').setup({
+				transparent_background = true,
 			})
 			do_colors()
-		end,
+		end
 	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		-- lazy = true,
+		lazy = true,
 		config = function(_, _)
 			require("rose-pine").setup({
 				disable_italics = true,
@@ -121,5 +121,11 @@ return {
 			do_colors()
 		end,
 	},
+	{
+		dir = "~/projects/cavernous.nvim/main",
+		name = "cavernous",
+		config = function()
+			vim.cmd[[colorscheme cavernous]]
+		end
+	}
 }
-
