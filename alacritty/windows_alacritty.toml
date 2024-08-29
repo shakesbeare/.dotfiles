@@ -1,5 +1,5 @@
 live_config_reload = true
-shell.program = "C:\\Program Files\\Powershell\\7\\pwsh.exe"
+shell.program = "C:\\Program Files\\Git\\bin\\bash.exe"
 
 [window]
 startup_mode = "Maximized"
@@ -11,7 +11,7 @@ padding = { x = 5, y = 5 }
 
 [font]
 normal = { family = "Consolas Nerd Font", style = "Regular" }
-size = 15
+size = 12
 offset = { x = 0, y = 0 }
 
 [cursor]
