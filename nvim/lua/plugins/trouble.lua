@@ -7,7 +7,7 @@ return {
 		{
 			"<leader>t",
 			function()
-				require("trouble").toggle("workspace_diagnostics")
+				require("trouble").toggle("diagnostics")
 			end,
 			{ noremap = true, silent = true },
 		},

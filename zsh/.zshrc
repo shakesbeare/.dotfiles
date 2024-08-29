@@ -1,9 +1,6 @@
 source ~/.zsh-plugins/zsh-snap/znap.zsh
 source "$HOME/.rye/env"
 
-export ZSH=$HOME/.oh-my-zsh
-export DOTNET_ROOT=/usr/local/share/dotnet
-
 path+=(/usr/local/bin)
 path+=($HOME/.scripts)
 path+=($HOME/.local/share/bob/nvim-bin)
@@ -17,18 +14,10 @@ path+=(/usr/local/texlive/2023/bin/universal-darwin)
 mkdir -p $HOME/.zfunc
 fpath+=$HOME/.zfunc
 
-fpath+=$HOME/.zsh/pure
 if [[ "$OSTYPE" == "darwin"* ]]; then
     fpath+=("$(brew --prefix)/share/zsh/site-functions")
 fi
 
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle ':completion:*' list-colors '=*=94'
-autoload -Uz compinit
-compinit
-
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=25000
 SAVEHIST=25000
@@ -37,9 +26,9 @@ unsetopt beep
 
 # key bindings
 bindkey -e
+bindkey "^[[A" up-line-or-history
 # End of lines configured by zsh-newuser-install
 
-znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance,prompt_info_functions}
 znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
@@ -50,14 +39,13 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export path
-
-autoload -U promptinit; promptinit
-
 eval "$(starship init zsh)"
+znap prompt
 
 # opam configuration
 [[ ! -r /Users/bmoffett/.opam/opam-init/init.zsh ]] || source /Users/bmoffett/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+# ghcup
+[ -f "/Users/bmoffett/.ghcup/env" ] && . "/Users/bmoffett/.ghcup/env" # ghcup-env
 
 alias l="exa --long --git --tree --level=1 --classify --all \
   --group-directories-first --header --group \
@@ -85,7 +73,9 @@ alias cat="bat"
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete;"
 alias cd="z" # zoxide
 
-export TERM=alacritty
 eval "$(zoxide init zsh)"
 
-[ -f "/Users/bmoffett/.ghcup/env" ] && . "/Users/bmoffett/.ghcup/env" # ghcup-env
+export TERM=alacritty
+export DOTNET_ROOT=/usr/local/share/dotnet
+export path
+

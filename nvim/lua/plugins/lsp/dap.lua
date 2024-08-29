@@ -52,6 +52,12 @@ return {
 				{ silent = true, noremap = true },
 			},
 			{
+				"<F9>",
+				function()
+					require('dap').disconnect({terminateDebugger = true })
+				end
+			},
+			{
 				"<F1>",
 				function()
 					require("dap").step_over()
