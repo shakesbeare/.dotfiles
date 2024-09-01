@@ -6,33 +6,27 @@
             url = "github:nixos/nixpkgs/nixos-unstable";
         };
         home-manager = {
-            url = "github:nix-community/home-manager/release-24.05";
+            url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-	nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-};
+        nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    };
 
     outputs = { 
-        self, nixpkgs, home-manager, ...
-    } @ inputs: let 
-	pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        inherit (self) outputs;
-    in {
-	nixpkgs.hostPlatform = "x86_64-linux";
+       nixpkgs, home-manager, ...
+    } @ inputs: {
         nixosConfigurations = {
             nixos = nixpkgs.lib.nixosSystem {
-                specialArgs = {inherit inputs outputs;};
-                modules = [ ./nixos/configuration.nix];
+            system = "x86_64-linux";
+                modules = [
+            ./nixos/configuration.nix
+            home-manager.nixosModules.home-manager {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.bmoffett = import ./home-manager/home.nix;
+            }
+        ];
             };
-        };
-
-        homeConfigurations = {
-            "bmoffett@nixos" = inputs.home-manager.lib.homeManagerConfiguration {
-	    	pkgs = pkgs;
-                extraSpecialArgs = {inherit inputs outputs;};
-                configuration.imports = [ ./home-manager/home.nix ];
-            };
-
         };
     };
 }

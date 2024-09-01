@@ -14,4 +14,5 @@
   programs.neovim.enable = true;
   programs.zsh.enable = true;
   programs.git.enable = true;
+  programs.cowsay.enable = true;
 }
