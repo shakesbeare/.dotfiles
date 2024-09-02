@@ -2,7 +2,6 @@
 	git clone --depth 1 -- \
 		https://github.com/marlonrichert/zsh-snap.git ~/.zsh-plugins/znap
 source ~/.zsh-plugins/znap/znap.zsh
-source "$HOME/.rye/env"
 
 path+=(/usr/local/bin)
 path+=($HOME/.scripts)
@@ -45,9 +44,9 @@ export NVM_DIR="$HOME/.config/nvm"
 eval "$(starship init zsh)"
 znap prompt
 
-# opam configuration
+# Configure language tooling
 [[ ! -r /Users/bmoffett/.opam/opam-init/init.zsh ]] || source /Users/bmoffett/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-# ghcup
+[[ ! -r /Users/bmoffett/.rye/env ]] || source "$HOME/.rye/env" > /dev/null 2> /dev/null
 [ -f "/Users/bmoffett/.ghcup/env" ] && . "/Users/bmoffett/.ghcup/env" # ghcup-env
 
 alias l="exa --long --git --tree --level=1 --classify --all \
@@ -81,4 +80,3 @@ eval "$(zoxide init zsh)"
 export TERM=alacritty
 export DOTNET_ROOT=/usr/local/share/dotnet
 export path
-

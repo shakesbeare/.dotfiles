@@ -44,14 +44,22 @@
         config = {
             modifier = "Mod1";
             terminal = "alacritty";
+            bars = [];
             gaps = {
                 inner = 10;
                 outer = 5;
+            };
+            floating.border = 0;
+            window = {
+                border = 0;
+                hideEdgeBorders = "both";
+                titlebar = false;
             };
         };
     };
 
     services.autorandr.enable = true;
+    services.flameshot.enable = true;
 
     programs.neovim.enable = true;
     programs.zsh.enable = true;

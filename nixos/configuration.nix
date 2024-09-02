@@ -82,7 +82,15 @@
         defaultSession = "none+i3";
     };
 
-    services.picom.enable = true;
+    services.picom = {
+        enable = true;
+        shadow = true;
+        settings = {
+            shadow-radius = 20;
+            round-borders = 20;
+            corner-radius = 20;
+        };
+    };
 
     xdg.portal = {
         enable = true;
