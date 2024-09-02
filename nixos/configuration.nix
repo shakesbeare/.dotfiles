@@ -82,6 +82,20 @@
         defaultSession = "none+i3";
     };
 
+    services.picom.enable = true;
+
+    xdg.portal = {
+        enable = true;
+        # config = {
+        #     common = {
+        #         default = [ "kde" ];
+        #     };
+        # };
+        extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+    };
+
+    services.unclutter.enable = true; # hide mouse cursor when inactive
+
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.open = true;
 
@@ -113,4 +127,6 @@
         enable = true;
         polkitPolicyOwners = [ "bmoffett" ];
     };
+    programs.thunar.enable = true;
+
 }

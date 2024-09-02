@@ -11,15 +11,47 @@
         pkgs.discord
         pkgs.bottles
         pkgs.maestral
+        pkgs.neofetch
+        pkgs.autorandr
     ];
+
+    home.pointerCursor = 
+    let 
+      getFrom = url: hash: name: {
+          gtk.enable = true;
+          x11.enable = true;
+          name = name;
+          size = 48;
+          package = 
+            pkgs.runCommand "moveUp" {} ''
+              mkdir -p $out/share/icons
+              ln -s ${pkgs.fetchzip {
+                url = url;
+                hash = hash;
+              }} $out/share/icons/${name}
+          '';
+        };
+    in
+      getFrom 
+        "https://github.com/ful1e5/XCursor-pro/releases/download/v2.0.2/XCursor-Pro-Dark.tar.xz"
+        "sha256-x1rmWRGPXshOgcxTUXbhWTQHAO/BT6XVfE8SVLNFMk4="
+        "XCursor-Pro-Dark";
 
     xsession.windowManager.i3 = {
         enable = true;
+        package = pkgs.i3-gaps;
         config = {
             modifier = "Mod1";
             terminal = "alacritty";
+            bars = [];
+            gaps = {
+                inner = 10;
+                outer = 5;
+            };
         };
     };
+
+    services.autorandr.enable = true;
 
     programs.neovim.enable = true;
     programs.zsh.enable = true;
@@ -39,6 +71,7 @@
     programs.alacritty.enable = true;
     programs.fzf.enable = true;
     programs.bat.enable = true;
+    programs.feh.enable = true;
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
@@ -48,5 +81,6 @@
         ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/nvim";
         ".config/alacritty".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/alacritty";
         ".scripts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/scripts";
+        ".config/autorandr".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/autorandr";
     };
 }
