@@ -113,6 +113,7 @@
 
     environment.systemPackages = with pkgs; [
         pavucontrol
+        gcc
     ];
     environment.variables = {
         XCURSOR_SIZE = "64";

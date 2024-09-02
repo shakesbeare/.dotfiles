@@ -13,6 +13,7 @@
         pkgs.maestral
         pkgs.neofetch
         pkgs.autorandr
+        pkgs.rustup
     ];
 
     home.pointerCursor = 
@@ -43,7 +44,6 @@
         config = {
             modifier = "Mod1";
             terminal = "alacritty";
-            bars = [];
             gaps = {
                 inner = 10;
                 outer = 5;
