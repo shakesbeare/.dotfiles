@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 # AUTHOR: ThePrimeagen
+#
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    dirs="~ ~/projects/ ~/work"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    dirs="~/ ~/projects ~/work ~/Dropbox/Documents"
+else
+    echo "Unhandled operating system $OSTYPE"
+    exit 1
+fi
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find -L ~/Dropbox/Documents ~/projects ~/work ~/ -mindepth 1 -maxdepth 1 -type d,l | fzf)
+    selected=$(eval find -L $dirs -mindepth 1 -maxdepth 1 -type d,l | fzf)
 fi
 
 if [[ -z $selected ]]; then

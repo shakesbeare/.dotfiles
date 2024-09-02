@@ -1,71 +1,116 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
+# Edit this configuration file to define what should be installed on
+# your system.    Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, inputs, ... }:
+
 {
-    inputs,
-    lib,
-    config,
+    system.stateVersion = "24.05"; # Did you read the comment?
+    nix.settings.experimental-features = [ "nix-command" "flakes"];
 
-    pkgs,
-    ...
-}: {
-    imports = [
-    	inputs.nixos-wsl.nixosModules.default
-    ];
-    wsl.enable = true;
-    wsl.defaultUser = "bmoffett";
-
-    environment.systemPackages = [ pkgs.zsh pkgs.neovim pkgs.git ];
-    programs.zsh.enable = true;
-
-    nixpkgs = {
-        overlays = [
+    imports =
+        [ # Include the results of the hardware scan.
+        	./hardware-configuration.nix
         ];
-        config = {
-            # Disable if you don't want unfree packages
-            allowUnfree = true;
-        };
+
+    # Bootloader.
+    boot.loader.systemd-boot.enable = false;
+
+    boot.loader.grub.enable = true;
+    boot.loader.grub.device = "nodev";
+    boot.loader.grub.useOSProber = true;
+    boot.loader.grub.efiSupport = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader.efi.efiSysMountPoint = "/boot";
+
+    networking.hostName = "nixos-dt"; # Define your hostname.
+    # networking.wireless.enable = true;    # Enables wireless support via wpa_supplicant.
+
+    # Enable networking
+    networking.networkmanager.enable = true;
+
+    # Set your time zone.
+    time.timeZone = "America/Boise";
+
+    # Select internationalisation properties.
+    i18n.defaultLocale = "en_US.UTF-8";
+
+    i18n.extraLocaleSettings = {
+        LC_ADDRESS = "en_US.UTF-8";
+        LC_IDENTIFICATION = "en_US.UTF-8";
+        LC_MEASUREMENT = "en_US.UTF-8";
+        LC_MONETARY = "en_US.UTF-8";
+        LC_NAME = "en_US.UTF-8";
+        LC_NUMERIC = "en_US.UTF-8";
+        LC_PAPER = "en_US.UTF-8";
+        LC_TELEPHONE = "en_US.UTF-8";
+        LC_TIME = "en_US.UTF-8";
     };
 
-    nix = let
-        flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-    in {
-        settings = {
-            experimental-features = "nix-command flakes";
-            flake-registry = "";
-            nix-path = config.nix.nixPath;
-
-        };
-        channel.enable = false;
-
-        registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-        nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-    };
-
-    networking.hostName = "nixos";
-
-    users.users = {
-
-        bmoffett = {
-            shell = pkgs.zsh;
-            isNormalUser = true;
-            extraGroups = ["wheel"];
-        };
-    };
-
-    # This setups a SSH server. Very important if you're setting up a headless system.
-    # Feel free to remove if you don't need it.
-    services.openssh = {
+    services.libinput = {
         enable = true;
-        settings = {
-            # Opinionated: forbid root login through SSH.
-
-            PermitRootLogin = "no";
-            # Opinionated: use keys only.
-            # Remove if you want to SSH using passwords
-            PasswordAuthentication = false;
+        mouse = {
+            accelProfile = "flat";
+            accelSpeed = "+1.0";
         };
     };
 
-    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    system.stateVersion = "23.05";
+    hardware.pulseaudio.enable = true;
+    hardware.graphics.enable = true;
+
+    services.xserver = {
+        enable = true;
+        dpi = 180;
+        upscaleDefaultCursor = true;
+
+        videoDrivers = [ "nvidia" ];
+
+        xkb = {
+            layout = "us";
+            variant = "";
+        };
+
+
+        desktopManager = {
+            xterm.enable = false;
+        };
+        
+        windowManager.i3.enable = true;
+    };
+
+    services.displayManager = {
+        defaultSession = "none+i3";
+    };
+
+    hardware.nvidia.modesetting.enable = true;
+    hardware.nvidia.open = true;
+
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.bmoffett = {
+        isNormalUser = true;
+	shell = pkgs.zsh;
+        description = "Berint Moffett";
+        extraGroups = [ "networkmanager" "wheel" ];
+        packages = with pkgs; [];
+    };
+
+    # Allow unfree packages
+    nixpkgs.config.allowUnfree = true;
+
+    environment.systemPackages = with pkgs; [
+        pavucontrol
+    ];
+    environment.variables = {
+        XCURSOR_SIZE = "64";
+    };
+    environment.pathsToLink = [ "/libexec" ];
+    fonts.packages = [
+        inputs.fonts
+    ];
+    programs.zsh.enable = true;
+    programs._1password.enable = true;
+    programs._1password-gui = {
+        enable = true;
+        polkitPolicyOwners = [ "bmoffett" ];
+    };
 }
