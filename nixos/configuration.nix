@@ -90,6 +90,10 @@
             round-borders = 20;
             corner-radius = 20;
         };
+        wintypes = {
+            tooltip = { shadow = false; opacity = 0.75; full-shadow = false; };
+            dock = { shadow = false; full-shadow = false; };
+        };
     };
 
     xdg.portal = {
@@ -122,6 +126,7 @@
     environment.systemPackages = with pkgs; [
         pavucontrol
         gcc
+        autotiling
     ];
     environment.variables = {
         XCURSOR_SIZE = "64";

@@ -47,7 +47,7 @@
             bars = [];
             gaps = {
                 inner = 10;
-                outer = 5;
+                outer = 0;
             };
             floating.border = 0;
             window = {
@@ -55,6 +55,10 @@
                 hideEdgeBorders = "both";
                 titlebar = false;
             };
+            startup = [
+                { command = "autotiling -w 1 3 5 7 9"; always = true; notification = false; }
+                { command = "polybar -c /home/bmoffett/.dotfiles/polybar/config.ini"; always = true; notification = false; }
+            ];
         };
     };
 
