@@ -32,15 +32,14 @@ cursor = { text = "#D3D3D3", cursor = "#D3D3D3"}
 primary.background = "#0C0C0C"
 
 [colors.normal]
-black = '#0C0C0C'
-red = '#C50F1F'
-green = '#13A10E'
-yellow = '#C19C00'
-blue = '#0037DA'
-magenta = '#881798'
-cyan = '#3A96DD'
+black = '#000000'
 white = '#CCCCCC'
-
+red = '#ff8080'
+yellow = '#f4ff80'
+green = '#80ff80'
+cyan = '#b3e5ff'
+blue = '#80c3ff'
+magenta = '#d580ff'
 
 [colors.bright]
 black = '#767676'
@@ -51,3 +50,5 @@ blue = '#3B78FF'
 magenta = '#B4009E'
 cyan = '#61D6D6'
 white = '#F2F2F2'
+
+
