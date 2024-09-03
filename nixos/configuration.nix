@@ -2,7 +2,7 @@
 # your system.    Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, master-pkgs, ... }:
 
 {
     system.stateVersion = "24.05"; # Did you read the comment?
@@ -126,6 +126,7 @@
         pavucontrol
         gcc
         autotiling
+        master-pkgs.xdg-desktop-portal-hyprland
     ];
     environment.variables = {
         XCURSOR_SIZE = "64";
@@ -140,6 +141,7 @@
     };
     programs.thunar.enable = true;
     # programs.hyprland = {
+    #     package = master-pkgs.hyprland;
     #     enable = true;
     #     xwayland.enable = true;
     # };
