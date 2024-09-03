@@ -140,10 +140,11 @@
         polkitPolicyOwners = [ "bmoffett" ];
     };
     programs.thunar.enable = true;
-    # programs.hyprland = {
-    #     package = master-pkgs.hyprland;
-    #     enable = true;
-    #     xwayland.enable = true;
-    # };
+    programs.hyprland = {
+        package = master-pkgs.hyprland;
+        portalPackage = master-pkgs.xdg-desktop-portal-hyprland;
+        enable = true;
+        xwayland.enable = true;
+    };
 
 }
