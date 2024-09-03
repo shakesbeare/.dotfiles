@@ -84,6 +84,7 @@
     programs.fzf.enable = true;
     programs.bat.enable = true;
     programs.feh.enable = true;
+    programs.htop.enable = true;
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
