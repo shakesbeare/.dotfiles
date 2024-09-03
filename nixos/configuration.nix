@@ -70,7 +70,6 @@
             variant = "";
         };
 
-
         desktopManager = {
             xterm.enable = false;
         };
@@ -103,7 +102,7 @@
         #         default = [ "kde" ];
         #     };
         # };
-        extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
     services.unclutter.enable = true; # hide mouse cursor when inactive
@@ -130,6 +129,7 @@
     ];
     environment.variables = {
         XCURSOR_SIZE = "64";
+        NIXOS_OZONE_WL = "1";
     };
     environment.pathsToLink = [ "/libexec" ];
     programs.zsh.enable = true;
@@ -139,5 +139,9 @@
         polkitPolicyOwners = [ "bmoffett" ];
     };
     programs.thunar.enable = true;
+    # programs.hyprland = {
+    #     enable = true;
+    #     xwayland.enable = true;
+    # };
 
 }
