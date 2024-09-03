@@ -75,12 +75,13 @@
         };
         
         windowManager.i3.enable = true;
+        displayManager.sddm.enable = true;
     };
 
-    services.displayManager = {
-        defaultSession = "none+i3";
-    };
-
+    # services.displayManager = {
+    #     defaultSession = "none+i3";
+    # };
+    #
     services.picom = {
         enable = true;
         shadow = true;
