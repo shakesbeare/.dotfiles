@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
-pushd ~/dotfiles/nixos/
+pushd ~/.dotfiles
 find . | grep "\.nix" | xargs git diff
 echo "NixOS Rebuilding..."
-sudo nixos-rebuild switch &>nixos-switch.log || (
+sudo nixos-rebuild switch --flake .#nixos-dt &>nixos-switch.log || (
  cat nixos-switch.log | grep --color error && false)
 gen=$(nixos-rebuild list-generations | grep current)
 git commit -am "$gen"
