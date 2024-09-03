@@ -122,7 +122,7 @@ return {
 		end,
 	},
 	{
-		dir = "~/projects/cavernous.nvim/main",
+		"shakesbeare/cavernous.nvim",
 		name = "cavernous",
 		config = function()
 			vim.cmd[[colorscheme cavernous]]

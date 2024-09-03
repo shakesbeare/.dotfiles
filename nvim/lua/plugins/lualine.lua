@@ -1,14 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	event = "BufReadPre",
-	dependencies = {
-		{
-			dir = "~/projects/cavernous.nvim/main"
-		},
-		{
-			'rktjmp/lush.nvim',
-		}
-	},
 	opts = {
 		options = {
 			icons_enabled = false,
@@ -50,7 +42,20 @@ return {
 		extensions = {},
 	},
 	config = function(_, opts)
+		local auto_theme = require('lualine.themes.auto')
+		auto_theme.normal.b.bg = "None"
+		auto_theme.normal.c.bg = "None"
 
+		auto_theme.insert.b.bg = "None"
+		auto_theme.insert.c.bg = "None"
+
+		auto_theme.visual.b.bg = "None"
+		auto_theme.visual.c.bg = "None"
+
+		auto_theme.command.b.bg = "None"
+		auto_theme.command.c.bg = "None"
+
+		opts.options.theme = auto_theme
 		require("lualine").setup(opts)
 	end,
 }
