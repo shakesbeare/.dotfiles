@@ -9,7 +9,6 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        fonts.url = "git+file:///home/bmoffett/.dotfiles?dir=fonts";
     };
 
     outputs = { 

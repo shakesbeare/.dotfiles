@@ -132,9 +132,6 @@
         XCURSOR_SIZE = "64";
     };
     environment.pathsToLink = [ "/libexec" ];
-    fonts.packages = [
-        inputs.fonts
-    ];
     programs.zsh.enable = true;
     programs._1password.enable = true;
     programs._1password-gui = {

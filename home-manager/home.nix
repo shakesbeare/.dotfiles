@@ -43,6 +43,7 @@
         package = pkgs.i3-gaps;
         config = {
             modifier = "Mod1";
+            defaultWorkspace = "workspace number 1";
             terminal = "alacritty";
             bars = [];
             gaps = {
@@ -95,5 +96,6 @@
         ".config/alacritty".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/alacritty";
         ".scripts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/scripts";
         ".config/autorandr".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/autorandr";
+        ".local/share/fonts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/fonts";
     };
 }
