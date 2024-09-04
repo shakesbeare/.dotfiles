@@ -1,15 +1,11 @@
 {
+    "layer": "top", 
+    "position": "top", 
+    "height": 24, 
+    // "width": 1366, 
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock", "custom/weather"],
-    "modules-right": ["tray", "pulseaudio"],
-
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname} ",
-        "format-disconnected": "", 
-        "max-length": 50,
-        "on-click": "kitty -e 'nmtui'"
-    },
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "tray"],
     "tray": {
         "icon-size": 15,
         "spacing": 10
@@ -24,6 +20,30 @@
         "interval": 1800,
         "exec": "$HOME/.config/waybar/scripts/wttr.py",
         "return-type": "json"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠"
     },
     "pulseaudio": {
         "format": "{volume}% {icon} ",
