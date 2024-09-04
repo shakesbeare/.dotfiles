@@ -96,6 +96,9 @@
         package = pkgs.rofi-wayland;
         theme = "./.dotfiles/themes/rofi/spotlight_dark.rasi";
     };
+    programs.hyprlock = {
+        enable = true;
+    };
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
