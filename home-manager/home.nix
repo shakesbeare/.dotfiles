@@ -17,6 +17,7 @@
         (pkgs.python3.withPackages (ps: with ps; [ requests ]))
         pkgs.waybar
         pkgs.rofi-wayland
+        pkgs.tmux
     ];
 
     home.pointerCursor = 
@@ -76,10 +77,6 @@
         userName = "Berint Moffett";
         userEmail = "berint.moffett@gmail.com";
     };
-    programs.tmux = {
-        enable = true;
-        extraConfig = builtins.readFile ../tmux/.tmux.conf;
-    };
     programs.zoxide.enable = true;
     programs.starship.enable = true;
     programs.firefox.enable = true;
@@ -107,5 +104,6 @@
         ".local/share/fonts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/fonts";
         ".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/hypr";
         ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/waybar";
+        ".config/tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/tmux/.tmux.conf";
     };
 }
