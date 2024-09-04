@@ -135,6 +135,7 @@
         gcc
         autotiling
         master-pkgs.xdg-desktop-portal-hyprland
+        wl-clipboard
     ];
     environment.variables = {
         XCURSOR_SIZE = "64";
