@@ -76,10 +76,10 @@
         userName = "Berint Moffett";
         userEmail = "berint.moffett@gmail.com";
     };
-    programs.tmux = {
-        enable = true;
-        extraConfig = builtins.readFile ../tmux/.tmux.conf;
-    };
+    # programs.tmux = {
+    #     enable = true;
+    #     extraConfig = builtins.readFile ../tmux/.tmux.conf;
+    # };
     programs.zoxide.enable = true;
     programs.starship.enable = true;
     programs.firefox.enable = true;
@@ -89,6 +89,7 @@
     programs.bat.enable = true;
     programs.feh.enable = true;
     programs.htop.enable = true;
+    programs.ripgrep.enable = true;
     programs.cava = {
         enable = true;
         settings.input.method = "pipewire";
