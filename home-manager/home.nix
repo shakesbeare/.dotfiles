@@ -14,6 +14,7 @@
         pkgs.neofetch
         pkgs.autorandr
         pkgs.rustup
+        pkgs.python3
         pkgs.waybar
         pkgs.rofi-wayland
     ];
