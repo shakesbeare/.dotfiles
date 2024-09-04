@@ -8,5 +8,6 @@ echo "NixOS Rebuilding..."
 sudo nixos-rebuild switch --flake .#nixos-dt &>nixos-switch.log || (
  cat nixos-switch.log | grep --color error && false)
 gen=$(nixos-rebuild list-generations | grep current)
-git commit -am "$gen"
+find . | grep "\.nix" | xargs git add
+git commit -m "$gen"
 popd
