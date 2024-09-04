@@ -14,6 +14,7 @@
         pkgs.neofetch
         pkgs.autorandr
         pkgs.rustup
+        pkgs.waybar
     ];
 
     home.pointerCursor = 
