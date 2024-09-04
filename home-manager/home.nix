@@ -18,6 +18,10 @@
         pkgs.waybar
         pkgs.rofi-wayland
         pkgs.tmux
+
+        pkgs.grim
+        pkgs.slurp
+        pkgs.swappy
     ];
 
     home.pointerCursor = 
@@ -68,7 +72,6 @@
     };
 
     services.autorandr.enable = true;
-    services.flameshot.enable = true;
 
     programs.neovim.enable = true;
     programs.zsh.enable = true;
@@ -95,9 +98,6 @@
         enable = true;
         package = pkgs.rofi-wayland;
         theme = "./.dotfiles/themes/rofi/spotlight_dark.rasi";
-    };
-    programs.hyprlock = {
-        enable = true;
     };
 
     # Let Home Manager install and manage itself.
