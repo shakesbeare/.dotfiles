@@ -94,7 +94,7 @@
     programs.rofi = {
         enable = true;
         package = pkgs.rofi-wayland;
-        theme = "../themes/rofi/spotlight_dark.rasi";
+        theme = "./.dotfiles/themes/rofi/spotlight_dark.rasi";
     };
 
     # Let Home Manager install and manage itself.
