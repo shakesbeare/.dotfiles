@@ -89,6 +89,10 @@
     programs.bat.enable = true;
     programs.feh.enable = true;
     programs.htop.enable = true;
+    programs.cava = {
+        enable = true;
+        settings.input.method = "pipewire";
+    };
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
