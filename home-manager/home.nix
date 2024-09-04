@@ -15,6 +15,7 @@
         pkgs.autorandr
         pkgs.rustup
         pkgs.waybar
+        pkgs.rofi-wayland
     ];
 
     home.pointerCursor = 
