@@ -80,28 +80,11 @@
         desktopManager = {
             xterm.enable = false;
         };
-        
-        windowManager.i3.enable = true;
-        displayManager.sddm.enable = true;
     };
 
-    # services.displayManager = {
-    #     defaultSession = "none+i3";
-    # };
-    #
-    services.picom = {
-        enable = true;
-        shadow = true;
-        settings = {
-            shadow-radius = 20;
-            round-borders = 20;
-            corner-radius = 20;
-        };
-        wintypes = {
-            tooltip = { shadow = false; opacity = 0.75; full-shadow = false; };
-            dock = { shadow = false; full-shadow = false; };
-        };
-    };
+    services.displayManager.sddm.enable = true;
+    services.displayManager.sddm.wayland.enable = true;
+    services.displayManager.defaultSession = "hyprland";
 
     xdg.portal = {
         enable = true;
