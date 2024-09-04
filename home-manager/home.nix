@@ -100,5 +100,6 @@
         ".config/autorandr".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/autorandr";
         ".local/share/fonts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/fonts";
         ".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/hypr";
+        ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/waybar";
     };
 }
