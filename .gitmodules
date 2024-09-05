@@ -1,6 +1,6 @@
 [submodule "true-programmers-qwerty"]
 	path = true-programmers-qwerty
 	url = git@github.com:shakesbeare/true-programmers-qwerty.git
-[submodule "neovim"]
-	path = neovim
-	url = git@github.com:shakesbeare/neovim.git
+[submodule "nvim_config"]
+	path = nvim_config
+	url = git@github.com:shakesbeare/nvim_config.git

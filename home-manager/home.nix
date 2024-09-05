@@ -5,6 +5,7 @@
         ./modules/alacritty.nix
         ./modules/neovim.nix
         ./modules/zsh.nix
+	./modules/scripts.nix
     ];
     home.stateVersion = "24.05";
     home.sessionVariables = {
