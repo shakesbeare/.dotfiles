@@ -29,7 +29,7 @@
                 # normal = { family = "UbuntuMono Nerd Font" }
                 normal = { family = "Consolas Nerd Font"; style = "Regular"; };
                 # bold = { family = "Consolas", style = "Bold" }
-                size = if system == "aarch64-darwin" then 15 else 12;
+                size = if system == "aarch64-darwin" then 15 else 10;
                 offset = { x = 0; y = 0; };
             };
 
