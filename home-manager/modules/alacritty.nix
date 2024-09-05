@@ -16,7 +16,7 @@
             window = {
                 # modify paramater for MacOS
                 startup_mode = "Maximized";
-                decoration = "None";
+                decorations = "None";
                 dynamic_title = true;
                 opacity = 0.80;
                 blur = true;
@@ -29,7 +29,7 @@
                 # normal = { family = "UbuntuMono Nerd Font" }
                 normal = { family = "Consolas Nerd Font"; style = "Regular"; };
                 # bold = { family = "Consolas", style = "Bold" }
-                size = 1;
+                size = 12;
                 offset = { x = 0; y = 0; };
             };
 
