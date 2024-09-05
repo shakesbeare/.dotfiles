@@ -14,8 +14,7 @@
             };
 
             window = {
-                # modify paramater for MacOS
-                startup_mode = "Maximized";
+                startup_mode = "Maximized"; # should be SimpleFullscreen on MacOS
                 decorations = "None";
                 dynamic_title = true;
                 opacity = 0.80;
