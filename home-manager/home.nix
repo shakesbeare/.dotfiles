@@ -3,6 +3,8 @@
 {
     imports = [
         ./modules/alacritty.nix
+        ./modules/neovim.nix
+        ./modules/zsh.nix
     ];
     home.stateVersion = "24.05";
     home.sessionVariables = {
@@ -75,8 +77,6 @@
 
     services.autorandr.enable = true;
 
-    programs.neovim.enable = true;
-    programs.zsh.enable = true;
     programs.git = {
         enable = true;
         userName = "Berint Moffett";
@@ -105,7 +105,6 @@
     programs.home-manager.enable = true;
 
     home.file = {
-        ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/nvim";
         ".scripts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/scripts";
         ".config/autorandr".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/autorandr";
         ".local/share/fonts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/fonts";
