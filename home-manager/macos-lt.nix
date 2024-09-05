@@ -17,5 +17,6 @@
         ./modules/tmux.nix
         ./modules/programming.nix
         ./modules/discord.nix
+        ./modules/yabai.nix
     ];
 }
