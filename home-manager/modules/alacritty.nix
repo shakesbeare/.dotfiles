@@ -6,7 +6,7 @@
     };
 
     home.file = {
-        "test.toml".source = (pkgs.formats.toml { }).generate "test.toml" {
+        "foo.toml".source = (pkgs.formats.toml { }).generate "bar.toml" {
             settings = {
                 test = true;
             };
