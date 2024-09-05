@@ -11,6 +11,7 @@
     imports =
         [ # Include the results of the hardware scan.
         	./hardware-configuration.nix
+            ./cross-platform.nix
         ];
 
     # Bootloader.
@@ -126,11 +127,6 @@
     };
     environment.pathsToLink = [ "/libexec" ];
     programs.zsh.enable = true;
-    programs._1password.enable = true;
-    programs._1password-gui = {
-        enable = true;
-        polkitPolicyOwners = [ "bmoffett" ];
-    };
     programs.thunar.enable = true;
     programs.hyprland = {
         package = master-pkgs.hyprland;
