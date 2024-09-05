@@ -6,7 +6,7 @@
     };
 
     home.file = {
-        "./config/alacritty/alacritty.toml".source = (pkgs.formats.toml { }).generate "bar.toml" {
+        "~/.config/alacritty/alacritty.toml".source = (pkgs.formats.toml { }).generate "bar.toml" {
             live_config_reload = true;
             shell.program = "zsh";
             env = {
