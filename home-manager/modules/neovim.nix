@@ -6,6 +6,6 @@
 
     programs.neovim.enable = true;
     home.file = {
-        ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/nvim_config";
+        ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nvim_config";
     };
 }

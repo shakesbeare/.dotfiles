@@ -13,6 +13,10 @@ path+=($HOME/go/bin)
 path+=($HOME/.local/bin)
 path+=(/usr/local/texlive/2023/bin/universal-darwin)
 
+for p in ${(z)NIX_PROFILES}; do
+  fpath+=($p/share/zsh/site-functions $p/share/zsh/$ZSH_VERSION/functions $p/share/zsh/vendor-completions)
+done
+
 mkdir -p $HOME/.zfunc
 fpath+=$HOME/.zfunc
 

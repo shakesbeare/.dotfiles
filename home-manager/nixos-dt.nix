@@ -6,6 +6,11 @@
         programs.home-manager.enable = true;
     # } 
 
+    home.sessionVariables = {
+        SYSTEM = "x86_64-linux";
+    };
+
+
     imports = [
         ./modules/alacritty.nix
         ./modules/neovim.nix
@@ -24,4 +29,6 @@
         ./modules/discord.nix
         ./modules/maestral.nix
     ];
+
+    programs.firefox.enable = true;
 }

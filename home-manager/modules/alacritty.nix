@@ -1,11 +1,12 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, system, ... }: 
 {
     programs.alacritty.enable = true;
     home.sessionVariables = {
         TERMINAL = "alacritty";
     };
 
-    home.file = {
+    home.file = let
+    in {
         ".config/alacritty/alacritty.toml".source = (pkgs.formats.toml { }).generate "alacritty-config" {
             live_config_reload = true;
             shell.program = "zsh";
@@ -14,7 +15,7 @@
             };
 
             window = {
-                startup_mode = "Maximized"; # should be SimpleFullscreen on MacOS
+                startup_mode = if system == "aarch64-darwin" then "SimpleFullscreen" else "Maximized";
                 decorations = "None";
                 dynamic_title = true;
                 opacity = 0.80;
@@ -28,7 +29,7 @@
                 # normal = { family = "UbuntuMono Nerd Font" }
                 normal = { family = "Consolas Nerd Font"; style = "Regular"; };
                 # bold = { family = "Consolas", style = "Bold" }
-                size = 12;
+                size = if system == "aarch64-darwin" then 14 else 12;
                 offset = { x = 0; y = 0; };
             };
 

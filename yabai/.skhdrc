@@ -8,6 +8,7 @@ alt - 0x17: yabai -m space --focus 6
 alt - 0x18: yabai -m space --focus 7
 alt - 0x19: yabai -m space --focus 8
 alt - 0x20: yabai -m space --focus 9
+alt - 0x21: yabai -m space --focus 10
 
 # Move focused window to other desktop
 shift + alt - 0x12: yabai -m window --space 1
@@ -17,6 +18,8 @@ shift + alt - 0x15: yabai -m window --space 4
 shift + alt - 0x16: yabai -m window --space 5
 shift + alt - 0x17: yabai -m window --space 6
 shift + alt - 0x18: yabai -m window --space 7
+shift + alt - 0x19: yabai -m window --space 8
+shift + alt - 0x20: yabai -m window --space 10
 
 # Swap windows
 shift + alt - h: yabai -m window --swap west
