@@ -113,5 +113,6 @@
         ".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/hypr";
         ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/waybar";
         ".config/tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/tmux/.tmux.conf";
+        ".config/xkb/symbols/true-prog-qwerty".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/true-programmers-qwerty/Linux/true-prog-qwerty";
     };
 }

@@ -1,0 +1,3 @@
+[submodule "true-programmers-qwerty"]
+	path = true-programmers-qwerty
+	url = git@github.com:shakesbeare/true-programmers-qwerty.git
