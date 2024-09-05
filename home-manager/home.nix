@@ -7,7 +7,6 @@
     home.stateVersion = "24.05";
     home.sessionVariables = {
       EDITOR = "nvim";
-      TERMINAL = "alacritty";
     };
 
     home.packages = [
@@ -87,7 +86,6 @@
     programs.starship.enable = true;
     programs.firefox.enable = true;
     programs.eza.enable = true;
-    programs.alacritty.enable = true;
     programs.fzf.enable = true;
     programs.bat.enable = true;
     programs.feh.enable = true;
@@ -109,7 +107,6 @@
     home.file = {
         ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/zsh/.zshrc";
         ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/nvim";
-        ".config/alacritty".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/alacritty";
         ".scripts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/scripts";
         ".config/autorandr".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/autorandr";
         ".local/share/fonts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/fonts";
