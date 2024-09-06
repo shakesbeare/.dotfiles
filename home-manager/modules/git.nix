@@ -6,7 +6,6 @@
         userEmail = "berint.moffett@gmail.com";
         extraConfig = {
             init.defaultBranchName = "main";
-            pull.ff = "only"
         };
     };
 }
