@@ -28,6 +28,7 @@
         ./modules/programming.nix
         ./modules/discord.nix
         ./modules/maestral.nix
+        ./modules/obs-studio.nix
     ];
 
     programs.firefox.enable = true;
