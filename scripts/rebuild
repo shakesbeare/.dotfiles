@@ -1,23 +1,12 @@
 #!/usr/bin/env bash
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    cmd="darwin-rebuild switch --flake ~/.dotfiles/#macos-lt"
-    os="Nix-Darwin"
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    dirs="sudo nixos-rebuild switch --flake ~/.dotfiles/#nixos-dt"
-    os="NixOS"
-else
-    echo "Unhandled operating system $OSTYPE"
-    exit 1
-fi
-
 echo https://nixpk.gs/pr-tracker.html?pr=338836
 echo TRY TO REMOVE DEPENDENCIES ON nixpkgs/master
 set -e
 pushd ~/.dotfiles
 find . | grep "\.nix" | xargs git diff
-echo "${os} Rebuilding..."
-eval $cmd &>nixos-switch.log || (
+echo "NixOS Rebuilding..."
+sudo nixos-rebuild switch --flake .#nixos-dt &>nixos-switch.log || (
     cat nixos-switch.log | grep --color error && false)
 gen=$(nixos-rebuild list-generations | grep current)
 find . | grep "\.nix" | xargs git add

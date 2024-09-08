@@ -31,7 +31,6 @@
     '';
 
     security.polkit.enable = true;
-
     networking.hostName = "nixos-dt"; # Define your hostname.
     # networking.wireless.enable = true;    # Enables wireless support via wpa_supplicant.
 
@@ -128,6 +127,7 @@
         autotiling
         master-pkgs.xdg-desktop-portal-hyprland
         wl-clipboard
+        v4l-utils
     ];
     environment.variables = {
         XCURSOR_SIZE = "64";
