@@ -16,7 +16,7 @@
 
             window = {
                 startup_mode = "Maximized";
-                decorations = "Buttonless";
+                decorations = if system == "aarch64-darwin" then "Buttonless" else "None";
                 dynamic_title = true;
                 opacity = 0.80;
                 blur = true;
