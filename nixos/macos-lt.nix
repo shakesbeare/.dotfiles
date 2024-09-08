@@ -3,6 +3,7 @@
 {
     nixpkgs.config.hostPlatform = "aarch64-darwin";
     nixpkgs.config.allowUnfree = true;
+    nix.settings.experimental-features = [ "nix-command" "flakes"];
     imports = [
     ];
     # List packages installed in system profile. To search by name, run:

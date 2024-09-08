@@ -15,3 +15,16 @@ yabai -m config focus_follows_mouse autoraise
 
 # mouse follows focus
 yabai -m config mouse_follows_focus on
+
+# set modifier + left-click drag to move window (default: move)
+yabai -m config mouse_action1 move
+
+# set modifier + right-click drag to resize window (default: resize)
+yabai -m config mouse_action2 resize
+
+# window gaps 
+yabai -m config top_padding    10
+yabai -m config bottom_padding 10
+yabai -m config left_padding   10
+yabai -m config right_padding  10
+yabai -m config window_gap     10

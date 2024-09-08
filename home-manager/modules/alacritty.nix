@@ -15,8 +15,8 @@
             };
 
             window = {
-                startup_mode = if system == "aarch64-darwin" then "SimpleFullscreen" else "Maximized";
-                decorations = "None";
+                startup_mode = "Maximized";
+                decorations = "Buttonless";
                 dynamic_title = true;
                 opacity = 0.80;
                 blur = true;
@@ -65,6 +65,16 @@
                 magenta = "#B4009E";
                 cyan = "#61D6D6";
                 white = "#F2F2F2";
+            };
+
+            keyboard = {
+                bindings = [
+                    {
+                        key = "F";
+                        mods = "Command";
+                        action = "ToggleSimpleFullscreen";
+                    }
+                ];
             };
         };
     };

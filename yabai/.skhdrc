@@ -37,4 +37,7 @@ alt - l: yabai -m window --focus east
 shift + alt - t: yabai -m window --toggle float
 alt - f : yabai -m window --toggle zoom-fullscreen
 
+# ez term
+alt - return: alacritty
+
 
