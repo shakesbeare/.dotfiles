@@ -16,6 +16,7 @@
         ./modules/programming.nix
         ./modules/discord.nix
         ./modules/yabai.nix
+        ./modules/shake.nix
     ];
 
     home.sessionVariables = {

@@ -19,6 +19,11 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        shake = {
+            url = "github:shakesbeare/shake";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = { 
@@ -36,6 +41,7 @@
                     ./nixos/nixos-dt.nix
                     home-manager.nixosModules.home-manager {
                         home-manager.extraSpecialArgs = {
+                            inherit inputs;
                             system = linux-system;
                         };
                         home-manager.useGlobalPkgs = true;
@@ -52,6 +58,7 @@
                     ./nixos/macos-lt.nix
                     home-manager.darwinModules.home-manager {
                         home-manager.extraSpecialArgs = { 
+                            inherit inputs;
                             system = macos-system;
                          };
                         home-manager.useGlobalPkgs = true;

@@ -77,7 +77,28 @@
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-master": "nixpkgs-master"
+        "nixpkgs-master": "nixpkgs-master",
+        "shake": "shake"
+      }
+    },
+    "shake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725862376,
+        "narHash": "sha256-xDRHi5XE3osqK/VEBMoS4Dh0el7zTvXgDKHsQa92Rvc=",
+        "owner": "shakesbeare",
+        "repo": "shake",
+        "rev": "086b329e38e4c652e6e8e5c578fa626ef2aa01b0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "shakesbeare",
+        "repo": "shake",
+        "type": "github"
       }
     }
   },
