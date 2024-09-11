@@ -18,7 +18,7 @@
                 decorations = if system == "aarch64-darwin" then "Buttonless" else "None";
                 dynamic_title = true;
                 opacity = 0.80;
-                blur = true;
+                blur = false;
                 padding = { x = 5; y = 5; };
                 option_as_alt = "OnlyLeft";
             };
