@@ -29,6 +29,7 @@
         ./modules/discord.nix
         ./modules/maestral.nix
         ./modules/obs-studio.nix
+        ./modules/shake.nix
     ];
 
     programs.firefox.enable = true;

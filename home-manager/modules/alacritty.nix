@@ -5,8 +5,7 @@
         TERMINAL = "alacritty";
     };
 
-    home.file = let
-    in {
+    home.file = {
         ".config/alacritty/alacritty.toml".source = (pkgs.formats.toml { }).generate "alacritty-config" {
             live_config_reload = true;
             shell.program = "zsh";
