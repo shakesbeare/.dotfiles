@@ -12,6 +12,7 @@
 
 
     imports = [
+        ./modules/btop.nix
         ./modules/alacritty.nix
         ./modules/neovim.nix
         ./modules/zsh.nix
