@@ -6,7 +6,7 @@ set -e
 pushd ~/.dotfiles
 find . | grep "\.nix" | xargs git diff
 echo "NixOS Rebuilding..."
-sudo nixos-rebuild switch --flake .#nixos-dt 
+nixos-rebuild switch --flake .#nixos-dt --use-remote-sudo
 gen=$(nixos-rebuild list-generations | grep current)
 find . | grep "\.nix" | xargs git add
 git commit -m "$gen"

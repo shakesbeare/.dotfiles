@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Consolas Nerd Font";
+    font-family: "Berkeley Mono";
     font-size: 13px;
     min-height: 0;
 }
@@ -13,7 +13,7 @@ window#waybar {
 
 #window {
     font-weight: bold;
-    font-family: "Ubuntu";
+    font-family: "Berkeley Mono";
 }
 /*
 #workspaces {

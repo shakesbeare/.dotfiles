@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, system, ... }:
 {
-    home.file = {
-        ".local/share/fonts".source = config.lib.file.mkOutOfStoreSymlink "/home/bmoffett/.dotfiles/fonts";
-    };
+    home.packages = [
+        inputs.shake-fonts.packages.${system}.default
+    ];
 }

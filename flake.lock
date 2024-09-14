@@ -78,7 +78,8 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
-        "shake": "shake"
+        "shake": "shake",
+        "shake-fonts": "shake-fonts"
       }
     },
     "shake": {
@@ -99,6 +100,27 @@
         "owner": "shakesbeare",
         "repo": "shake",
         "type": "github"
+      }
+    },
+    "shake-fonts": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726297838,
+        "narHash": "sha256-GVXA4mYM2nsVahcrK/SBBZWZpQSKi1BFJJkXkjg8QWw=",
+        "ref": "main",
+        "rev": "7c33f8a519d2319a304656f9c4a6ed7038b73cb6",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/shakesbeare/fonts"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/shakesbeare/fonts"
       }
     }
   },

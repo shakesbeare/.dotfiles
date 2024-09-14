@@ -24,6 +24,11 @@
             url = "github:shakesbeare/shake";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        shake-fonts = {
+            url = "git+ssh://git@github.com/shakesbeare/fonts?ref=main";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = { 
