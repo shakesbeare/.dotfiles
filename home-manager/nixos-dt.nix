@@ -10,10 +10,6 @@
         SYSTEM = "x86_64-linux";
     };
 
-    home.packages = [
-        pkgs.wezterm
-    ];
-
     imports = [
         ./modules/btop.nix
         ./modules/alacritty.nix
