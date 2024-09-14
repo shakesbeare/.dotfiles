@@ -101,7 +101,7 @@
         #         default = [ "kde" ];
         #     };
         # };
-        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+        extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
     };
 
     services.unclutter.enable = true; # hide mouse cursor when inactive
