@@ -6,12 +6,12 @@
         programs.home-manager.enable = true;
     # } 
 
-    home.packages = [
-        pkgs.wezterm
-    ];
-
     home.sessionVariables = {
         SYSTEM = "x86_64-linux";
+    };
+
+    programs.wezterm = {
+        enable = true;
     };
 
 
