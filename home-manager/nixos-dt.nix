@@ -6,6 +6,10 @@
         programs.home-manager.enable = true;
     # } 
 
+    home.packages = with pkgs; [
+        gnumake
+    ];
+
     home.sessionVariables = {
         SYSTEM = "x86_64-linux";
     };
