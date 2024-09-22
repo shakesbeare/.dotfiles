@@ -10,6 +10,7 @@
         gnumake
         clang
         openssl
+        pkg-config
     ];
 
     home.sessionVariables = {
