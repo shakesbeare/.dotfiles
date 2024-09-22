@@ -9,7 +9,7 @@
     home.packages = with pkgs; [
         gnumake
         clang
-        openssl
+        openssl.dev
         pkg-config
     ];
 
