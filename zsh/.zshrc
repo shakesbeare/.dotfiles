@@ -20,9 +20,10 @@ done
 mkdir -p $HOME/.zfunc
 fpath+=$HOME/.zfunc
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    fpath+=("$(brew --prefix)/share/zsh/site-functions")
-fi
+# old school brew shit
+# if [[ "$OSTYPE" == "darwin"* ]]; then
+#     fpath+=("$(brew --prefix)/share/zsh/site-functions")
+# fi
 
 HISTFILE=~/.histfile
 HISTSIZE=25000
