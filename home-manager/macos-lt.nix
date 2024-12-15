@@ -18,6 +18,7 @@
         ./modules/yabai.nix
         ./modules/shake.nix
         ./modules/fonts.nix
+        ./modules/lf.nix
     ];
 
     home.sessionVariables = {
