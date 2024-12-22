@@ -7,8 +7,8 @@
 
     home.file = {
         ".config/alacritty/alacritty.toml".source = (pkgs.formats.toml { }).generate "alacritty-config" {
-            live_config_reload = true;
-            shell.program = "zsh";
+            general.live_config_reload = true;
+            terminal.shell.program = "zsh";
             env = {
                 TERM = "alacritty";
             };
@@ -26,7 +26,7 @@
 
             font = {
                 # normal = { family = "UbuntuMono Nerd Font" }
-                normal = { family = "Berkeley Mono"; style = "Regular"; };
+                normal = { family = "BerkeleyMono Nerd Font Mono"; style = "Regular"; };
                 # bold = { family = "Consolas", style = "Bold" }
                 size = if system == "aarch64-darwin" then 15 else 10;
                 offset = { x = 0; y = 0; };
