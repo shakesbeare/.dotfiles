@@ -25,6 +25,10 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        ghostty = {
+            url = "github:ghostty-org/ghostty";
+        };
+
         shake-fonts = {
             url = "git+ssh://git@github.com/shakesbeare/fonts?ref=main";
             inputs.nixpkgs.follows = "nixpkgs";

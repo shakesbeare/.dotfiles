@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 {
     home.packages = [
-        pkgs.neofetch
+        pkgs.fastfetch
+        pkgs.onefetch
     ];
 
     programs.zsh.enable = true;

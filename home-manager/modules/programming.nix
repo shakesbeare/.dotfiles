@@ -7,4 +7,8 @@
         pkgs.cargo-expand
         pkgs.nodejs
     ];
+
+    home.file = {
+        ".config/rustfmt/rustfmt.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/cargo/rustfmt.toml";
+    };
 }

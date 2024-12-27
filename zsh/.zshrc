@@ -82,6 +82,6 @@ alias cd="z" # zoxide
 
 eval "$(zoxide init zsh)"
 
-export TERM=alacritty
+export TERM=xterm-ghostty
 export DOTNET_ROOT=/usr/local/share/dotnet
 export path

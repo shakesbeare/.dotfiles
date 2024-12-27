@@ -11,6 +11,7 @@
         ./modules/neovim.nix
         ./modules/zsh.nix
         ./modules/scripts.nix
+        ./modules/btop.nix
         ./modules/git.nix
         ./modules/tmux.nix
         ./modules/programming.nix
@@ -19,6 +20,7 @@
         ./modules/shake.nix
         ./modules/fonts.nix
         ./modules/lf.nix
+        ./modules/ghostty.nix
     ];
 
     home.sessionVariables = {
