@@ -135,6 +135,7 @@
     };
     environment.pathsToLink = [ "/libexec" ];
     programs.zsh.enable = true;
+    programs.wshowkeys.enable = true;
     programs.thunar.enable = true;
     programs.hyprland = {
         package = master-pkgs.hyprland;

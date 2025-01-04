@@ -2,11 +2,10 @@
 {
     fonts.fontconfig.enable = true;
 
-    # home.packages = [
-    #     inputs.ghostty.packages.${system}.default
-    # ];
-
     home.file = {
-        ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/ghostty/";
+        ".config/ghostty" = {
+            source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/ghostty/";
+            text = builtins.readFile ../../ghostty/config + (if system == "aarch64-darwin" then ''font-size = 15'' else ''font-size = 12'');
+        };
     };
 }

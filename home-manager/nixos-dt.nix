@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, system, inputs, ... }:
 
 {
     # DANGER ZONE {
@@ -12,6 +12,7 @@
         openssl
         openssl.dev
         pkg-config
+        inputs.ghostty.packages.${system}.default
     ];
 
     home.sessionVariables = {
@@ -21,6 +22,7 @@
     imports = [
         ./modules/btop.nix
         ./modules/alacritty.nix
+        ./modules/ghostty.nix
         ./modules/neovim.nix
         ./modules/zsh.nix
         ./modules/scripts.nix
