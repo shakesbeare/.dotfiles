@@ -64,6 +64,10 @@
     };
 
     hardware.graphics.enable = true;
+    hardware.graphics.enable32Bit = true;
+    hardware.graphics.extraPackages = [ pkgs.amdvlk ];
+    hardware.graphics.extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+    environment.variables.AMD_VULKAN_ICD = "RADV";
 
     services.pipewire = {
         enable = true;
