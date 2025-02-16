@@ -40,6 +40,7 @@
 
     # Set your time zone.
     time.timeZone = "America/Boise";
+    time.hardwareClockInLocalTime = true;
 
     # Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
