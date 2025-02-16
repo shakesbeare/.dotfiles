@@ -115,6 +115,8 @@
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.open = true;
 
+    users.defaultUserShell = pkgs.zsh;
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.bmoffett = {
         isNormalUser = true;
