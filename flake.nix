@@ -33,6 +33,11 @@
             url = "git+ssh://git@github.com/shakesbeare/fonts?ref=main";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        pico8 = {
+            url = "git+ssh://git@github.com/shakesbeare/pico8?ref=main";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = { 
