@@ -13,7 +13,7 @@
         openssl.dev
         pkg-config
         inputs.ghostty.packages.${system}.default
-        inputs.pico8.packages.${system}.default
+        inputs.pico8-bin.packages.${system}.default
     ];
 
     home.sessionVariables = {

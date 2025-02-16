@@ -34,7 +34,7 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        pico8 = {
+        pico8-bin = {
             url = "git+ssh://git@github.com/shakesbeare/pico8?ref=main";
             inputs.nixpkgs.follows = "nixpkgs";
         };
