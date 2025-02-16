@@ -161,6 +161,27 @@
         "type": "github"
       }
     },
+    "pico8": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1739732454,
+        "narHash": "sha256-/MZ2B0ymtCXOSedewrK4HMHx01K+YW9/+5POqZDVLq0=",
+        "ref": "main",
+        "rev": "fb7a24f3a33bfe4336b0b9d77bcb15ccb0c988b0",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/shakesbeare/pico8"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/shakesbeare/pico8"
+      }
+    },
     "root": {
       "inputs": {
         "darwin": "darwin",
@@ -168,6 +189,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
+        "pico8": "pico8",
         "shake": "shake",
         "shake-fonts": "shake-fonts"
       }
