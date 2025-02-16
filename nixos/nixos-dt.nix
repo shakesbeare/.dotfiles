@@ -108,7 +108,7 @@
         extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
     };
 
-    services.unclutter.enable = true; # hide mouse cursor when inactive
+    services.unclutter.enable = false; # hide mouse cursor when inactive
 
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.open = true;
@@ -130,6 +130,7 @@
         gcc
         autotiling
         master-pkgs.xdg-desktop-portal-hyprland
+        # master-pkgs.cabinpkg
         wl-clipboard
         v4l-utils
     ];
