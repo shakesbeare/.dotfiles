@@ -20,6 +20,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        alejandra = {
+            url = "github:kamadorueda/alejandra/3.1.0";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         shake = {
             url = "github:shakesbeare/shake";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -41,17 +46,20 @@
     };
 
     outputs = { 
-       nixpkgs, darwin, home-manager, ...
+       nixpkgs, darwin, home-manager, alejandra, ...
     } @ inputs: let
         master-pkgs = inputs.nixpkgs-master.legacyPackages."x86_64-linux";
         macos-system = "aarch64-darwin";
         linux-system = "x86_64-linux";
     in {
         nixosConfigurations = {
-            nixos-dt = nixpkgs.lib.nixosSystem {
+            nixos-dt = nixpkgs.lib.nixosSystem rec {
                 specialArgs = { inherit inputs; inherit master-pkgs; };
                 system = linux-system;
                 modules = [
+                    {
+                        environment.systemPackages = [alejandra.defaultPackage.${system}];
+                    }
                     ./nixos/nixos-dt.nix
                     home-manager.nixosModules.home-manager {
                         home-manager.extraSpecialArgs = {

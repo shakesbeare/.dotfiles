@@ -6,6 +6,7 @@
         pkgs.cmake
         pkgs.cargo-expand
         pkgs.nodejs
+        pkgs.nixd
     ];
 
     home.file = {
