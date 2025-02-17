@@ -146,6 +146,7 @@
     programs.zsh.enable = true;
     programs.wshowkeys.enable = true;
     programs.thunar.enable = true;
+    programs.ccache.enable = true;
     programs.hyprland = {
         package = master-pkgs.hyprland;
         portalPackage = master-pkgs.xdg-desktop-portal-hyprland;
