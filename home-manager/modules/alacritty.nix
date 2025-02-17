@@ -17,7 +17,7 @@
                 startup_mode = "Maximized";
                 decorations = if system == "aarch64-darwin" then "Buttonless" else "None";
                 dynamic_title = true;
-                opacity = 0.80;
+                opacity = 0.7;
                 blur = false;
                 padding = { x = 5; y = 5; };
                 option_as_alt = "OnlyLeft";
