@@ -133,7 +133,7 @@
         pavucontrol
         gcc
         autotiling
-        master-pkgs.xdg-desktop-portal-hyprland
+        xdg-desktop-portal-hyprland
         # master-pkgs.cabinpkg
         wl-clipboard
         v4l-utils
