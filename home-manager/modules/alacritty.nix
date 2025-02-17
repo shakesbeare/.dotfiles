@@ -41,7 +41,7 @@
             colors = {
                 draw_bold_text_with_bright_colors = true;
                 cursor = { text = "#D3D3D3"; cursor = "#D3D3D3"; };
-                primary.background = "#0C0C0C";
+                primary.background = "#000000";
             };
 
             colors.normal = {
