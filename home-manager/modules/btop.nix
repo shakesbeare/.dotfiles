@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
 {
-    programs.btop.enable = true;
+  config,
+  pkgs,
+  ...
+}: {
+  programs.btop.enable = true;
 }

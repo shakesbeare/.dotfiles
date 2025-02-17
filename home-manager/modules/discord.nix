@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
 {
-    home.packages = [
-        pkgs.discord
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = [
+    pkgs.discord
+  ];
 }

@@ -1,8 +1,13 @@
-{ config, pkgs, inputs, system, ... }:
 {
-    fonts.fontconfig.enable = true;
+  config,
+  pkgs,
+  inputs,
+  system,
+  ...
+}: {
+  fonts.fontconfig.enable = true;
 
-    home.packages = [
-        inputs.shake-fonts.packages.${system}.default
-    ];
+  home.packages = [
+    inputs.shake-fonts.packages.${system}.default
+  ];
 }

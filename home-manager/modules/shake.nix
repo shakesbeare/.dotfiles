@@ -1,6 +1,11 @@
-{ config, pkgs, inputs, system, ... }:
 {
-    home.packages = [
-        inputs.shake.packages.${system}.default
-    ];
+  config,
+  pkgs,
+  inputs,
+  system,
+  ...
+}: {
+  home.packages = [
+    inputs.shake.packages.${system}.default
+  ];
 }

@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
 {
-    home.packages = [
-        pkgs.maestral
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = [
+    pkgs.maestral
+  ];
 }
