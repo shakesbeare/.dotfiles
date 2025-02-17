@@ -134,7 +134,7 @@
         gcc
         autotiling
         xdg-desktop-portal-hyprland
-        # master-pkgs.cabinpkg
+        master-pkgs.cabinpkg
         wl-clipboard
         v4l-utils
     ];
