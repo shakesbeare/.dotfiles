@@ -34,3 +34,8 @@ adjust-box-thickness = 1
 
 macos-option-as-alt = true
 
+# ------------------ #
+#      KEYBINDS      #
+# ------------------ #
+
+keybind = global:cmd+$=toggle_quick_terminal
