@@ -15,7 +15,8 @@
   ];
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  # services.nix-daemon.enable = true;
+  nix.enable = true;
   services.yabai.enable = true;
   services.yabai.enableScriptingAddition = true;
   services.skhd.enable = true;

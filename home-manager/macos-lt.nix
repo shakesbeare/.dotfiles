@@ -30,23 +30,25 @@
     SYSTEM = "aarch64-darwin";
   };
 
-    home.activation = if pkgs.stdenv.isDarwin then 
-    {
-        brewInstallFirefox = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        /opt/homebrew/bin/brew install firefox 
-        '';
-        brewInstallDropbox = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation =
+    if pkgs.stdenv.isDarwin
+    then {
+      brewInstallFirefox = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        /opt/homebrew/bin/brew install firefox
+      '';
+      brewInstallDropbox = lib.hm.dag.entryAfter ["writeBoundary"] ''
         /opt/homebrew/bin/brew install dropbox
-        '';
-        brewInstallMacsFanControl = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      '';
+      brewInstallMacsFanControl = lib.hm.dag.entryAfter ["writeBoundary"] ''
         /opt/homebrew/bin/brew install macs-fan-control
-        '';
-        brewInstallSpotify = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      '';
+      brewInstallSpotify = lib.hm.dag.entryAfter ["writeBoundary"] ''
         /opt/homebrew/bin/brew install spotify
-        '';
+      '';
 
-        brewInstallZig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      brewInstallZig = lib.hm.dag.entryAfter ["writeBoundary"] ''
         /opt/homebrew/bin/brew install zig
-        '';
-    } else {};
+      '';
+    }
+    else {};
 }
