@@ -43,7 +43,7 @@
       url = "git+ssh://git@github.com/shakesbeare/pico8-bin?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
     };
