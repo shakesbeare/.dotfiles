@@ -140,6 +140,7 @@
     master-pkgs.cabinpkg
     wl-clipboard
     v4l-utils
+    nixd
   ];
   environment.variables = {
     XCURSOR_SIZE = "64";
