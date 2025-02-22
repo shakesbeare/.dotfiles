@@ -115,8 +115,11 @@
 
   services.unclutter.enable = false; # hide mouse cursor when inactive
 
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.open = true;
+  hardware.nvidia = {
+      modesetting.enable = true;
+      open = true;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+  };
 
   users.defaultUserShell = pkgs.zsh;
 
