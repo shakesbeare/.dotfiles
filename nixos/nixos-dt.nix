@@ -118,7 +118,7 @@
   hardware.nvidia = {
       modesetting.enable = true;
       open = true;
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   users.defaultUserShell = pkgs.zsh;
