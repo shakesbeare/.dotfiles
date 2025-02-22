@@ -11,6 +11,7 @@
     pkgs.nodejs
     pkgs.binaryen
     pkgs.gh
+    pkgs.lua-language-server
   ];
 
   home.file = {
