@@ -13,6 +13,8 @@
       core.editor = "$(which nvim)";
       merge = {
         tool = "nvim";
+      };
+      mergetool.nvim = {
         cmd = "/Users/bmoffett/.local/share/bob/nvim-bin/nvim \\\"$MERGED\\\" -c \":Gvdiffsplit!\"";
       };
     };
