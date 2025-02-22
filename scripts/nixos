@@ -4,6 +4,7 @@ echo https://nixpk.gs/pr-tracker.html?pr=338836
 echo TRY TO REMOVE DEPENDENCIES ON nixpkgs/master
 set -e
 pushd ~/.dotfiles
+find . | grep "\.nix" | xargs alejandra
 find . | grep "\.nix" | xargs git diff
 echo "NixOS Rebuilding..."
 nixos-rebuild switch --flake .#nixos-dt --use-remote-sudo
