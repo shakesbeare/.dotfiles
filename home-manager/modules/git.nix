@@ -15,7 +15,7 @@
         tool = "nvim";
       };
       mergetool.nvim = {
-        cmd = "nvim \\\"$MERGED\\\" -c \":Gvdiffsplit!\"";
+        cmd = "nvim \"$MERGED\" -c \":Gdiffsplit!\"";
       };
     };
   };
