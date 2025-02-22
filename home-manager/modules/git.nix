@@ -9,13 +9,13 @@
       graph = "log --all --graph --decorate --pretty=format:'%C(#005f87)%h%Creset :%C(#d75f00)%d%Creset %C(#005f87)%an%Creset %C(#008700)%cd (%cr)%n%s%n' --date=short";
     };
     extraConfig = {
-      init.defaultBranchName = "main";
+      init.defaultBranch = "main";
       core.editor = "$(which nvim)";
       merge = {
         tool = "nvim";
       };
       mergetool.nvim = {
-        cmd = "/Users/bmoffett/.local/share/bob/nvim-bin/nvim \\\"$MERGED\\\" -c \":Gvdiffsplit!\"";
+        cmd = "nvim \\\"$MERGED\\\" -c \":Gvdiffsplit!\"";
       };
     };
   };
