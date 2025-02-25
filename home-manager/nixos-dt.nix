@@ -18,6 +18,8 @@
     pkg-config
     inputs.ghostty.packages.${system}.default
     inputs.pico8-bin.packages.${system}.default
+    glxinfo
+    gimp
   ];
 
   home.sessionVariables = {

@@ -11,6 +11,8 @@
     pkgs.nodejs
     pkgs.binaryen
     pkgs.gh
+    pkgs.zip
+    pkgs.unzip
   ];
 
   home.file = {
