@@ -12,6 +12,7 @@
 
   home.packages = with pkgs; [
     gnumake
+    clang-tools
     clang
     openssl
     openssl.dev
