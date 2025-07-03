@@ -17,6 +17,13 @@
     ./cross-platform.nix
   ];
 
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = ["bmoffett"];
+  };
+
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   # Bootloader.
   boot.loader.systemd-boot.enable = false;
 

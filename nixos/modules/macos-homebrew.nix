@@ -35,6 +35,7 @@
       "focusrite-control"
       "skim"
       "microsoft-word"
+      "virtualbox"
     ];
     taps = [
       "homebrew/core"
