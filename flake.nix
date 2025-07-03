@@ -21,17 +21,13 @@
     };
 
     alejandra = {
-      url = "github:kamadorueda/alejandra/3.1.0";
+      url = "github:kamadorueda/alejandra/4.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     shake = {
       url = "github:shakesbeare/shake";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
     };
 
     shake-fonts = {
@@ -42,23 +38,6 @@
     pico8-bin = {
       url = "git+ssh://git@github.com/shakesbeare/pico8-bin?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-    };
-
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
     };
   };
 
@@ -104,7 +83,7 @@
         modules = [
           ./nixos/macos-lt.nix
           {
-            environment.systemPackages = [alejandra.defaultPackage.${system}];
+            environment.systemPackages = [alejandra.defaultPackage.${"x86_64-darwin"}];
           }
           home-manager.darwinModules.home-manager
           {
