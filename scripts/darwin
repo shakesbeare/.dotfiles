@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+pushd ~/.dotfiles
+find . | grep "\.nix" | xargs alejandra
+find . | grep "\.nix" | xargs git diff
+echo "nix-darwin Rebuilding..."
+sudo darwin-rebuild switch --flake .#macos-lt
+gen=$(sudo darwin-rebuild --list-generations | grep current)
+find . | grep "\.nix" | xargs git add
+git commit -m "$gen"
+popd
