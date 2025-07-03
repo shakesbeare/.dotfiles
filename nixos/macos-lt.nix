@@ -7,6 +7,7 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   imports = [
+    ./modules/macos-homebrew.nix
   ];
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -55,28 +56,6 @@
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 4;
-  };
-
-  homebrew = {
-    enable = true;
-    global = {autoUpdate = false;};
-    onActivation = {
-      cleanup = "zap";
-      autoUpdate = false;
-      upgrade = false;
-    };
-    casks = [
-      "firefox"
-      "dropbox"
-      "macs-fan-control"
-      "alacritty"
-      "discord"
-    ];
-    taps = [
-      "homebrew/core"
-      "homebrew/bundle"
-      "homebrew/services"
-    ];
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
