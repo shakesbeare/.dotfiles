@@ -1,3 +1,5 @@
+# all graphical applications should be installed with homebrew
+# terminal only apps or services should be installed elsewhere
 {
   config,
   pkgs,
@@ -11,6 +13,11 @@
       autoUpdate = false;
       upgrade = false;
     };
+
+    # TODO: possibly reorganize these to better modularize
+    # some macos nix setup might not want focusrite-control, for example
+    # not necessary, for now
+
     casks = [
       "firefox"
       "google-chrome"

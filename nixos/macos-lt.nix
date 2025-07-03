@@ -26,6 +26,8 @@
 
   services.skhd.enable = true;
 
+    # add as many settings as possible here
+# to avoid needing to redo them later
   system = {
     primaryUser = "bmoffett";
     keyboard = {
