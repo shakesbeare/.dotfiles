@@ -2,7 +2,7 @@ return {
   paddings = 3,
   group_paddings = 5,
 
-  icons = "sf-symbols", -- alternatively available: NerdFont
+  icons = "NerdFont", -- alternatively available: NerdFont
 
   -- This is a font configuration for SF Pro and SF Mono (installed manually)
   -- font = require("helpers.default_font"),
@@ -13,10 +13,10 @@ return {
     numbers = "BerkeleyMono Nerd Font", -- Used for numbers
     style_map = {
       ["Regular"] = "Regular",
-      ["Semibold"] = "Medium",
-      ["Bold"] = "SemiBold",
+      ["Semibold"] = "Regular",
+      ["Bold"] = "Bold",
       ["Heavy"] = "Bold",
-      ["Black"] = "ExtraBold",
+      ["Black"] = "Bold",
     },
   },
 }
