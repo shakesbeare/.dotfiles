@@ -34,10 +34,7 @@
     service = {
       enable = true;
     };
-    configType = "lua";
-    luaPackage = pkgs.lua5_4;
-    config = ''
-
-    '';
+    configType = "bash";
+    config = "./modules/sketchybar/config";
   };
 }
