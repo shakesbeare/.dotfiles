@@ -5,7 +5,7 @@ local app_icons = require("helpers.app_icons")
 
 local spaces = {}
 
-for i = 1, 5, 1 do
+function new_space(i)
   local space = sbar.add("space", "space." .. i, {
     space = i,
     icon = {
@@ -92,6 +92,10 @@ for i = 1, 5, 1 do
   space:subscribe("mouse.exited", function(_)
     space:set({ popup = { drawing = false } })
   end)
+end
+
+for i = 1, 5, 1 do
+    new_space(i)
 end
 
 local space_window_observer = sbar.add("item", {
