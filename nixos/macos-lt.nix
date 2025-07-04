@@ -14,6 +14,7 @@
   environment.systemPackages = [
     pkgs.vim
     pkgs.nixd
+    pkgs.lua5_4
   ];
 
   # Auto upgrade nix package and the daemon service.
@@ -22,11 +23,6 @@
   services.yabai = {
     enable = true;
     enableScriptingAddition = true;
-  };
-
-  services.sketchybar = {
-    enable = true;
-    config = builtins.readFile ../sketchybar/sketchybarrc;
   };
 
   services.skhd.enable = true;

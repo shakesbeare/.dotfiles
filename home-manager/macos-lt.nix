@@ -28,4 +28,18 @@
   home.sessionVariables = {
     SYSTEM = "aarch64-darwin";
   };
+
+  programs.sketchybar = {
+    enable = true;
+    service = {
+      enable = true;
+    };
+    configType = "lua";
+    luaPackage = pkgs.lua5_4;
+    sbarLuaPackage = pkgs.sbarlua;
+    config = {
+      source = ../sketchybar;
+      recursive = true;
+    };
+  };
 }
