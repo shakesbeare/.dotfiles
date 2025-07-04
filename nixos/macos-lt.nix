@@ -27,6 +27,10 @@
 
   services.skhd.enable = true;
 
+  services.sketchybar = {
+    enable = true;
+  };
+
   # add as many settings as possible here
   # to avoid needing to redo them later
   system = {

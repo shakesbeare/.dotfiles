@@ -30,9 +30,9 @@
   };
 
   programs.sketchybar = {
-    enable = true;
+    enable = false;
     service = {
-      enable = true;
+      enable = false;
     };
     configType = "lua";
     luaPackage = pkgs.lua5_4;
