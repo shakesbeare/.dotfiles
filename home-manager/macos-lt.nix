@@ -31,5 +31,13 @@
 
   programs.sketchybar = {
     enable = true;
+    service = {
+      enable = true;
+    };
+    configType = "lua";
+    luaPackage = pkgs.lua5_4;
+    config = ''
+
+    '';
   };
 }
