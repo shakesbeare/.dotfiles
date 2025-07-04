@@ -36,6 +36,10 @@
       "skim"
       "microsoft-word"
       # "virtualbox"
+
+      "sf-symbols"
+      "font-sf-mono"
+      "font-sf-pro"
     ];
     taps = [
       "homebrew/core"
