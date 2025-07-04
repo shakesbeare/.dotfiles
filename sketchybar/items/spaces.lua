@@ -5,7 +5,7 @@ local app_icons = require("helpers.app_icons")
 
 local spaces = {}
 
-for i = 1, 10, 1 do
+for i = 1, 5, 1 do
   local space = sbar.add("space", "space." .. i, {
     space = i,
     icon = {
@@ -85,7 +85,7 @@ for i = 1, 10, 1 do
       space:set({ popup = { drawing = "toggle" } })
     else
       local op = (env.BUTTON == "right") and "--destroy" or "--focus"
-      sbar.exec("yabai -m space " .. op .. " " .. env.SID)
+      sbar.exec("/run/current-system/sw/bin/yabai -m space " .. op .. " " .. env.SID)
     end
   end)
 
@@ -132,7 +132,7 @@ space_window_observer:subscribe("space_windows_change", function(env)
   end
 
   if (no_app) then
-    icon_line = " —"
+    icon_line = ""
   end
   sbar.animate("tanh", 10, function()
     spaces[env.INFO.space]:set({ label = icon_line })
