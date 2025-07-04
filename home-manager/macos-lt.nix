@@ -33,8 +33,8 @@
     enable = true;
     service = {
       enable = true;
-      errorLogFile = /var/log/sketcherr;
-      outLogFile = /var/log/sketchlog;
+      errorLogFile = /tmp/sketcherr;
+      outLogFile = /tmp/sketchlog;
     };
     configType = "lua";
     luaPackage = pkgs.lua5_4;
