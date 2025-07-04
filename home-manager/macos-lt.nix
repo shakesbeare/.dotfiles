@@ -35,6 +35,9 @@
       enable = true;
     };
     configType = "bash";
-    config = "./modules/sketchybar/config";
+    config = {
+      source = ./modules/sketchybar/config;
+      recursive = true;
+    };
   };
 }
