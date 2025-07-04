@@ -4,6 +4,9 @@ sudo yabai --load-sa
 
 yabai -m config debug_output on
 
+# hide the menubar
+yabai -m config menubar_opacity 0.0
+
 # managed windows
 yabai -m config layout bsp 
 
