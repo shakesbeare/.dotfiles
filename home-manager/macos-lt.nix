@@ -30,9 +30,10 @@
   };
 
   programs.sketchybar = {
-    enable = false;
+    enable = true;
     service = {
-      enable = false;
+      enable = true;
+      errorLogFile = /tmp/sketcherr;
     };
     configType = "lua";
     luaPackage = pkgs.lua5_4;
