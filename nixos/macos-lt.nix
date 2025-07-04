@@ -26,6 +26,7 @@
 
   services.sketchybar = {
     enable = true;
+    config = builtins.readFile ../sketchybar/sketchybarrc;
   };
 
   services.skhd.enable = true;
