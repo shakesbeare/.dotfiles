@@ -24,6 +24,10 @@
     enableScriptingAddition = true;
   };
 
+  services.sketchybar = {
+    enable = true;
+  };
+
   services.skhd.enable = true;
 
   # add as many settings as possible here

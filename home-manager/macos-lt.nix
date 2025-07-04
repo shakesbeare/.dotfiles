@@ -28,16 +28,4 @@
   home.sessionVariables = {
     SYSTEM = "aarch64-darwin";
   };
-
-  programs.sketchybar = {
-    enable = true;
-    service = {
-      enable = true;
-    };
-    configType = "bash";
-    config = {
-      source = ./modules/sketchybar/config;
-      recursive = true;
-    };
-  };
 }
