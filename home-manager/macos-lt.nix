@@ -28,4 +28,8 @@
   home.sessionVariables = {
     SYSTEM = "aarch64-darwin";
   };
+
+  programs.sketchybar = {
+    enable = true;
+  };
 }
