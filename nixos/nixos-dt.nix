@@ -14,7 +14,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./nixos-dt-hardware.nix
-    ./cross-platform.nix
   ];
 
   programs._1password.enable = true;

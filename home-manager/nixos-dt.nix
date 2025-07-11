@@ -17,7 +17,6 @@
     openssl
     openssl.dev
     pkg-config
-    inputs.ghostty.packages.${system}.default
     inputs.pico8-bin.packages.${system}.default
     glxinfo
     gimp
@@ -30,7 +29,6 @@
   imports = [
     ./modules/btop.nix
     ./modules/alacritty.nix
-    ./modules/ghostty.nix
     ./modules/neovim.nix
     ./modules/zsh.nix
     ./modules/scripts.nix
@@ -44,6 +42,7 @@
     ./modules/cursor.nix
     ./modules/screenshot.nix
     ./modules/programming.nix
+    # ./modules/haskell.nix
     ./modules/discord.nix
     ./modules/maestral.nix
     ./modules/obs-studio.nix
