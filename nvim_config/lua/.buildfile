@@ -1,6 +1,4 @@
-local os_name = jit.os
-
 return {
-    build = "echo Hello, Build!",
-    run = "echo Hello, Run!",
+    build = "echo Hello, Build from "..os_name,
+    run = "echo Hello, Run from "..os_name,
 }

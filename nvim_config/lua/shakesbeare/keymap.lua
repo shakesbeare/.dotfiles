@@ -59,31 +59,84 @@ end
 function run_command(buildfile_table, build)
 	local fidget = require('fidget')
 	local build = build or false
-	local cmd = {}
+	local script = {}
+	local title = ""
 	if build then
-		for w in buildfile_table.build:gmatch("%S+") do table.insert(cmd, w) end
+		title = "Build"
+		for l in buildfile_table.build:gmatch("[^\r\n]+") do table.insert(script, l) end
 	else
-		for w in buildfile_table.run:gmatch("%S+") do table.insert(cmd, w) end
+		title = "Run"
+		-- "%S+"
+		for l in buildfile_table.run:gmatch("[^\r\n]+") do table.insert(script, l) end
 	end
-	local buffer = {}
-	pcall(function()
+	local handle = fidget.progress.handle.create({
+		title = title,
+		message = "Beginning job",
+		lsp_client = { name = "Project "..title},
+		percentage = 0,
+	})
+	local notify = vim.schedule_wrap(fidget.notify)
+
+	for i, line in ipairs(script) do
+		local cmd = {}
+		for w in line:gmatch("%S+") do table.insert(cmd, w) end
+
 		vim.system(cmd, { text = true, stdout = function(err, data) 
 			if err then
-				fidget.notify(err)
+				notify(err, "error")
 			elseif data then
-				fidget.notify(data)
+				handle_output(handle, data)
+				-- notify(data, "info")
 			end
 		end }, function(obj)
-				fidget.notify("Build completed")
-		end)
-	end)
+				handle:finish()
+			end)
+	end
+
 end
--- Run build configuration in .buildfile in the workspace root
+
+-- parses the string for messages 
+-- see .buildfile docs below for more
+function handle_output(handle, str)
+	local fidget = require('fidget')
+	local notify = vim.schedule_wrap(fidget.notify)
+	local commands = {
+		"percentage",
+		"message",
+		"warn",
+		"error"
+	}
+
+	for i, command in ipairs(commands) do
+		if str:sub(1, #command) == command then
+			local arg = str:sub(#command+2, -1)
+			if command == "message" then
+				handle.message = arg
+			elseif command == "percentage" then
+				handle.percentage = arg
+			elseif command == "warn" then
+				notify(arg, "warn")
+			elseif command == "error" then
+				notify(arg, "error")
+			end
+			return
+		end
+	end
+
+	notify(str)
+end
+
 -- .buildfile is a lua file which returns a table in this format
 -- return {
 --     build = "echo Hello, Build!",
 --     run = "echo Hello, Run!",
 -- }
+--
+-- Update the progress by emitting "percentage:XX" where XX is 
+-- a whole number representing the percent completiono
+--
+-- Update the status message by emitting "message:XX" where XX is
+-- the current status of the script
 vim.keymap.set("n", "<C-b>", function()
 	if not check_build_file() then 
 		return
@@ -92,12 +145,6 @@ vim.keymap.set("n", "<C-b>", function()
 	run_command(result, true)
 end, { silent = true, noremap = true, desc = "Find and execute a build configuration in the .buildfile in the workspace root"})
 
--- Run run configuration in .buildfile in the workspace root
--- .buildfile is a lua file which returns a table in this format
--- return {
---     build = "echo Hello, Build!",
---     run = "echo Hello, Run!",
--- }
 vim.keymap.set("n", "<F5>", function()
 	if not check_build_file() then 
 		return
