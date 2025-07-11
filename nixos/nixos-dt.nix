@@ -5,7 +5,6 @@
   config,
   pkgs,
   inputs,
-  master-pkgs,
   ...
 }: {
   system.stateVersion = "24.05"; # Did you read the comment?
@@ -146,7 +145,6 @@
     gcc
     autotiling
     xdg-desktop-portal-hyprland
-    master-pkgs.cabinpkg
     wl-clipboard
     v4l-utils
     nixd
@@ -161,8 +159,8 @@
   programs.thunar.enable = true;
   programs.ccache.enable = true;
   programs.hyprland = {
-    package = master-pkgs.hyprland;
-    portalPackage = master-pkgs.xdg-desktop-portal-hyprland;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     enable = true;
     xwayland.enable = true;
   };

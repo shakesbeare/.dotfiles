@@ -6,9 +6,7 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    nixpkgs-master = {
-      url = "github:nixos/nixpkgs/master";
-    };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -48,7 +46,9 @@
     alejandra,
     ...
   } @ inputs: let
-    master-pkgs = inputs.nixpkgs-master.legacyPackages."x86_64-linux";
+    overlays = [
+      inputs.neovim-nightly-overlay.overlays.default
+    ];
     macos-system = "aarch64-darwin";
     linux-system = "x86_64-linux";
   in {
@@ -56,11 +56,13 @@
       nixos-dt = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           inherit inputs;
-          inherit master-pkgs;
         };
         system = linux-system;
         modules = [
           ./nixos/nixos-dt.nix
+          {
+            nixpkgs.overlays = overlays;
+          }
           {
             environment.systemPackages = [alejandra.defaultPackage.${system}];
           }
