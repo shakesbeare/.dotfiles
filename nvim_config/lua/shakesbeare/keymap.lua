@@ -78,19 +78,50 @@ function run_command(buildfile_table, build)
 	local notify = vim.schedule_wrap(fidget.notify)
 
 	for i, line in ipairs(script) do
+		local word = ""
 		local cmd = {}
-		for w in line:gmatch("%S+") do table.insert(cmd, w) end
+		-- for w in line:gmatch("%S+") do table.insert(cmd, w) end
 
-		vim.system(cmd, { text = true, stdout = function(err, data) 
-			if err then
-				notify(err, "error")
-			elseif data then
-				handle_output(handle, data)
-				-- notify(data, "info")
+		local i = 1
+		while i < #line do 
+			if line:sub(i, i) == " " then
+				table.insert(cmd, word)
+				word = ""
+			elseif line:sub(i, i) == "\"" then
+				word = word..line:sub(i, i)
+				i = i + 1
+				while i < #line do
+					word = word..line:sub(i, i)
+					if line:sub(i, i) == "\"" then
+						table.insert(cmd, word)
+						break
+					end
+					i = i + 1
+				end
+			else
+				word = word..line:sub(i, i)
 			end
-		end }, function(obj)
+			i = i + 1
+		end
+
+		for i,v in ipairs(cmd) do
+			print(v)
+		end
+
+		vim.system(cmd, { text = true, 
+			stdout = function(err, data) 
+				if err then
+					notify(err, "error")
+				elseif data then
+					handle_output(handle, data)
+					-- notify(data, "info")
+				end
+			end 
+			}, 
+			function(obj)
 				handle:finish()
-			end)
+			end
+		)
 	end
 
 end

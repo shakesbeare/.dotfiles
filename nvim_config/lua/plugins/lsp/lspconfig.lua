@@ -22,12 +22,14 @@ return {
 		-- })
 
 		-- place servers here when they are not handled by Mason
-		require("lspconfig").gdscript.setup({
+		vim.lsp.enable('gdscript')
+		vim.lsp.config('gdscript', {
 			capabilities = capabilities,
 			cmd = { "nc", "localhost", "6005" },
 		})
 		
-		require('lspconfig').nixd.setup({
+		vim.lsp.enable('nixd')
+		vim.lsp.config('nixd', {
 			cmd = { 'nixd' },
 			settings = {
 				nixd = {
@@ -50,15 +52,18 @@ return {
 			},
 		})
 
-		require('lspconfig')['hls'].setup {
+		vim.lsp.enable('hls')
+		vim.lsp.config('hls', {
 			filetypes = { 'haskell', 'lhaskell', 'cabal' },
-		}
+		})
 
-		require('lspconfig').clangd.setup {
+		vim.lsp.enable('clangd')
+		vim.lsp.config('clangd', {
 			capabilities = capabilities,
-		}
+		})
 
-		require("lspconfig").rust_analyzer.setup({
+		vim.lsp.enable('rust-analyzer')
+		vim.lsp.config('rust-analyzer', {
 			capabilities = capabilities,
 			settings = {
 				["rust-analyzer"] = {
