@@ -22,13 +22,11 @@ return {
 		-- })
 
 		-- place servers here when they are not handled by Mason
-		vim.lsp.enable('gdscript')
 		vim.lsp.config('gdscript', {
 			capabilities = capabilities,
 			cmd = { "nc", "localhost", "6005" },
 		})
 		
-		vim.lsp.enable('nixd')
 		vim.lsp.config('nixd', {
 			cmd = { 'nixd' },
 			settings = {
@@ -52,22 +50,22 @@ return {
 			},
 		})
 
-		vim.lsp.enable('hls')
 		vim.lsp.config('hls', {
 			filetypes = { 'haskell', 'lhaskell', 'cabal' },
 		})
 
-		vim.lsp.enable('clangd')
 		vim.lsp.config('clangd', {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.enable('rust-analyzer')
 		vim.lsp.config('rust-analyzer', {
 			capabilities = capabilities,
+			cmd = { "rust-analyzer" },
+			filetypes = { 'rust' },
 			settings = {
 				["rust-analyzer"] = {
-					checkOnSave = {
+					checkOnSave = true,
+					check = {
 						allFeatures = true,
 						overrideCommand = {
 							"cargo",

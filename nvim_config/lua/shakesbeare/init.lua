@@ -11,14 +11,6 @@ vim.filetype.add({ filename = { ['.buildfile'] = 'lua' }})
 -- 	end,
 -- })
 
-vim.api.nvim_create_autocmd({ "UiEnter" }, {
-	group = vim.api.nvim_create_augroup("toggle_no_nock_pain", {}),
-	pattern = "*",
-	callback = function() 
-		require('no-neck-pain').enable()
-	end
-})
-
 vim.api.nvim_create_autocmd({ "WinEnter", "WinResized" }, {
 	group = vim.api.nvim_create_augroup("set_tabline_offset", {}),
 	pattern = "*",
