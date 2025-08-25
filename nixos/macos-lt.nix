@@ -14,6 +14,7 @@
   environment.systemPackages = [
     pkgs.vim
     pkgs.nixd
+    pkgs.lua5_4
   ];
 
   # Auto upgrade nix package and the daemon service.

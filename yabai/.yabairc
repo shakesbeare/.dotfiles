@@ -4,6 +4,9 @@ sudo yabai --load-sa
 
 yabai -m config debug_output on
 
+# hide the menubar
+yabai -m config menubar_opacity 0.0
+
 # managed windows
 yabai -m config layout bsp 
 
@@ -15,9 +18,6 @@ yabai -m auto_balance on
 
 # focus follows mouse
 yabai -m config focus_follows_mouse autoraise
-
-# mouse follows focus
-yabai -m config mouse_follows_focus on
 
 # set modifier + left-click drag to move window (default: move)
 yabai -m config mouse_action1 move

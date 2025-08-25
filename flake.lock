@@ -229,11 +229,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751513147,
-        "narHash": "sha256-idSXM3Y0KNf/WDDqGfthiOSQMwZYwis1JZhTkdWrr6A=",
+        "lastModified": 1751638848,
+        "narHash": "sha256-7HiC6w4ROEbMmKtj5pilnLOJej9HkkfU9wEd5QSTyNo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "426b405d979d893832549b95f23c13537c65d244",
+        "rev": "7d9e3c35f0d46f82bac791d76260f15f53d83529",
         "type": "github"
       },
       "original": {
@@ -310,6 +310,22 @@
       "original": {
         "owner": "nixos",
         "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1751655236,
+        "narHash": "sha256-2QDfhYjPFui9iQNTXBLcbffWVWbYLntm9EM/eFU3kX8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e1dca425c33650ae9ea15e577012d49586f29cef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -391,11 +407,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1734665136,
-        "narHash": "sha256-1WZjKt9ZmL+PbVZbrd/4YB4CuePTy7O1dap7rDenZL4=",
+        "lastModified": 1751655307,
+        "narHash": "sha256-p/y7tZVyfTch3aqWT5jCHBzk2yK4mQMkeK/b+ik9C9Y=",
         "ref": "main",
-        "rev": "119adb48959163d0dabedba1ab68b4505578e940",
-        "revCount": 4,
+        "rev": "e97e3de0b74f1461bb90fd3ba1d6b0aff243eecb",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/shakesbeare/fonts"
       },
