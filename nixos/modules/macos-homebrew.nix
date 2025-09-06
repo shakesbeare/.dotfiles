@@ -24,6 +24,7 @@
 
       "dropbox"
       "macs-fan-control"
+      "espanso"
 
       "alacritty"
       "discord"
