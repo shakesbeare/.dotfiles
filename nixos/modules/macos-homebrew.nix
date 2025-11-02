@@ -18,6 +18,14 @@
     # some macos nix setup might not want focusrite-control, for example
     # not necessary, for now
 
+    taps = [
+      "homebrew/core"
+      "homebrew/bundle"
+      "homebrew/services"
+    ];
+    brews = [
+      "marp-cli" # markdown to pptx
+    ];
     casks = [
       "firefox"
       "google-chrome"
@@ -41,11 +49,6 @@
       "sf-symbols"
       "font-sf-mono"
       "font-sf-pro"
-    ];
-    taps = [
-      "homebrew/core"
-      "homebrew/bundle"
-      "homebrew/services"
     ];
   };
 }

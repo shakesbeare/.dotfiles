@@ -8,7 +8,10 @@
     pkgs.onefetch
   ];
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    initContent = builtins.readFile ../../zsh/.zshrc;
+  };
   programs.starship.enable = true;
   programs.zoxide.enable = true;
   programs.eza.enable = true;
@@ -17,7 +20,7 @@
   programs.htop.enable = true;
   programs.ripgrep.enable = true;
 
-  home.file = {
-    ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/zsh/.zshrc";
-  };
+  # home.file = {
+  #   ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/zsh/.zshrc";
+  # };
 }
