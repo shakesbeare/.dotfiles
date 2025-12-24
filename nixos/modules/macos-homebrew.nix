@@ -44,6 +44,7 @@
       "focusrite-control"
       "skim"
       "microsoft-word"
+      "microsoft-excel"
       # "virtualbox"
 
       "sf-symbols"
