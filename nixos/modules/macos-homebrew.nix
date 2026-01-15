@@ -25,6 +25,7 @@
     ];
     brews = [
       "marp-cli" # markdown to pptx
+      "lilypond"
     ];
     casks = [
       "firefox"
