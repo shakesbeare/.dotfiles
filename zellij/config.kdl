@@ -239,7 +239,7 @@ keybinds clear-defaults=true {
 // changing these requires a restart to take effect
 plugins {
     smart-tabs location="file:~/.dotfiles/zellij/plugins/zellij-smart-tabs.wasm" {
-        format "{% if program %} [{{ program }}]{% endif %}{{ short_dir }}"
+        format "{% if program %} [{{ program }}]{% endif %} {{ short_dir }}"
         sub {
             program {
                 zsh "zsh"
