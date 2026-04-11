@@ -1,8 +1,6 @@
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
-show_startup_tips false // do not ever delete this line or suffer the consequences
 keybinds clear-defaults=true {
     normal {
-        unbind "Ctrl d"
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
@@ -111,8 +109,8 @@ keybinds clear-defaults=true {
         bind "k" "Up" { ScrollUp; }
         bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
         bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
-        bind "Ctrl d" "d" { HalfPageScrollDown; }
-        bind "Ctrl u" "u" { HalfPageScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
@@ -123,10 +121,10 @@ keybinds clear-defaults=true {
         bind "k" "Up" { ScrollUp; }
         bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
         bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
-        bind "Ctrl d" "d" { HalfPageScrollDown; }
-        bind "Ctrl u" "u" { HalfPageScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
         bind "n" { Search "down"; }
-        bind "Shift n" "p" { Search "up"; }
+        bind "p" { Search "up"; }
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "w" { SearchToggleOption "Wrap"; }
         bind "o" { SearchToggleOption "WholeWord"; }
@@ -188,10 +186,8 @@ keybinds clear-defaults=true {
                 floating true
                 move_to_focused_tab true
                 cwd "/"
-                root_dirs "/Users/bmoffett/;/Users/bmoffett/projects;/Users/bmoffett/Documents;/Users/bmoffett/Dropbox/Documents;/Users/bmoffett/Dropbox/TTRPG/obsidian;/Users/bmoffett/Library/Application Support/pico-8/carts"
-                individual_dirs "/Users/bmoffett/.dotfiles"
-            }; 
-            // SwitchToMode "Locked"
+                root_dirs "~/;~/projects;~/Documents;~/Dropbox/Documents;~/Dropbox/TTRPG/obsidian;/Users/bmoffett/Library/Application Support/pico-8/carts"
+            }; SwitchToMode "Locked";
         }
     }
     shared_except "tmux" "locked" {
@@ -199,7 +195,7 @@ keybinds clear-defaults=true {
     }
     shared_except "normal" "locked" {
         // bind "Ctrl g" { SwitchToMode "Locked"; }
-        bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
+        bind "Ctrl c" { SwitchToMode "Normal"; }
     }
     shared_except "normal" {
         bind "Ctrl q" { Quit; }
@@ -227,7 +223,6 @@ keybinds clear-defaults=true {
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
 plugins {
-    smart-tabs location="file:~/.dotfiles/zellij/plugins/zellij-smart-tabs.wasm"
     tab-bar location="zellij:tab-bar"
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
@@ -248,7 +243,6 @@ plugins {
 load_plugins {
   // "file:/path/to/my-plugin.wasm"
   // "https://example.com/my-plugin.wasm"
-  smart-tabs
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP

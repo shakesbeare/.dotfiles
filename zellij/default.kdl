@@ -1,43 +1,11 @@
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
-show_startup_tips false // do not ever delete this line or suffer the consequences
-keybinds clear-defaults=true {
+keybinds {
     normal {
-        unbind "Ctrl d"
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
-    // locked { // shouldn't need locked mode with this setup
-    //     bind "Ctrl g" { SwitchToMode "Normal"; }
-    // }
-    tmux {
-        // ** MODE SWITCH BINDS **
-        bind "Ctrl c" { Write 2; SwitchToMode "Normal"; }
-        bind "p" { SwitchToMode "Pane"; }
-        bind "t" { SwitchToMode "Tab"; }
-        bind "n" { SwitchToMode "Resize"; }
-        // bind "h" { SwitchToMode "Move"; } // I don't think this is necessary with my binds
-        bind "s" { SwitchToMode "Scroll"; }
-        // bind "[" { SwitchToMode "Scroll"; } // uncomment for convenience if switch is hard
-        bind "o" { SwitchToMode "Session"; }
-
-        // ** QUICK WINDOW AND PANE NAVIGATION **
-        bind "c" { NewTab; SwitchToMode "Normal"; }
-        bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
-        bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
-        bind "j" { MoveFocus "Down"; SwitchToMode "Normal"; }
-        bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
-
-        bind "1" "+" { GoToTab 1; SwitchToMode "Normal"; }
-        bind "2" "[" { GoToTab 2; SwitchToMode "Normal"; }
-        bind "3" "{" { GoToTab 3; SwitchToMode "Normal"; }
-        bind "4" "(" { GoToTab 4; SwitchToMode "Normal"; }
-        bind "5" "&" { GoToTab 5; SwitchToMode "Normal"; }
-        bind "6" "=" { GoToTab 6; SwitchToMode "Normal"; }
-        bind "7" ")" { GoToTab 7; SwitchToMode "Normal"; }
-        bind "8" "}" { GoToTab 8; SwitchToMode "Normal"; }
-        bind "9" "]" { GoToTab 9; SwitchToMode "Normal"; }
-
-        bind "d" { Detach; }
+    locked {
+        bind "Ctrl g" { SwitchToMode "Normal"; }
     }
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
@@ -111,8 +79,8 @@ keybinds clear-defaults=true {
         bind "k" "Up" { ScrollUp; }
         bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
         bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
-        bind "Ctrl d" "d" { HalfPageScrollDown; }
-        bind "Ctrl u" "u" { HalfPageScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
@@ -123,10 +91,10 @@ keybinds clear-defaults=true {
         bind "k" "Up" { ScrollUp; }
         bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
         bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
-        bind "Ctrl d" "d" { HalfPageScrollDown; }
-        bind "Ctrl u" "u" { HalfPageScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
         bind "n" { Search "down"; }
-        bind "Shift n" "p" { Search "up"; }
+        bind "p" { Search "up"; }
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "w" { SearchToggleOption "Wrap"; }
         bind "o" { SearchToggleOption "WholeWord"; }
@@ -183,51 +151,76 @@ keybinds clear-defaults=true {
             SwitchToMode "Normal"
         }
     }
-    shared_except "locked" {
-        bind "Ctrl f" { LaunchOrFocusPlugin "file:~/.dotfiles/zellij/plugins/zellij-sessionizer.wasm" {
-                floating true
-                move_to_focused_tab true
-                cwd "/"
-                root_dirs "/Users/bmoffett/;/Users/bmoffett/projects;/Users/bmoffett/Documents;/Users/bmoffett/Dropbox/Documents;/Users/bmoffett/Dropbox/TTRPG/obsidian;/Users/bmoffett/Library/Application Support/pico-8/carts"
-                individual_dirs "/Users/bmoffett/.dotfiles"
-            }; 
-            // SwitchToMode "Locked"
-        }
+    tmux {
+        bind "[" { SwitchToMode "Scroll"; }
+        bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
+        bind "\"" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "%" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+        bind "c" { NewTab; SwitchToMode "Normal"; }
+        bind "," { SwitchToMode "RenameTab"; }
+        bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
+        bind "n" { GoToNextTab; SwitchToMode "Normal"; }
+        bind "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        bind "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        bind "Down" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        bind "Up" { MoveFocus "Up"; SwitchToMode "Normal"; }
+        bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        bind "j" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
+        bind "o" { FocusNextPane; }
+        bind "d" { Detach; }
+        bind "Space" { NextSwapLayout; }
+        bind "x" { CloseFocus; SwitchToMode "Normal"; }
     }
-    shared_except "tmux" "locked" {
-        bind "Ctrl a" { SwitchToMode "Tmux"; }
+    shared_except "locked" {
+        bind "Ctrl g" { SwitchToMode "Locked"; }
+        bind "Ctrl q" { Quit; }
+        bind "Alt f" { ToggleFloatingPanes; }
+        bind "Alt n" { NewPane; }
+        bind "Alt i" { MoveTab "Left"; }
+        bind "Alt o" { MoveTab "Right"; }
+        bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
+        bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
+        bind "Alt j" "Alt Down" { MoveFocus "Down"; }
+        bind "Alt k" "Alt Up" { MoveFocus "Up"; }
+        bind "Alt =" "Alt +" { Resize "Increase"; }
+        bind "Alt -" { Resize "Decrease"; }
+        bind "Alt [" { PreviousSwapLayout; }
+        bind "Alt ]" { NextSwapLayout; }
+        bind "Alt p" { TogglePaneInGroup; }
+        bind "Alt Shift p" { ToggleGroupMarking; }
     }
     shared_except "normal" "locked" {
-        // bind "Ctrl g" { SwitchToMode "Locked"; }
-        bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
+        bind "Enter" "Esc" { SwitchToMode "Normal"; }
     }
-    shared_except "normal" {
-        bind "Ctrl q" { Quit; }
-    }
-    shared_except "normal" "pane" "locked" {
+    shared_except "pane" "locked" {
         bind "Ctrl p" { SwitchToMode "Pane"; }
     }
-    shared_except "normal" "resize" "locked" {
+    shared_except "resize" "locked" {
         bind "Ctrl n" { SwitchToMode "Resize"; }
     }
-    shared_except "normal" "scroll" "locked" {
+    shared_except "scroll" "locked" {
         bind "Ctrl s" { SwitchToMode "Scroll"; }
     }
-    shared_except "normal" "session" "locked" {
+    shared_except "session" "locked" {
         bind "Ctrl o" { SwitchToMode "Session"; }
     }
-    shared_except "normal" "tab" "locked" {
+    shared_except "tab" "locked" {
         bind "Ctrl t" { SwitchToMode "Tab"; }
     }
-    shared_except "normal" "move" "locked" {
+    shared_except "move" "locked" {
         bind "Ctrl h" { SwitchToMode "Move"; }
+    }
+    shared_except "tmux" "locked" {
+        bind "Ctrl b" { SwitchToMode "Tmux"; }
     }
 }
 
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
 plugins {
-    smart-tabs location="file:~/.dotfiles/zellij/plugins/zellij-smart-tabs.wasm"
     tab-bar location="zellij:tab-bar"
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
@@ -248,7 +241,6 @@ plugins {
 load_plugins {
   // "file:/path/to/my-plugin.wasm"
   // "https://example.com/my-plugin.wasm"
-  smart-tabs
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
