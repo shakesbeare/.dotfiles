@@ -17,6 +17,7 @@
     ./modules/btop.nix
     ./modules/git.nix
     ./modules/tmux.nix
+    ./modules/zellij.nix
     ./modules/programming.nix
     ./modules/discord.nix
     ./modules/yabai.nix

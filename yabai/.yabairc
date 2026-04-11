@@ -17,7 +17,7 @@ yabai -m window_placement first_child
 yabai -m auto_balance on 
 
 # focus follows mouse
-yabai -m config focus_follows_mouse autoraise
+# yabai -m config focus_follows_mouse autoraise
 
 # set modifier + left-click drag to move window (default: move)
 yabai -m config mouse_action1 move

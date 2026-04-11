@@ -4,7 +4,7 @@
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     dirs="~ ~/projects/ ~/work"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    dirs="~/ ~/projects ~/Dropbox/Documents ~/Dropbox/TTRPG/obsidian /Users/bmoffett/Library/Application\ Support/pico-8/carts"
+    dirs="~/ ~/projects ~/Documents ~/Dropbox/Documents ~/Dropbox/TTRPG/obsidian /Users/bmoffett/Library/Application\ Support/pico-8/carts"
 else
     echo "Unhandled operating system $OSTYPE"
     exit 1

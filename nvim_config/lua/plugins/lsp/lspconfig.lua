@@ -102,5 +102,6 @@ return {
 				},
 			},
 		})
+		vim.lsp.enable('rust-analyzer');
 	end,
 }
