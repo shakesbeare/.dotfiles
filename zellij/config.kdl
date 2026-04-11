@@ -82,7 +82,13 @@ keybinds clear-defaults=true {
     }
     tab {
         bind "Ctrl t" { SwitchToMode "Normal"; }
-        bind "r" { SwitchToMode "RenameTab"; TabNameInput 1; }
+        bind "r" {
+            MessagePlugin "smart-tabs" {
+                name "set_focused_to_manual"
+            }
+            SwitchToMode "RenameTab"
+            TabNameInput 0
+        }
         bind "h" "Left" "Up" "k" { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
         bind "n" { NewTab; SwitchToMode "Normal"; }
@@ -136,8 +142,13 @@ keybinds clear-defaults=true {
         bind "Enter" { SwitchToMode "Search"; }
     }
     renametab {
-        bind "Ctrl c" { SwitchToMode "Normal"; }
-        bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
+        bind "Ctrl c" "Esc" { 
+            UndoRenameTab
+            SwitchToMode "Tab"
+            MessagePlugin "smart-tabs" {
+                name "set_focused_to_managed"
+            }
+        }
     }
     renamepane {
         bind "Ctrl c" { SwitchToMode "Normal"; }
@@ -227,7 +238,19 @@ keybinds clear-defaults=true {
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
 plugins {
-    smart-tabs location="file:~/.dotfiles/zellij/plugins/zellij-smart-tabs.wasm"
+    smart-tabs location="file:~/.dotfiles/zellij/plugins/zellij-smart-tabs.wasm" {
+        format "{% if program %} [{{ program }}]{% endif %}{{ short_dir }}"
+        sub {
+            program {
+                zsh "zsh"
+                nvim "nvim"
+                vim "vim"
+                claude "claude"
+                node "node"
+                go "go"
+            }
+        }
+    }
     tab-bar location="zellij:tab-bar"
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
