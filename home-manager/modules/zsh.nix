@@ -11,6 +11,7 @@
   programs.zsh = {
     enable = true;
     initContent = builtins.readFile ../../zsh/.zshrc;
+    envExtra = builtins.readFile ../../zsh/.zshenv;
   };
   programs.starship.enable = true;
   programs.zoxide.enable = true;
