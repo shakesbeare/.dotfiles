@@ -1,0 +1,20 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="zjstatus" {
+            format_left  "#[fg=#b3e5ff,bg=0]{session} │{tabs}"
+            format_right "#[fg=#b3e5ff]{datetime}"
+            format_center "#[bg=0]"
+            format_space "#"
+
+            hide_frame_for_single_pane "true"
+
+            tab_normal   "#[fg=#b3e5ff] {index}: {name} ~ │"
+            tab_active   "#[fg=#f4ff80] {index}: {name} * │"
+
+            datetime          "{format}"
+            datetime_format   "%a, %d %b, %I:%M %p"
+            datetime_timezone "America/Los Angeles"
+        }
+    }
+    pane
+}

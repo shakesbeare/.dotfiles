@@ -2,7 +2,6 @@
 show_startup_tips false // do not ever delete this line or suffer the consequences
 keybinds clear-defaults=true {
     normal {
-        unbind "Ctrl d"
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
@@ -82,13 +81,7 @@ keybinds clear-defaults=true {
     }
     tab {
         bind "Ctrl t" { SwitchToMode "Normal"; }
-        bind "r" {
-            MessagePlugin "smart-tabs" {
-                name "set_focused_to_manual"
-            }
-            SwitchToMode "RenameTab"
-            TabNameInput 0
-        }
+        bind "r" { SwitchToMode "RenameTab"; TabNameInput 1; }
         bind "h" "Left" "Up" "k" { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
         bind "n" { NewTab; SwitchToMode "Normal"; }
@@ -107,6 +100,8 @@ keybinds clear-defaults=true {
         bind "8" { GoToTab 8; SwitchToMode "Normal"; }
         bind "9" { GoToTab 9; SwitchToMode "Normal"; }
         bind "Tab" { ToggleTab; }
+        bind "Left" { MoveTab "Left"; }
+        bind "Right" { MoveTab "Right"; }
     }
     scroll {
         bind "Ctrl s" { SwitchToMode "Normal"; }
@@ -142,13 +137,8 @@ keybinds clear-defaults=true {
         bind "Enter" { SwitchToMode "Search"; }
     }
     renametab {
-        bind "Ctrl c" "Esc" { 
-            UndoRenameTab
-            SwitchToMode "Tab"
-            MessagePlugin "smart-tabs" {
-                name "set_focused_to_managed"
-            }
-        }
+        bind "Ctrl c" { SwitchToMode "Normal"; }
+        bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
     }
     renamepane {
         bind "Ctrl c" { SwitchToMode "Normal"; }
@@ -252,12 +242,19 @@ plugins {
     configuration location="zellij:configuration"
     plugin-manager location="zellij:plugin-manager"
     about location="zellij:about"
+    zjstatus location="file:~/.dotfiles/zellij/plugins/zjstatus.wasm"
+    zjframes location="file:~/.dotfiles/zellij/plugins/zjframes.wasm"
+    // tab-rename location="file:~/.dotfiles/zellij/plugins/zellij-tab-rename.wasm" {
+    //     format "basename"
+    //     source "process"
+    //     git-root true
+    // }
 }
 
 // Plugins to load in the background when a new session starts
 load_plugins {
-  // "file:/path/to/my-plugin.wasm"
-  // "https://example.com/my-plugin.wasm"
+    "file:~/.dotfiles/zellij/plugins/zjstatus.wasm"
+    "file:~/.dotfiles/zellij/plugins/zjframes.wasm"
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
