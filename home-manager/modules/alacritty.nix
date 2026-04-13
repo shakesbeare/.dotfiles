@@ -33,8 +33,8 @@ in
           opacity = 0.7;
           blur = false;
           padding = {
-            x = 5;
-            y = 5;
+            x = 10;
+            y = 10;
           };
           option_as_alt = "OnlyLeft";
         };
