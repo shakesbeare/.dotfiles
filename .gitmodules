@@ -3,7 +3,6 @@
     path = nvim_config
     url = git@github.com:shakesbeare/nvim_config.git
 
-[submodule "cavernous.nvim"]
-    active = true
-    path = nvim_config/lua/plugins/cavernous.nvim
-    url = git@github.com:shakesbeare/cavernous.nvim
+[submodule "nvim_config/lua/plugins/cavernous.nvim"]
+	path = nvim_config/lua/plugins/cavernous.nvim
+	url = git@github.com:shakesbeare/cavernous.nvim
