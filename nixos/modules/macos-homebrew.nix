@@ -22,6 +22,7 @@
       "homebrew/core"
       "homebrew/bundle"
       "homebrew/services"
+      "homebrew/cask"
     ];
     brews = [
       "marp-cli" # markdown to pptx
