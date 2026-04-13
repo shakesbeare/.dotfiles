@@ -27,7 +27,7 @@ in
           startup_mode = get_startup_mode system;
           decorations =
             if system == "aarch64-darwin"
-            then "Buttonless"
+            then "None"
             else "None";
           dynamic_title = true;
           opacity = 0.7;
