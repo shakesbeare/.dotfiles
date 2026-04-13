@@ -16,9 +16,16 @@ layout {
 
                 datetime          "{format}"
                 datetime_format   "%a, %d %b, %I:%M %p"
-                datetime_timezone "America/Cupertino"
+                datetime_timezone "America/Los_Angeles"
             }
         }
         children
+        // pane size=1 borderless=true {
+        //     plugin location="zjstatus" {
+        //         format_left  "#[fg=#b3e5ff,bg=0]{mode} │"
+        //
+        //         mode_normal "#[fg=#b3e5ff]{name}"
+        //     }
+        // }
     }
 }
