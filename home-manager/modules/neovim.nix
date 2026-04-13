@@ -10,6 +10,8 @@
 
   programs.neovim = {
     enable = true;
+    withRuby = false;
+    withPython3 = false;
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
   };
   home.file = {
