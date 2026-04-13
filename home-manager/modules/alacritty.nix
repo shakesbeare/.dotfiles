@@ -1,101 +1,107 @@
-{
-  config,
-  pkgs,
-  system,
-  ...
-}: {
-  programs.alacritty.enable = true;
-  home.sessionVariables = {
-    TERMINAL = "alacritty";
-  };
+let
+  get_startup_mode = system:
+    if system == "aarch64-darwin"
+    then "SimpleFullscreen"
+    else "Maximized";
+in
+  {
+    config,
+    pkgs,
+    system,
+    ...
+  }: {
+    programs.alacritty.enable = true;
+    home.sessionVariables = {
+      TERMINAL = "alacritty";
+    };
 
-  home.file = {
-    ".config/alacritty/alacritty.toml".source = (pkgs.formats.toml {}).generate "alacritty-config" {
-      general.live_config_reload = true;
-      terminal.shell.program = "zsh";
-      env = {
-        TERM = "alacritty";
-      };
-
-      window = {
-        startup_mode = "Maximized";
-        decorations =
-          if system == "aarch64-darwin"
-          then "Buttonless"
-          else "None";
-        dynamic_title = true;
-        opacity = 0.7;
-        blur = false;
-        padding = {
-          x = 5;
-          y = 5;
+    home.file = {
+      ".config/alacritty/alacritty.toml".source = (pkgs.formats.toml {}).generate "alacritty-config" {
+        general.live_config_reload = true;
+        terminal.shell.program = "zsh";
+        env = {
+          TERM = "alacritty";
         };
-        option_as_alt = "OnlyLeft";
-      };
 
-      font = {
-        # normal = { family = "UbuntuMono Nerd Font" }
-        normal = {
-          family = "BerkeleyMono Nerd Font Mono";
-          style = "Regular";
+        window = {
+          startup_mode = get_startup_mode system;
+          decorations =
+            if system == "aarch64-darwin"
+            then "Buttonless"
+            else "None";
+          dynamic_title = true;
+          opacity = 0.7;
+          blur = false;
+          padding = {
+            x = 5;
+            y = 5;
+          };
+          option_as_alt = "OnlyLeft";
         };
-        # bold = { family = "Consolas", style = "Bold" }
-        size =
-          if system == "aarch64-darwin"
-          then 14.5
-          else 12;
-        offset = {
-          x = 0;
-          y = 0;
+
+        font = {
+          # normal = { family = "UbuntuMono Nerd Font" }
+          normal = {
+            family = "BerkeleyMono Nerd Font Mono";
+            style = "Regular";
+          };
+          # bold = { family = "Consolas", style = "Bold" }
+          size =
+            if system == "aarch64-darwin"
+            then 14.5
+            else 12;
+          offset = {
+            x = 0;
+            y = 0;
+          };
         };
-      };
 
-      cursor = {
-        style.blinking = "Always";
-        blink_interval = 500;
-        blink_timeout = 0;
-      };
-
-      colors = {
-        draw_bold_text_with_bright_colors = true;
         cursor = {
-          text = "#D3D3D3";
-          cursor = "#D3D3D3";
+          style.blinking = "Always";
+          blink_interval = 500;
+          blink_timeout = 0;
         };
-        primary.background = "#000000";
-      };
 
-      colors.normal = {
-        black = "#000000";
-        white = "#CCCCCC";
-        red = "#ff8080";
-        yellow = "#f4ff80";
-        green = "#80ff80";
-        cyan = "#b3e5ff";
-        blue = "#80c3ff";
-        magenta = "#d580ff";
-      };
+        colors = {
+          draw_bold_text_with_bright_colors = true;
+          cursor = {
+            text = "#D3D3D3";
+            cursor = "#D3D3D3";
+          };
+          primary.background = "#000000";
+        };
 
-      colors.bright = {
-        black = "#767676";
-        red = "#E74856";
-        green = "#16C60C";
-        yellow = "#F9F1A5";
-        blue = "#3B78FF";
-        magenta = "#B4009E";
-        cyan = "#61D6D6";
-        white = "#F2F2F2";
-      };
+        colors.normal = {
+          black = "#000000";
+          white = "#CCCCCC";
+          red = "#ff8080";
+          yellow = "#f4ff80";
+          green = "#80ff80";
+          cyan = "#b3e5ff";
+          blue = "#80c3ff";
+          magenta = "#d580ff";
+        };
 
-      keyboard = {
-        bindings = [
-          {
-            key = "F";
-            mods = "Command";
-            action = "ToggleSimpleFullscreen";
-          }
-        ];
+        colors.bright = {
+          black = "#767676";
+          red = "#E74856";
+          green = "#16C60C";
+          yellow = "#F9F1A5";
+          blue = "#3B78FF";
+          magenta = "#B4009E";
+          cyan = "#61D6D6";
+          white = "#F2F2F2";
+        };
+
+        keyboard = {
+          bindings = [
+            {
+              key = "F";
+              mods = "Command";
+              action = "ToggleSimpleFullscreen";
+            }
+          ];
+        };
       };
     };
-  };
-}
+  }
