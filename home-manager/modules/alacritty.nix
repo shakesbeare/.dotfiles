@@ -48,7 +48,7 @@ in
           # bold = { family = "Consolas", style = "Bold" }
           size =
             if system == "aarch64-darwin"
-            then 14.75
+            then 15
             else 12;
           offset = {
             x = 0;
