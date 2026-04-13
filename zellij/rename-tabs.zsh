@@ -27,13 +27,13 @@ function set_tab_to_working_dir() {
 
 function set_tab_to_command_line() {
     local cmdline=$1
-    local cmdline=${cmdline%% *}
+    cmdline=${cmdline%% *}
     local maybe=$(whence $cmdline)
     if [[ -n $maybe ]]; then
-        change_tab_title $maybe
-    else
-        change_tab_title $cmdline
+        cmdline=$maybe
     fi
+    cmdline=${cmdline##*/}
+    change_tab_title $cmdline
 }
 
 if [[ -n $ZELLIJ ]]; then
