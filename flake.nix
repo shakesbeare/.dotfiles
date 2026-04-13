@@ -85,7 +85,9 @@
         modules = [
           ./nixos/macos-lt.nix
           {
-            environment.systemPackages = [alejandra.defaultPackage.${"x86_64-darwin"}];
+            # this is fixed but alejandra doesn't seem to have released the fix yet https://github.com/kamadorueda/alejandra/issues/470#event-21387668433
+            # environment.systemPackages = [alejandra.defaultPackage.${system}];
+            environment.systemPackages = [alejandra.packages.aarch64-darwin.alejandra-arm64-apple-darwin]; # this can be deleted once above fixed
           }
           home-manager.darwinModules.home-manager
           {
