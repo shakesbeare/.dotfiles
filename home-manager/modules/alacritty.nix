@@ -43,7 +43,7 @@ in
           # normal = { family = "UbuntuMono Nerd Font" }
           normal = {
             family = "BerkeleyMono Nerd Font Mono";
-            style = "Regular";
+            style = "Light";
           };
           # bold = { family = "Consolas", style = "Bold" }
           size =
