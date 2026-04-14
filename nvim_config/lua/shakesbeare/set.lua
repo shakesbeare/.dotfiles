@@ -1,3 +1,4 @@
+---@diagnostic disable:undefined-global
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
@@ -34,8 +35,33 @@ vim.opt.incsearch = true
 vim.opt.swapfile = false
 vim.opt.guicursor = ""
 vim.opt.laststatus = 3
-vim.opt.fillchars = { stlnc = "─" }
+vim.opt.fillchars = {
+    stl       = ' ',
+    stlnc     = ' ',
+    wbr       = ' ',
+
+    -- horiz 
+    horiz     = '─',
+    horizup   =	'┴',
+    horizdown =	'┬',
+
+    -- vert
+    vert      =	'│', vertleft  = '┤', vertright = '├', verthoriz = '┼',
+
+    fold      =	'·',
+    foldopen  =	'-',
+    foldclose =	'+',
+    foldsep   =	'│',
+    diff      =	'-',
+    msgsep    =	' ',
+    eob       =	'~',
+    lastline  =	'@',
+    trunc     =	'>',
+    truncrl   =	'<',
+}
 vim.opt.colorcolumn = "100"
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 vim.opt.wrap = false
 vim.opt.showtabline=2
 
