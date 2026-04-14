@@ -42,9 +42,8 @@ in
         font = {
           # normal = { family = "UbuntuMono Nerd Font" }
           normal = {
-            family = "BerkeleyMonoVariable Nerd Font Mono";
+            family = "BerkeleyMono Nerd Font Mono";
             style = "Regular";
-            weight = 150;
           };
           # bold = { family = "Consolas", style = "Bold" }
           size =
