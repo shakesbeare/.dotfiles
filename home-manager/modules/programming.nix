@@ -13,6 +13,7 @@
     pkgs.gh
     pkgs.zip
     pkgs.unzip
+    pkgs.just
   ];
 
   programs = {
