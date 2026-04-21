@@ -105,8 +105,7 @@ return {
 		sections = {
 			lualine_a = { "mode" },
 			lualine_b = { "branch", "diff", "diagnostics" },
-			lualine_c = { "filetype" },
-			lualine_x = { {
+			lualine_c = { "filetype", {
 				"filename",
 				path = 0, -- only display filename without parent dirs
 				symbols = {
@@ -114,7 +113,8 @@ return {
 					readonly = "[readonly]",
 					unnamed = "[#]",
 				}
-			}, harpoon_marks },
+			} },
+			lualine_x = { harpoon_marks },
 			lualine_y = {},
 			lualine_z = {},
 		},
