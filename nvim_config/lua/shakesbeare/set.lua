@@ -7,6 +7,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 vim.g.tabline_separator = "│"
+vim.opt.showtabline = 0
 
 vim.g.mapleader = " "
 
@@ -63,7 +64,6 @@ vim.opt.colorcolumn = "100"
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 vim.opt.wrap = false
-vim.opt.showtabline=2
 
 local homedir = os.getenv("HOME") or "C:/Users/berin"
 vim.opt.undodir = homedir .. "/.undodir"

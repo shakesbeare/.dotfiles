@@ -85,4 +85,5 @@ eval "$(zoxide init zsh)"
 
 export TERM=alacritty
 export DOTNET_ROOT=/usr/local/share/dotnet
+export ZELLIJ_SOCKET_DIR=/tmp/zellij
 export path

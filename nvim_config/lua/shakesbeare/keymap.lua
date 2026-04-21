@@ -20,6 +20,20 @@ vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, desc = "Yank to system
 vim.keymap.set("n", "<leader>d", '"_d', { noremap = true, desc = "Delete lossy" })
 vim.keymap.set("v", "<leader>d", '"_d', { noremap = true, desc = "Delete lossy" })
 
+-- Harpoon controls
+vim.keymap.set("n", "<Space>a", function() require("harpoon"):list():add() end,
+	{ noremap = true, silent = true, desc = "Harpoon: add mark", })
+vim.keymap.set("n", "<Space>e", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end,
+	{ noremap = true, silent = true, desc = "Harpoon: view marks", })
+vim.keymap.set("n", "<C-h>", function() require("harpoon"):list():select(1) end,
+	{ noremap = true, silent = true, desc = "Harpoon: nav file 1", })
+vim.keymap.set("n", "<C-t>", function() require("harpoon"):list():select(2) end,
+	{ noremap = true, silent = true, desc = "Harpoon: nav file 2", })
+vim.keymap.set("n", "<C-n>", function() require("harpoon"):list():select(3) end,
+	{ noremap = true, silent = true, desc = "Harpoon: nav file 3", })
+vim.keymap.set("n", "<C-s>", function() require("harpoon"):list():select(4) end,
+	{ noremap = true, silent = true, desc = "Harpoon: nav file 4", })
+
 -- Become a master of the universe
 vim.keymap.set("n", "<C-p>", function()
 	-- pcall to catch KeyboardInterrupt error
