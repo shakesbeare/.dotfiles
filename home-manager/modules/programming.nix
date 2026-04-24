@@ -14,6 +14,7 @@
     pkgs.zip
     pkgs.unzip
     pkgs.just
+    pkgs.uv
   ];
 
   programs = {
