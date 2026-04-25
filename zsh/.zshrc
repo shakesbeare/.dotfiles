@@ -3,6 +3,10 @@
 		https://github.com/marlonrichert/zsh-snap.git ~/.zsh-plugins/znap
 source ~/.zsh-plugins/znap/znap.zsh
 
+znap source marlonrichert/zsh-autocomplete
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-syntax-highlighting
+
 path+=(/usr/local/bin)
 path+=($HOME/.scripts)
 path+=($HOME/.local/share/bob/nvim-bin)
@@ -20,11 +24,6 @@ done
 mkdir -p $HOME/.zfunc
 fpath+=$HOME/.zfunc
 
-# old school brew shit
-# if [[ "$OSTYPE" == "darwin"* ]]; then
-#     fpath+=("$(brew --prefix)/share/zsh/site-functions")
-# fi
-
 HISTFILE=~/.histfile
 HISTSIZE=25000
 SAVEHIST=25000
@@ -35,10 +34,6 @@ unsetopt beep
 bindkey -e
 bindkey "^[[A" up-line-or-history
 # End of lines configured by zsh-newuser-install
-
-znap source marlonrichert/zsh-autocomplete
-znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-syntax-highlighting
 
 zstyle ':completion:*' list-colors '=*=94'
 
@@ -78,9 +73,6 @@ alias py="python"
 alias pip="python -m pip"
 alias cat="bat"
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete;"
-alias cd="z" # zoxide
-
-eval "$(zoxide init zsh)"
 
 
 export TERM=alacritty
