@@ -14,7 +14,6 @@
     ./modules/neovim.nix
     ./modules/zsh.nix
     ./modules/scripts.nix
-    ./modules/btop.nix
     ./modules/git.nix
     ./modules/tmux.nix
     ./modules/zellij.nix
@@ -28,21 +27,5 @@
 
   home.sessionVariables = {
     SYSTEM = "aarch64-darwin";
-  };
-
-  programs.sketchybar = {
-    enable = false;
-    service = {
-      enable = true;
-      errorLogFile = /tmp/sketcherr;
-      outLogFile = /tmp/sketchlog;
-    };
-    configType = "lua";
-    luaPackage = pkgs.lua5_4;
-    sbarLuaPackage = pkgs.sbarlua;
-    config = {
-      source = ../sketchybar;
-      recursive = true;
-    };
   };
 }

@@ -8,7 +8,6 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   imports = [
     ./modules/macos-homebrew.nix
-    ./shared.nix
   ];
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
