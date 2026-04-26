@@ -6,6 +6,7 @@
   home.packages = [
     pkgs.fastfetch
     pkgs.onefetch
+    pkgs.eza
   ];
 
   programs.zsh = {
@@ -15,7 +16,6 @@
     envExtra = builtins.readFile ../../zsh/.zshenv;
   };
   programs.starship.enable = true;
-  programs.eza.enable = true;
   programs.fzf.enable = true;
   programs.bat.enable = true;
   programs.ripgrep.enable = true;
