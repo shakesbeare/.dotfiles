@@ -14,6 +14,7 @@
       };
     };
     git = {
+      lfs.enable = true;
       enable = true;
       signing.format = "openpgp";
       settings = {
