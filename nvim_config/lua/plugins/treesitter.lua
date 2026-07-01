@@ -36,24 +36,24 @@ return {
 			})
 		end,
 	},
-	{ 
-		"nvim-treesitter/nvim-treesitter-context", 
-		branch = "master", 
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function() 
-			-- enable context
-			require("treesitter-context").setup({
-				enable = true,
-				max_lines = 0,
-				trim_scope = "outer",
-				min_window_height = 0,
-				multiline_threshold = 20,
-				zindex = 20,
-				mode = "cursor",
-				separator = nil,
-			})
-		end
-	},
+	-- { 
+	-- 	"nvim-treesitter/nvim-treesitter-context", 
+	-- 	branch = "master", 
+	-- 	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	-- 	config = function() 
+	-- 		-- enable context
+	-- 		require("treesitter-context").setup({
+	-- 			enable = true,
+	-- 			max_lines = 0,
+	-- 			trim_scope = "outer",
+	-- 			min_window_height = 0,
+	-- 			multiline_threshold = 20,
+	-- 			zindex = 20,
+	-- 			mode = "cursor",
+	-- 			separator = nil,
+	-- 		})
+	-- 	end
+	-- },
 	{ 
 		"nvim-treesitter/nvim-treesitter-textobjects", 
 		branch = "main",

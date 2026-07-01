@@ -74,9 +74,7 @@ return {
 							"--message-format=json",
 							"--all-targets",
 							"--all-features",
-							"--",
-							"-A",
-							"clippy::needless_return",
+							"--no-deps",
 						},
 					},
 					completion = {

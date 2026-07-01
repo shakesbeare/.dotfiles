@@ -6,6 +6,7 @@ return {
 				rust = { "leptosfmt" },
 				gdscript = { "gdformat" },
 				gd = { "gdformat" },
+				nix = { "alejandra" },
 			},
 			-- format_on_save = {}
 			formatters = {
@@ -24,8 +25,12 @@ return {
 						"88",
 						"-",
 					},
+					stdin = true,
 				},
-				stdin = true,
+				alejandra = {
+					command = "alejandra",
+					stdin = true,
+				}
 			},
 		},
 	},

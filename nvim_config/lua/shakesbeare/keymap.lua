@@ -126,10 +126,8 @@ end, { silent = true })
 -- otherwise, expand cmp suggestion, if available
 -- otherwise, insert tab/space
 vim.keymap.set("i", "<Tab>", function()
-	if require("luasnip").expand_or_jumpable() then
-		require("luasnip").expand_or_jump()
-	elseif has_words_before() then
-		require("cmp").confirm({ select = true })
+	if require("luasnip").jumpable() then
+		require("luasnip").jump()
 	else
 		if vim.o.expandtab then
 			vim.api.nvim_feedkeys(string.rep(" ", vim.o.tabstop), "i", true)
